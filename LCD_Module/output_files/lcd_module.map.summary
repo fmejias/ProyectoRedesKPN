@@ -1,0 +1,18 @@
+Analysis & Synthesis Status : Successful - Sat Mar 04 17:16:32 2017
+Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+Revision Name : lcd_module
+Top-level Entity Name : lcd_module
+Family : Cyclone IV GX
+Total logic elements : 100
+    Total combinational functions : 100
+    Dedicated logic registers : 53
+Total registers : 53
+Total pins : 32
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 0
