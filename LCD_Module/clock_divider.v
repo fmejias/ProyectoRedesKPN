@@ -2,9 +2,9 @@
 module clock_divider(input wire clk_in, output wire clk_out);
 
 //-- Valor por defecto del divisor
-//-- Como en la iCEstick el reloj es de 12MHz, ponermos un valor de 12M
+//-- Como en la iCEstick el reloj es de 50MHz, ponermos un valor de 50M
 //-- para obtener una frecuencia de salida de 1Hz
-parameter M = 50_000_000;
+parameter M = 5_000_000;
 
 //-- Numero de bits para almacenar el divisor
 //-- Se calculan con la funcion de verilog $clog2, que nos devuelve el 
