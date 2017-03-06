@@ -1,0 +1,41 @@
+start with assembly_code; 
+assembly_code::=instruction assembly_code | instruction;
+instruction ::= AND register COMA register COMA register 
+| AND register COMA register COMA IMMEDIATE
+| EOR register COMA register COMA register | EOR register COMA register COMA IMMEDIATE
+| SUB register COMA register COMA register | SUB register COMA register COMA IMMEDIATE
+| RSB register COMA register COMA register | RSB register COMA register COMA IMMEDIATE
+| ADD register COMA register COMA register | ADD register COMA register COMA IMMEDIATE
+| ADC register COMA register COMA register | ADC register COMA register COMA IMMEDIATE 
+| SBC register COMA register COMA register | SBC register COMA register COMA IMMEDIATE
+| RSC register COMA register COMA register | RSC register COMA register COMA IMMEDIATE 
+| CMP register COMA register | CMP register COMA IMMEDIATE 
+| CMN register COMA register | CMN register COMA IMMEDIATE 
+| ORR register COMA register COMA register | ORR register COMA register COMA IMMEDIATE 
+| MOV register COMA register | MOV register COMA IMMEDIATE
+| LSL register COMA register COMA register | LSL register COMA register COMA IMMEDIATE 
+| ASR register COMA register COMA register | ASR register COMA register COMA IMMEDIATE 
+| RRX register COMA register COMA register | RRX register COMA register COMA IMMEDIATE 
+| ROR register COMA register COMA register | ROR register COMA register COMA IMMEDIATE 
+| BIC register COMA register COMA register | BIC register COMA register COMA IMMEDIATE 
+| MVN register COMA register COMA register | MVN register COMA register COMA IMMEDIATE 
+| MUL register COMA register COMA register 
+| MLA register COMA register COMA register COMA register 
+| STR register COMA CORCHETEIZQUIERDO register COMA IMMEDIATE CORCHETEDERECHO 
+| STR register COMA CORCHETEIZQUIERDO register CORCHETEDERECHO COMA IMMEDIATE
+| STR register COMA CORCHETEIZQUIERDO register COMA register CORCHETEDERECHO 
+| LDR register COMA CORCHETEIZQUIERDO register COMA IMMEDIATE CORCHETEDERECHO
+| LDR register COMA CORCHETEIZQUIERDO register CORCHETEDERECHO COMA IMMEDIATE 
+| LDR register COMA CORCHETEIZQUIERDO register COMA register CORCHETEDERECHO 
+| STRB register COMA CORCHETEIZQUIERDO register COMA IMMEDIATE CORCHETEDERECHO 
+| STRB register COMA CORCHETEIZQUIERDO register CORCHETEDERECHO COMA IMMEDIATE
+| STRB register COMA CORCHETEIZQUIERDO register COMA register CORCHETEDERECHO 
+| LDRB register COMA CORCHETEIZQUIERDO register COMA IMMEDIATE CORCHETEDERECHO
+| LDRB register COMA CORCHETEIZQUIERDO register CORCHETEDERECHO COMA IMMEDIATE
+| LDRB register COMA CORCHETEIZQUIERDO register COMA register CORCHETEDERECHO
+| B LABEL | BGE LABEL | BLE LABEL | BLT LABEL | BGT LABEL | BEQ LABEL | BNE LABEL | BL LABEL | BLEQ LABEL
+| BLNE LABEL | BLGE LABEL | BLLT LABEL
+| BLGT LABEL | BLLE LABEL
+| NEWINSTRUCTION
+| LABEL
+register::= REGISTER
