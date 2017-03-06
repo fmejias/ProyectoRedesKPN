@@ -11,14 +11,16 @@ clock,
 reset,
 entry_1,
 entry_2,
-show_entries,
+show_entry_1,
+show_entry_2,
 show_result,
 result,
 enable,
 lcd_data,
 rs,
 rw,
-on
+on,
+entry_2_finished
 );
 
 /*
@@ -29,14 +31,16 @@ input clock;
 input reset;
 input [15:0] entry_1;
 input [15:0] entry_2;
-input show_entries; //SW1
-input show_result; //KEY[3]
+input show_entry_1; //SW1
+input show_entry_2; //SW1
+input show_result; 
 input [15:0] result;
 output enable;
 output [7:0] lcd_data;
 output rs;
 output rw;
 output on;
+output entry_2_finished; 
 
 
 
@@ -62,7 +66,8 @@ reg entry_2_finished;
 reg result_title_finished;
 reg result_number_finished;
 reg on;
-reg start_writing_entries;
+reg start_writing_entry_1;
+reg start_writing_entry_2;
 reg start_writing_result;
 reg [6:0] cursor_address; //The bit 7 is for write address
 
@@ -71,7 +76,8 @@ always @ (posedge clock) // on positive clock edge
 begin
  if(reset) //Initialize all the registers
   begin
-   start_writing_entries = 1'b0;
+   start_writing_entry_1 = 1'b0;
+	start_writing_entry_2 = 1'b0;
 	start_writing_result = 1'b0;
 	write_address = 1'b0;
 	entry_letter_counter = 5'b01111;
@@ -100,11 +106,19 @@ begin
 	  
 	end 
   
- else if(show_entries == 1'b1 && start_writing_entries == 1'b0 && entry_1_finished == 1'b0) //Indicates to start writing to the LCD
+ else if(show_entry_1 == 1'b1 && start_writing_entry_1 == 1'b0 && entry_1_finished == 1'b0) //Indicates to start writing to the LCD
    begin
-    start_writing_entries = 1'b1;
+    start_writing_entry_1 = 1'b1;
     write_address = 1'b1;
 	 cursor_address = 7'h00;
+	 
+   end
+
+ else if(show_entry_2 == 1'b0 && start_writing_entry_2 == 1'b0 && entry_2_finished == 1'b0) //Indicates to start writing to the LCD
+   begin
+    start_writing_entry_2 = 1'b1;
+    write_address = 1'b1;
+	 cursor_address = 7'h40;
 	 
    end
 	
@@ -125,7 +139,7 @@ else if(show_result == 1'b1 && start_writing_result == 1'b0 && result_number_fin
  
  else
    begin
-		if(start_writing_entries)
+		if(start_writing_entry_1)
 		  begin
 			if(write_address == 1'b1)
 	        begin
@@ -133,10 +147,8 @@ else if(show_result == 1'b1 && start_writing_result == 1'b0 && result_number_fin
 				 rw = 1'b0;
 				 enable = 1'b1; 
 				 entry_1_finished = (cursor_address == 7'h10 && entry_1_finished == 1'b0) ? 1'b1 : entry_1_finished;
-				 entry_2_finished = (cursor_address == 7'h50 && entry_2_finished == 1'b0) ? 1'b1 : entry_2_finished;
-				 start_writing_entries =  (entry_2_finished == 1'b1) ? 1'b0 : 1'b1;
+				 start_writing_entry_1 =  (entry_1_finished == 1'b1) ? 1'b0 : 1'b1;
 				 cursor_address = (cursor_address == 7'h10) ? 7'h40 : cursor_address;
-			    cursor_address = (cursor_address == 7'h50) ? 7'h00 : cursor_address;
 				 lcd_data = {1'b1, cursor_address};
 				 
 				 write_address = 1'b0;
@@ -147,7 +159,6 @@ else if(show_result == 1'b1 && start_writing_result == 1'b0 && result_number_fin
 			    rs = 1'b1;
 				 rw = 1'b0;
 			    lcd_data = (entry_1[entry_letter_counter] == 1'b1) ? 8'b00110001: 8'b00110000;
-				 lcd_data = (entry_1_finished == 1'b1) ? ((entry_2[entry_letter_counter] == 1'b1) ? 8'b00110001: 8'b00110000): lcd_data;
 				 entry_letter_counter = (entry_letter_counter == 5'b00000) ? 5'b01111 : entry_letter_counter - 1;
 				 write_address = 1'b1;
 				 cursor_address = cursor_address + 1;
@@ -156,6 +167,33 @@ else if(show_result == 1'b1 && start_writing_result == 1'b0 && result_number_fin
 				 command_delay = 1'b1;
 			  end
 		  end
+		else if(start_writing_entry_2)
+		  begin
+			if(write_address == 1'b1)
+	        begin
+				 rs = 1'b0;
+				 rw = 1'b0;
+				 enable = 1'b1; 
+				 entry_2_finished = (cursor_address == 7'h50 && entry_2_finished == 1'b0) ? 1'b1 : entry_2_finished;
+				 start_writing_entry_2 =  (entry_2_finished == 1'b1) ? 1'b0 : 1'b1;
+			    cursor_address = (cursor_address == 7'h50) ? 7'h00 : cursor_address;
+				 lcd_data = {1'b1, cursor_address};		 
+				 write_address = 1'b0;
+				 command_delay = 1'b1;
+			  end
+			else
+			  begin
+			    rs = 1'b1;
+				 rw = 1'b0;
+			    lcd_data = (entry_2[entry_letter_counter] == 1'b1) ? 8'b00110001: 8'b00110000;
+				 entry_letter_counter = (entry_letter_counter == 5'b00000) ? 5'b01111 : entry_letter_counter - 1;
+				 write_address = 1'b1;
+				 cursor_address = cursor_address + 1;
+				 enable = 1'b1;
+				 command_delay = 1'b1;
+			  end
+		  end
+		  
 		else if(start_writing_result)
 		  begin
 			if(write_address == 1'b1)
@@ -198,8 +236,8 @@ else if(show_result == 1'b1 && start_writing_result == 1'b0 && result_number_fin
 		  end  
 		else
 		  begin
-		   enable = 1'b1; 
-	      
+		   enable = 1'b1;    
+				
 		  end
    end
   

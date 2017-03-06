@@ -2,6 +2,8 @@ module adder_module (
 entry_1,
 entry_2,
 add,
+reset,
+show_add,
 result,
 show_result
 );
@@ -12,7 +14,9 @@ show_result
 
 input [15:0] entry_1;
 input [15:0] entry_2; 
-input add;
+input add; //This input make the add operation 
+input reset;
+input show_add; //This input make the LCD to show the add result
 output [15:0] result;
 output show_result;
 
@@ -22,9 +26,51 @@ output show_result;
  * Also, we enable the show_result signal
  */
 
+ reg [15:0] first_entry;
+ reg [15:0] second_entry;
+ reg [15:0] result;
+ reg show_result;
+ reg number1_written;
+ reg number2_written;
  
- assign result = (add == 1'b0) ? (entry_1 + entry_2) : 16'h0000;
- assign show_result = (add == 1'b0) ? 1'b1 : 1'b0;
+ always @(*)
+ begin
+  if(reset)
+  begin
+   first_entry = 16'h0000;
+	second_entry = 16'h0000;
+	number1_written = 1'b0;
+	number2_written = 1'b0;
+	result = 16'h0000;
+	show_result = 1'b0;
+  end
+  else
+  begin
+   if(add)
+	 begin
+	  if(number1_written == 1'b0)
+	  begin
+	   number1_written = 1'b1;
+		first_entry = entry_1;
+	  end
+	 end
+	else
+	 begin
+	  if(number2_written == 1'b0)
+	  begin
+	   number2_written = 1'b1;
+		second_entry = entry_2;
+	  end
+	  else if(show_add == 1'b1)
+	  begin
+	   result = first_entry + second_entry;
+		show_result = 1'b1;
+	  end
+	 end
+	 
+  end
+  
+ end
 
 
 endmodule // end adder_module

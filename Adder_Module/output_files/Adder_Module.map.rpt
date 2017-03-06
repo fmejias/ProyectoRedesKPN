@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Adder_Module
-Sun Mar 05 16:49:28 2017
+Sun Mar 05 22:13:48 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -13,15 +13,17 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: clock_divider:lcd_clock_inst
- 12. Port Connectivity Checks: "write_to_lcd:write_to_lcd_inst"
- 13. Port Connectivity Checks: "adder_module:adder_inst"
- 14. Post-Synthesis Netlist Statistics for Top Partition
- 15. Elapsed Time Per Partition
- 16. Analysis & Synthesis Messages
+  8. State Machine - |top_module|debounce:db_unit|state_reg
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: clock_divider:lcd_clock_inst
+ 15. Port Connectivity Checks: "debounce:db_unit"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -48,16 +50,16 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Mar 05 16:49:27 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun Mar 05 22:13:48 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Adder_Module                                ;
 ; Top-level Entity Name              ; top_module                                  ;
 ; Family                             ; Cyclone IV GX                               ;
-; Total logic elements               ; 177                                         ;
-;     Total combinational functions  ; 177                                         ;
-;     Dedicated logic registers      ; 53                                          ;
-; Total registers                    ; 53                                          ;
-; Total pins                         ; 31                                          ;
+; Total logic elements               ; 251                                         ;
+;     Total combinational functions  ; 251                                         ;
+;     Dedicated logic registers      ; 54                                          ;
+; Total registers                    ; 54                                          ;
+; Total pins                         ; 32                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -168,7 +170,7 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.1%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -181,23 +183,24 @@ agreement for further details.
 ; clock_divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/clock_divider.v ;         ;
 ; adder_module.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v  ;         ;
 ; top_module.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v    ;         ;
+; debounce.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/debounce.v      ;         ;
 +----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                            ;
-+--------------------------+---------------------------------------------+
-; Resource                 ; Usage                                       ;
-+--------------------------+---------------------------------------------+
-; I/O pins                 ; 31                                          ;
-;                          ;                                             ;
-; DSP block 9-bit elements ; 0                                           ;
-;                          ;                                             ;
-; Maximum fan-out node     ; clock_divider:lcd_clock_inst|divcounter[22] ;
-; Maximum fan-out          ; 34                                          ;
-; Total fan-out            ; 775                                         ;
-; Average fan-out          ; 2.65                                        ;
-+--------------------------+---------------------------------------------+
++---------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary ;
++--------------------------+------------------+
+; Resource                 ; Usage            ;
++--------------------------+------------------+
+; I/O pins                 ; 32               ;
+;                          ;                  ;
+; DSP block 9-bit elements ; 0                ;
+;                          ;                  ;
+; Maximum fan-out node     ; reset~input      ;
+; Maximum fan-out          ; 75               ;
+; Total fan-out            ; 1051             ;
+; Average fan-out          ; 2.85             ;
++--------------------------+------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -205,23 +208,125 @@ agreement for further details.
 +-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Entity Name   ; Library Name ;
 +-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+---------------+--------------+
-; |top_module                         ; 177 (1)             ; 53 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 31   ; 0            ; |top_module                                ; top_module    ; work         ;
-;    |adder_module:adder_inst|        ; 12 (12)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|adder_module:adder_inst        ; adder_module  ; work         ;
+; |top_module                         ; 251 (1)             ; 54 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 32   ; 0            ; |top_module                                ; top_module    ; work         ;
+;    |adder_module:adder_inst|        ; 70 (70)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|adder_module:adder_inst        ; adder_module  ; work         ;
 ;    |clock_divider:lcd_clock_inst|   ; 39 (39)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|clock_divider:lcd_clock_inst   ; clock_divider ; work         ;
-;    |write_to_lcd:write_to_lcd_inst| ; 125 (125)           ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|write_to_lcd:write_to_lcd_inst ; write_to_lcd  ; work         ;
+;    |write_to_lcd:write_to_lcd_inst| ; 141 (141)           ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|write_to_lcd:write_to_lcd_inst ; write_to_lcd  ; work         ;
 +-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; write_to_lcd:write_to_lcd_inst|on     ; Stuck at VCC due to stuck port data_in ;
-; write_to_lcd:write_to_lcd_inst|rw     ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 2 ;                                        ;
-+---------------------------------------+----------------------------------------+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |top_module|debounce:db_unit|state_reg                                                                                                                     ;
++-------------------+-------------------+-------------------+-------------------+---------------+-------------------+-------------------+-------------------+----------------+
+; Name              ; state_reg.wait0_3 ; state_reg.wait0_2 ; state_reg.wait0_1 ; state_reg.one ; state_reg.wait1_3 ; state_reg.wait1_2 ; state_reg.wait1_1 ; state_reg.zero ;
++-------------------+-------------------+-------------------+-------------------+---------------+-------------------+-------------------+-------------------+----------------+
+; state_reg.zero    ; 0                 ; 0                 ; 0                 ; 0             ; 0                 ; 0                 ; 0                 ; 0              ;
+; state_reg.wait1_1 ; 0                 ; 0                 ; 0                 ; 0             ; 0                 ; 0                 ; 1                 ; 1              ;
+; state_reg.wait1_2 ; 0                 ; 0                 ; 0                 ; 0             ; 0                 ; 1                 ; 0                 ; 1              ;
+; state_reg.wait1_3 ; 0                 ; 0                 ; 0                 ; 0             ; 1                 ; 0                 ; 0                 ; 1              ;
+; state_reg.one     ; 0                 ; 0                 ; 0                 ; 1             ; 0                 ; 0                 ; 0                 ; 1              ;
+; state_reg.wait0_1 ; 0                 ; 0                 ; 1                 ; 0             ; 0                 ; 0                 ; 0                 ; 1              ;
+; state_reg.wait0_2 ; 0                 ; 1                 ; 0                 ; 0             ; 0                 ; 0                 ; 0                 ; 1              ;
+; state_reg.wait0_3 ; 1                 ; 0                 ; 0                 ; 0             ; 0                 ; 0                 ; 0                 ; 1              ;
++-------------------+-------------------+-------------------+-------------------+---------------+-------------------+-------------------+-------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                    ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                     ; Free of Timing Hazards ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+; adder_module:adder_inst|show_result                 ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[10]                  ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[9]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[8]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[11]                  ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[5]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[6]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[4]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[7]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[2]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[1]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[0]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[3]                   ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[13]                  ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[14]                  ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[12]                  ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|result[15]                  ; adder_module:adder_inst|result[15]      ; yes                    ;
+; adder_module:adder_inst|number2_written             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|second_entry[10]            ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[10]             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[9]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[9]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[8]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[8]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[7]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[7]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[6]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[6]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[5]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[5]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[4]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[4]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[3]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[3]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[2]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[2]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[1]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[1]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[0]             ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[0]              ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[11]            ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[11]             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[13]            ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[13]             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[12]            ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[12]             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[14]            ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[14]             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|second_entry[15]            ; adder_module:adder_inst|number2_written ; yes                    ;
+; adder_module:adder_inst|first_entry[15]             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; adder_module:adder_inst|number1_written             ; adder_module:adder_inst|first_entry[14] ; yes                    ;
+; Number of user-specified and inferred latches = 51  ;                                         ;                        ;
++-----------------------------------------------------+-----------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; write_to_lcd:write_to_lcd_inst|on      ; Stuck at VCC due to stuck port data_in ;
+; write_to_lcd:write_to_lcd_inst|rw      ; Stuck at GND due to stuck port data_in ;
+; debounce:db_unit|state_reg~4           ; Lost fanout                            ;
+; debounce:db_unit|state_reg~5           ; Lost fanout                            ;
+; debounce:db_unit|state_reg~6           ; Lost fanout                            ;
+; debounce:db_unit|q_reg[0..18]          ; Lost fanout                            ;
+; debounce:db_unit|state_reg.zero        ; Lost fanout                            ;
+; debounce:db_unit|state_reg.wait1_1     ; Lost fanout                            ;
+; debounce:db_unit|state_reg.wait1_2     ; Lost fanout                            ;
+; debounce:db_unit|state_reg.wait1_3     ; Lost fanout                            ;
+; debounce:db_unit|state_reg.one         ; Lost fanout                            ;
+; debounce:db_unit|state_reg.wait0_1     ; Lost fanout                            ;
+; debounce:db_unit|state_reg.wait0_2     ; Lost fanout                            ;
+; debounce:db_unit|state_reg.wait0_3     ; Lost fanout                            ;
+; Total Number of Removed Registers = 32 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                          ;
++------------------------------+--------------------+----------------------------------------------------------------------------------+
+; Register name                ; Reason for Removal ; Registers Removed due to This Register                                           ;
++------------------------------+--------------------+----------------------------------------------------------------------------------+
+; debounce:db_unit|q_reg[1]    ; Lost Fanouts       ; debounce:db_unit|q_reg[2], debounce:db_unit|q_reg[3], debounce:db_unit|q_reg[4], ;
+;                              ;                    ; debounce:db_unit|q_reg[5]                                                        ;
+; debounce:db_unit|state_reg~4 ; Lost Fanouts       ; debounce:db_unit|state_reg.wait0_3                                               ;
+; debounce:db_unit|state_reg~6 ; Lost Fanouts       ; debounce:db_unit|state_reg.wait0_1                                               ;
++------------------------------+--------------------+----------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -229,9 +334,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 53    ;
-; Number of registers using Synchronous Clear  ; 22    ;
-; Number of registers using Synchronous Load   ; 15    ;
+; Total registers                              ; 54    ;
+; Number of registers using Synchronous Clear  ; 16    ;
+; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 12    ;
@@ -244,8 +349,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
-; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|entry_letter_counter[3] ;
-; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|cursor_address[1]       ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|entry_letter_counter[2] ;
+; 12:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|cursor_address[0]       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |top_module|debounce:db_unit|Selector5                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 
 
@@ -259,26 +365,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------+
-; Port Connectivity Checks: "write_to_lcd:write_to_lcd_inst" ;
-+----------------+-------+----------+------------------------+
-; Port           ; Type  ; Severity ; Details                ;
-+----------------+-------+----------+------------------------+
-; entry_2[15..5] ; Input ; Info     ; Stuck at GND           ;
-; entry_2[3..0]  ; Input ; Info     ; Stuck at GND           ;
-; entry_2[4]     ; Input ; Info     ; Stuck at VCC           ;
-+----------------+-------+----------+------------------------+
-
-
-+-----------------------------------------------------+
-; Port Connectivity Checks: "adder_module:adder_inst" ;
-+----------------+-------+----------+-----------------+
-; Port           ; Type  ; Severity ; Details         ;
-+----------------+-------+----------+-----------------+
-; entry_2[15..5] ; Input ; Info     ; Stuck at GND    ;
-; entry_2[3..0]  ; Input ; Info     ; Stuck at GND    ;
-; entry_2[4]     ; Input ; Info     ; Stuck at VCC    ;
-+----------------+-------+----------+-----------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debounce:db_unit"                                                                    ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; reset ; Input  ; Info     ; Stuck at GND                                                                        ;
+; db    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -286,25 +380,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 31                          ;
-; cycloneiii_ff         ; 53                          ;
-;     ENA SCLR SLD      ; 7                           ;
+; boundary_port         ; 32                          ;
+; cycloneiii_ff         ; 54                          ;
+;     ENA               ; 7                           ;
 ;     ENA SLD           ; 5                           ;
-;     SCLR              ; 15                          ;
+;     SCLR              ; 16                          ;
 ;     SLD               ; 3                           ;
 ;     plain             ; 23                          ;
-; cycloneiii_lcell_comb ; 178                         ;
-;     arith             ; 43                          ;
-;         2 data inputs ; 43                          ;
-;     normal            ; 135                         ;
+; cycloneiii_lcell_comb ; 252                         ;
+;     arith             ; 47                          ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 15                          ;
+;     normal            ; 205                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 2                           ;
-;         3 data inputs ; 31                          ;
-;         4 data inputs ; 96                          ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 30                          ;
+;         4 data inputs ; 161                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.00                        ;
-; Average LUT depth     ; 4.60                        ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 3.61                        ;
 +-----------------------+-----------------------------+
 
 
@@ -313,7 +408,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:05     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -323,7 +418,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Mar 05 16:48:57 2017
+    Info: Processing started: Sun Mar 05 22:13:24 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Adder_Module -c Adder_Module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -335,29 +430,95 @@ Info (12021): Found 1 design units, including 1 entities, in source file adder_m
     Info (12023): Found entity 1: adder_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file top_module.v
     Info (12023): Found entity 1: top_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file debounce.v
+    Info (12023): Found entity 1: debounce File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/debounce.v Line: 2
 Info (12127): Elaborating entity "top_module" for the top level hierarchy
-Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:lcd_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 45
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:db_unit" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 49
+Warning (10230): Verilog HDL assignment warning at debounce.v(37): truncated value with size 32 to match size of target (19) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/debounce.v Line: 37
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:lcd_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 52
 Warning (10230): Verilog HDL assignment warning at clock_divider.v(23): truncated value with size 32 to match size of target (23) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/clock_divider.v Line: 23
-Info (12128): Elaborating entity "adder_module" for hierarchy "adder_module:adder_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 49
-Info (12128): Elaborating entity "write_to_lcd" for hierarchy "write_to_lcd:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 52
-Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(151): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 151
-Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(153): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 153
-Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(191): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 191
-Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(193): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 193
+Info (12128): Elaborating entity "adder_module" for hierarchy "adder_module:adder_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 56
+Warning (10240): Verilog HDL Always Construct warning at adder_module.v(38): inferring latch(es) for variable "first_entry", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 38
+Warning (10240): Verilog HDL Always Construct warning at adder_module.v(38): inferring latch(es) for variable "second_entry", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 38
+Warning (10240): Verilog HDL Always Construct warning at adder_module.v(38): inferring latch(es) for variable "number1_written", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 38
+Warning (10240): Verilog HDL Always Construct warning at adder_module.v(38): inferring latch(es) for variable "number2_written", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 38
+Warning (10240): Verilog HDL Always Construct warning at adder_module.v(38): inferring latch(es) for variable "result", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 38
+Warning (10240): Verilog HDL Always Construct warning at adder_module.v(38): inferring latch(es) for variable "show_result", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 38
+Info (10041): Inferred latch for "show_result" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[0]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[1]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[2]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[3]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[4]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[5]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[6]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[7]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[8]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[9]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[10]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[11]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[12]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[13]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[14]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "result[15]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "number2_written" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "number1_written" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[0]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[1]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[2]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[3]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[4]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[5]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[6]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[7]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[8]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[9]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[10]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[11]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[12]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[13]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[14]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "second_entry[15]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[0]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[1]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[2]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[3]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[4]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[5]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[6]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[7]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[8]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[9]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[10]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[11]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[12]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[13]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[14]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (10041): Inferred latch for "first_entry[15]" at adder_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/adder_module.v Line: 49
+Info (12128): Elaborating entity "write_to_lcd" for hierarchy "write_to_lcd:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 59
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(162): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 162
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(164): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 164
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(189): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 189
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(191): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 191
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(229): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 229
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(231): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/write_to_lcd.v Line: 231
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 22
-    Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 23
+    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 24
+    Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 25
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 30 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 208 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 19 input pins
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "add_button" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/Adder_Module/top_module.v Line: 22
+Info (21057): Implemented 284 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 20 input pins
     Info (21059): Implemented 12 output pins
-    Info (21061): Implemented 177 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 714 megabytes
-    Info: Processing ended: Sun Mar 05 16:49:28 2017
-    Info: Elapsed time: 00:00:31
-    Info: Total CPU time (on all processors): 00:00:57
+    Info (21061): Implemented 252 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 705 megabytes
+    Info: Processing ended: Sun Mar 05 22:13:48 2017
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:53
 
 
