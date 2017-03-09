@@ -76,16 +76,16 @@ output [6:0] hex_0;
  
  if(select_entry)
  begin
-	hex_7 = 7'b1111001; //This instruction draws an E in the HEX7
-	hex_6 = 7'b1011011; //This instruction draws number 2 in the HEX6
+	hex_7 = 7'b0000110; //This instruction draws an E in the HEX7
+	hex_6 = 7'b0100100; //This instruction draws number 2 in the HEX6
 	actual_entry = 2'b10; //This save the actual entry
  
  end
  
  else
  begin
-	hex_7 = 7'b1111001; //This instruction draws an E in the HEX7
-	hex_6 = 7'b0000110; //This instruction draws number 1 in the HEX6
+	hex_7 = 7'b0000110; //This instruction draws an E in the HEX7
+	hex_6 = 7'b1111001; //This instruction draws number 1 in the HEX6
 	actual_entry = 2'b01; //This save the actual entry
  end
  
@@ -137,21 +137,21 @@ output [6:0] hex_0;
  
  if (select_entry)
  begin
-	if(actual_module == 5'b00000)
+	if(select_module == 5'b00000)
 	begin
-		actual_data = data_1_adder_1;
-		thousands = data_1_adder_1[15:12];
-		hundreds = data_1_adder_1[11:8];
-		tens = data_1_adder_1[7:4];
-		ones = data_1_adder_1[3:0];
+		actual_data = data_2_adder_1;
+		thousands = data_2_adder_1[15:12];
+		hundreds = data_2_adder_1[11:8];
+		tens = data_2_adder_1[7:4];
+		ones = data_2_adder_1[3:0];
 	end
-	else if(actual_module == 5'b00001)
+	else if(select_module == 5'b00001)
 	begin
-		actual_data = data_1_subtractor_1;
-		thousands = data_1_adder_1[15:12];
-		hundreds = data_1_adder_1[11:8];
-		tens = data_1_adder_1[7:4];
-		ones = data_1_adder_1[3:0];
+		actual_data = data_2_subtractor_1;
+		thousands = data_2_subtractor_1[15:12];
+		hundreds = data_2_subtractor_1[11:8];
+		tens = data_2_subtractor_1[7:4];
+		ones = data_2_subtractor_1[3:0];
 	end
 	else
 	begin
@@ -162,14 +162,22 @@ output [6:0] hex_0;
  
  else
  begin
-	if(actual_module == 5'b00000)
+	if(select_module == 5'b00000)
 	begin
 		actual_data = data_1_adder_1;
+		thousands = data_1_adder_1[15:12];
+		hundreds = data_1_adder_1[11:8];
+		tens = data_1_adder_1[7:4];
+		ones = data_1_adder_1[3:0];
 		
 	end
-	else if(actual_module == 5'b00001)
+	else if(select_module == 5'b00001)
 	begin
 		actual_data = data_1_subtractor_1;
+		thousands = data_1_subtractor_1[15:12];
+		hundreds = data_1_subtractor_1[11:8];
+		tens = data_1_subtractor_1[7:4];
+		ones = data_1_subtractor_1[3:0];
 	end
 	else
 	begin
@@ -190,63 +198,48 @@ output [6:0] hex_0;
  always @(posedge clock)
  begin
  
- case(thousands)
-	4'b0000: 
-		begin
-			hex_3 = 7'b1000000; //This instruction draws a 0 in the HEX3
-		end
-		
-	4'b0001: 
-		begin
-			hex_3 = 7'b1111001; //This instruction draws a 1 in the HEX3
-		end
-		
-	4'b0010: 
-		begin
-			hex_3 = 7'b0100100; //This instruction draws a 2 in the HEX3
-		end
-		
-	4'b0011: 
-		begin
-			hex_3 = 7'b0110000; //This instruction draws a 3 in the HEX3
-		end
-		
-	4'b0100: 
-		begin
-			hex_3 = 7'b0011001; //This instruction draws a 4 in the HEX3
-		end
-		
-	4'b0101: 
-		begin
-			hex_3 = 7'b0010010; //This instruction draws a 5 in the HEX3
-		end
-		
-	4'b0110: 
-		begin
-			hex_3 = 7'b0000010; //This instruction draws a 6 in the HEX3
-		end
-		
-	4'b0111: 
-		begin
-			hex_3 = 7'b1011000; //This instruction draws a 7 in the HEX3
-		end
-		
-	4'b1000: 
-		begin
-			hex_3 = 7'b0000000; //This instruction draws a 8 in the HEX3
-		end
-		
-	4'b1001: 
-		begin
-			hex_3 = 7'b0011000; //This instruction draws a 9 in the HEX3
-		end
-		
-	default:
-		begin
-			hex_3 = 7'b1111111; //This instruction turns off HEX3
-		end
-		
- endcase
+ if(thousands == 4'b0000) 
+ begin
+ hex_3 = 7'b1000000; //This instruction draws a 0 in the HEX3
+ end
+ else if(thousands == 4'b0001) 
+ begin
+ hex_3 = 7'b1111001; //This instruction draws a 1 in the HEX3
+ end
+ else if(thousands == 4'b0010) 
+ begin
+ hex_3 = 7'b0100100; //This instruction draws a 2 in the HEX3
+ end
+ else if(thousands == 4'b0011) 
+ begin
+ hex_3 = 7'b0110000; //This instruction draws a 3 in the HEX3
+ end
+ else if(thousands == 4'b0100) 
+ begin
+ hex_3 = 7'b0011001; //This instruction draws a 4 in the HEX3
+ end
+ else if(thousands == 4'b0101) 
+ begin
+ hex_3 = 7'b0010010; //This instruction draws a 5 in the HEX3
+ end
+ else if(thousands == 4'b0110) 
+ begin
+ hex_3 = 7'b0000010; //This instruction draws a 6 in the HEX3
+ end
+ else if(thousands == 4'b0111) 
+ begin
+ hex_3 = 7'b1011000; //This instruction draws a 7 in the HEX3
+ end
+ else if(thousands == 4'b1000) 
+ begin
+ hex_3 = 7'b0000000; //This instruction draws a 8 in the HEX3
+ end
+ else if(thousands == 4'b1001) 
+ begin
+ hex_3 = 7'b0011000; //This instruction draws a 9 in the HEX3
+ end
+ 
+ 
  end
  
  /*

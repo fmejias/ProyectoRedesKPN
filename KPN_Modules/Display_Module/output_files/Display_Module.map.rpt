@@ -1,5 +1,5 @@
-Analysis & Elaboration report for Display_Module
-Wed Mar 08 00:16:37 2017
+Analysis & Synthesis report for Display_Module
+Wed Mar 08 22:07:40 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -7,12 +7,24 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Parameter Settings for User Entity Instance: clock_divider:display_clock_inst
-  5. Analysis & Elaboration Settings
-  6. Port Connectivity Checks: "write_to_display:write_to_display_inst"
-  7. Analysis & Elaboration Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: clock_divider:display_clock_inst
+ 13. Port Connectivity Checks: "bcd_converter:bcd_converter4_inst"
+ 14. Port Connectivity Checks: "bcd_converter:bcd_converter3_inst"
+ 15. Port Connectivity Checks: "bcd_converter:bcd_converter2_inst"
+ 16. Port Connectivity Checks: "bcd_converter:bcd_converter1_inst"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -37,57 +49,31 @@ agreement for further details.
 
 
 +----------------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                                   ;
+; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Wed Mar 08 00:16:37 2017       ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 08 22:07:40 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Display_Module                              ;
 ; Top-level Entity Name              ; top_module                                  ;
 ; Family                             ; Cyclone IV GX                               ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total GXB Receiver Channel PCS     ; N/A until Partition Merge                   ;
-; Total GXB Receiver Channel PMA     ; N/A until Partition Merge                   ;
-; Total GXB Transmitter Channel PCS  ; N/A until Partition Merge                   ;
-; Total GXB Transmitter Channel PMA  ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 75                                          ;
+;     Total combinational functions  ; 61                                          ;
+;     Dedicated logic registers      ; 58                                          ;
+; Total registers                    ; 58                                          ;
+; Total pins                         ; 65                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total GXB Receiver Channel PCS     ; 0                                           ;
+; Total GXB Receiver Channel PMA     ; 0                                           ;
+; Total GXB Transmitter Channel PCS  ; 0                                           ;
+; Total GXB Transmitter Channel PMA  ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
-
-
-+-------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: clock_divider:display_clock_inst ;
-+----------------+---------+----------------------------------------------------+
-; Parameter Name ; Value   ; Type                                               ;
-+----------------+---------+----------------------------------------------------+
-; M              ; 5000000 ; Signed Integer                                     ;
-+----------------+---------+----------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
 +----------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                      ;
+; Analysis & Synthesis Settings                                                                                        ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
@@ -172,23 +158,240 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "write_to_display:write_to_display_inst"                                                                                                              ;
-+---------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port          ; Type  ; Severity ; Details                                                                                                                                      ;
-+---------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; select_module ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+---------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                           ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                             ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------+---------+
+; clock_divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/clock_divider.v    ;         ;
+; top_module.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v       ;         ;
+; write_to_display.v               ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/write_to_display.v ;         ;
+; bcd_converter.v                  ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/bcd_converter.v    ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                ;
++--------------------------+-------------------------------------------------+
+; Resource                 ; Usage                                           ;
++--------------------------+-------------------------------------------------+
+; I/O pins                 ; 65                                              ;
+;                          ;                                                 ;
+; DSP block 9-bit elements ; 0                                               ;
+;                          ;                                                 ;
+; Maximum fan-out node     ; clock_divider:display_clock_inst|divcounter[22] ;
+; Maximum fan-out          ; 38                                              ;
+; Total fan-out            ; 350                                             ;
+; Average fan-out          ; 1.41                                            ;
++--------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                       ;
++---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------------------------+------------------+--------------+
+; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name      ; Library Name ;
++---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------------------------+------------------+--------------+
+; |top_module                                 ; 61 (0)              ; 58 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 65   ; 0            ; |top_module                                        ; top_module       ; work         ;
+;    |clock_divider:display_clock_inst|       ; 39 (39)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|clock_divider:display_clock_inst       ; clock_divider    ; work         ;
+;    |write_to_display:write_to_display_inst| ; 22 (22)             ; 35 (35)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|write_to_display:write_to_display_inst ; write_to_display ; work         ;
++---------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------------------------+------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                  ;
++--------------------------------------------------------+------------------------------------------------------------+
+; Register name                                          ; Reason for Removal                                         ;
++--------------------------------------------------------+------------------------------------------------------------+
+; write_to_display:write_to_display_inst|hex_4[0]        ; Stuck at VCC due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_6[1]        ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_6[5]        ; Stuck at VCC due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_7[0]        ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_7[1,2]      ; Stuck at VCC due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_7[3..6]     ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|thousands[1..3] ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hundreds[0,2,3] ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|tens[0,2,3]     ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|ones[1,3]       ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_3[1,2]      ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_3[6]        ; Stuck at VCC due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_2[0,1,3,4]  ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_1[0,1,3,4]  ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|hex_0[2]        ; Stuck at GND due to stuck port data_in                     ;
+; write_to_display:write_to_display_inst|ones[2]         ; Merged with write_to_display:write_to_display_inst|ones[0] ;
+; write_to_display:write_to_display_inst|hex_0[0,3,5]    ; Stuck at GND due to stuck port data_in                     ;
+; Total Number of Removed Registers = 37                 ;                                                            ;
++--------------------------------------------------------+------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                        ;
++-----------------------------------------------------+---------------------------+--------------------------------------------------+
+; Register name                                       ; Reason for Removal        ; Registers Removed due to This Register           ;
++-----------------------------------------------------+---------------------------+--------------------------------------------------+
+; write_to_display:write_to_display_inst|hundreds[3]  ; Stuck at GND              ; write_to_display:write_to_display_inst|hex_2[0], ;
+;                                                     ; due to stuck port data_in ; write_to_display:write_to_display_inst|hex_2[1], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_2[3], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_2[4]  ;
+; write_to_display:write_to_display_inst|tens[3]      ; Stuck at GND              ; write_to_display:write_to_display_inst|hex_1[0], ;
+;                                                     ; due to stuck port data_in ; write_to_display:write_to_display_inst|hex_1[1], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_1[3], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_1[4]  ;
+; write_to_display:write_to_display_inst|ones[3]      ; Stuck at GND              ; write_to_display:write_to_display_inst|hex_0[2], ;
+;                                                     ; due to stuck port data_in ; write_to_display:write_to_display_inst|hex_0[5], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_0[0], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_0[3]  ;
+; write_to_display:write_to_display_inst|thousands[3] ; Stuck at GND              ; write_to_display:write_to_display_inst|hex_3[1], ;
+;                                                     ; due to stuck port data_in ; write_to_display:write_to_display_inst|hex_3[2], ;
+;                                                     ;                           ; write_to_display:write_to_display_inst|hex_3[6]  ;
++-----------------------------------------------------+---------------------------+--------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 58    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |top_module|write_to_display:write_to_display_inst|thousands[0] ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |top_module|write_to_display:write_to_display_inst|hundreds[1]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:display_clock_inst ;
++----------------+---------+----------------------------------------------------+
+; Parameter Name ; Value   ; Type                                               ;
++----------------+---------+----------------------------------------------------+
+; M              ; 5000000 ; Signed Integer                                     ;
++----------------+---------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_converter:bcd_converter4_inst" ;
++----------------------+-------+----------+---------------------+
+; Port                 ; Type  ; Severity ; Details             ;
++----------------------+-------+----------+---------------------+
+; binary_number[7..6]  ; Input ; Info     ; Stuck at VCC        ;
+; binary_number[15..8] ; Input ; Info     ; Stuck at GND        ;
+; binary_number[5..4]  ; Input ; Info     ; Stuck at GND        ;
+; binary_number[2..0]  ; Input ; Info     ; Stuck at GND        ;
+; binary_number[3]     ; Input ; Info     ; Stuck at VCC        ;
++----------------------+-------+----------+---------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_converter:bcd_converter3_inst" ;
++----------------------+-------+----------+---------------------+
+; Port                 ; Type  ; Severity ; Details             ;
++----------------------+-------+----------+---------------------+
+; binary_number[15..3] ; Input ; Info     ; Stuck at GND        ;
+; binary_number[2]     ; Input ; Info     ; Stuck at VCC        ;
+; binary_number[1]     ; Input ; Info     ; Stuck at GND        ;
+; binary_number[0]     ; Input ; Info     ; Stuck at VCC        ;
++----------------------+-------+----------+---------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_converter:bcd_converter2_inst" ;
++----------------------+-------+----------+---------------------+
+; Port                 ; Type  ; Severity ; Details             ;
++----------------------+-------+----------+---------------------+
+; binary_number[15..5] ; Input ; Info     ; Stuck at GND        ;
+; binary_number[1..0]  ; Input ; Info     ; Stuck at GND        ;
+; binary_number[4]     ; Input ; Info     ; Stuck at VCC        ;
+; binary_number[3]     ; Input ; Info     ; Stuck at GND        ;
+; binary_number[2]     ; Input ; Info     ; Stuck at VCC        ;
++----------------------+-------+----------+---------------------+
+
+
++---------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_converter:bcd_converter1_inst" ;
++-----------------------+-------+----------+--------------------+
+; Port                  ; Type  ; Severity ; Details            ;
++-----------------------+-------+----------+--------------------+
+; binary_number[9..5]   ; Input ; Info     ; Stuck at VCC       ;
+; binary_number[3..2]   ; Input ; Info     ; Stuck at VCC       ;
+; binary_number[15..10] ; Input ; Info     ; Stuck at GND       ;
+; binary_number[4]      ; Input ; Info     ; Stuck at GND       ;
+; binary_number[1]      ; Input ; Info     ; Stuck at GND       ;
+; binary_number[0]      ; Input ; Info     ; Stuck at VCC       ;
++-----------------------+-------+----------+--------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 65                          ;
+; cycloneiii_ff         ; 58                          ;
+;     ENA               ; 4                           ;
+;     plain             ; 54                          ;
+; cycloneiii_lcell_comb ; 63                          ;
+;     arith             ; 22                          ;
+;         2 data inputs ; 22                          ;
+;     normal            ; 41                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 17                          ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 9                           ;
+;                       ;                             ;
+; Max LUT depth         ; 4.20                        ;
+; Average LUT depth     ; 2.15                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Mar 08 00:16:14 2017
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Display_Module -c Display_Module --analysis_and_elaboration
+    Info: Processing started: Wed Mar 08 22:07:15 2017
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Display_Module -c Display_Module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file clock_divider.v
@@ -200,17 +403,57 @@ Info (12021): Found 1 design units, including 1 entities, in source file write_t
 Info (12021): Found 1 design units, including 1 entities, in source file bcd_converter.v
     Info (12023): Found entity 1: bcd_converter File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/bcd_converter.v Line: 1
 Info (12127): Elaborating entity "top_module" for the top level hierarchy
-Info (12128): Elaborating entity "bcd_converter" for hierarchy "bcd_converter:bcd_converter1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 62
-Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:display_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 74
+Info (12128): Elaborating entity "bcd_converter" for hierarchy "bcd_converter:bcd_converter1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 64
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(39): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/bcd_converter.v Line: 39
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(42): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/bcd_converter.v Line: 42
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(45): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/bcd_converter.v Line: 45
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(48): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/bcd_converter.v Line: 48
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:display_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 76
 Warning (10230): Verilog HDL assignment warning at clock_divider.v(23): truncated value with size 32 to match size of target (23) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/clock_divider.v Line: 23
-Info (12128): Elaborating entity "write_to_display" for hierarchy "write_to_display:write_to_display_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 83
+Info (12128): Elaborating entity "write_to_display" for hierarchy "write_to_display:write_to_display_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 86
 Warning (10036): Verilog HDL or VHDL warning at write_to_display.v(59): object "actual_entry" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/write_to_display.v Line: 59
+Warning (10036): Verilog HDL or VHDL warning at write_to_display.v(60): object "actual_module" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/write_to_display.v Line: 60
 Warning (10036): Verilog HDL or VHDL warning at write_to_display.v(61): object "actual_data" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/write_to_display.v Line: 61
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 669 megabytes
-    Info: Processing ended: Wed Mar 08 00:16:37 2017
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:52
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "hex_7[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_7[1]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_7[2]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_7[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_7[4]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_7[5]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_7[6]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 26
+    Warning (13410): Pin "hex_6[1]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 27
+    Warning (13410): Pin "hex_6[5]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 27
+    Warning (13410): Pin "hex_4[0]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 29
+    Warning (13410): Pin "hex_3[1]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 30
+    Warning (13410): Pin "hex_3[2]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 30
+    Warning (13410): Pin "hex_3[6]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 30
+    Warning (13410): Pin "hex_2[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 31
+    Warning (13410): Pin "hex_2[1]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 31
+    Warning (13410): Pin "hex_2[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 31
+    Warning (13410): Pin "hex_2[4]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 31
+    Warning (13410): Pin "hex_1[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 32
+    Warning (13410): Pin "hex_1[1]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 32
+    Warning (13410): Pin "hex_1[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 32
+    Warning (13410): Pin "hex_1[4]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 32
+    Warning (13410): Pin "hex_0[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 33
+    Warning (13410): Pin "hex_0[2]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 33
+    Warning (13410): Pin "hex_0[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 33
+    Warning (13410): Pin "hex_0[5]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 33
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "reset" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 22
+    Warning (15610): No output dependent on input pin "enable_entry" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Display_Module/top_module.v Line: 25
+Info (21057): Implemented 142 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 56 output pins
+    Info (21061): Implemented 77 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
+    Info: Peak virtual memory: 706 megabytes
+    Info: Processing ended: Wed Mar 08 22:07:40 2017
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:54
 
 

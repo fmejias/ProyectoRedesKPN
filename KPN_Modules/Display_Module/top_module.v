@@ -1,5 +1,6 @@
 module top_module (
 clock,
+reset,
 select_entry,
 select_module,
 enable_entry,
@@ -18,6 +19,7 @@ hex_0
  */
 
 input clock; 
+input reset;
 input select_entry;
 input [4:0] select_module;
 input enable_entry;
@@ -59,22 +61,23 @@ output [6:0] hex_0;
  */
  
  //This is the first instance of the bcd_converter
- bcd_converter bcd_converter1_inst(.binary_number(data_1_adder_1), .bcd_number(bcd_number_data_1_adder_1));
+ bcd_converter bcd_converter1_inst(.binary_number(16'd1005), .bcd_number(bcd_number_data_1_adder_1));
  
  //This is the first instance of the bcd_converter
- bcd_converter bcd_converter2_inst(.binary_number(data_2_adder_1), .bcd_number(bcd_number_data_2_adder_1));
+ bcd_converter bcd_converter2_inst( .binary_number(16'd20), .bcd_number(bcd_number_data_2_adder_1));
  
  //This is the first instance of the bcd_converter
- bcd_converter bcd_converter3_inst(.binary_number(data_1_subtractor_1), .bcd_number(bcd_number_data_1_subtractor_1));
+ bcd_converter bcd_converter3_inst( .binary_number(16'd5), .bcd_number(bcd_number_data_1_subtractor_1));
  
  //This is the first instance of the bcd_converter
- bcd_converter bcd_converter4_inst(.binary_number(data_2_subtractor_1), .bcd_number(bcd_number_data_2_subtractor_1));
+ bcd_converter bcd_converter4_inst( .binary_number(16'd200), .bcd_number(bcd_number_data_2_subtractor_1));
 
  //This is the instance of the clock divider module
  clock_divider display_clock_inst(.clk_in(clock), .clk_out(display_clock));
  
  //This is an instance of the LCD module
- write_to_display write_to_display_inst(.clock(display_clock), .select_entry(select_entry), 
+ write_to_display write_to_display_inst(.clock(display_clock), .select_entry(select_entry),
+ .select_module(select_module), 
  .enable_entry(enable_entry), .data_1_adder_1(bcd_number_data_1_adder_1), 
  .data_2_adder_1(bcd_number_data_2_adder_1), 
  .data_1_subtractor_1(bcd_number_data_1_subtractor_1), 

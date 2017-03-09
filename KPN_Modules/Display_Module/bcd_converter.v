@@ -1,5 +1,4 @@
 module bcd_converter (
-
 binary_number,
 bcd_number
 );
@@ -23,44 +22,41 @@ reg [3:0] thousands;
 reg [3:0] hundreds;
 reg [3:0] tens;
 reg [3:0] ones;
-integer i;
 
+// Internal variable for storing bits
+reg [31:0] shift;
+integer i;
+   
 always @(binary_number)
 begin
-
-	thousands = 4'd0;
-	hundreds = 4'd0;
-	tens = 4'd0;
-	ones = 4'd0;
-	
-	for (i = 15 ; i <= 0; i = i - 1)
-	begin
-	
-	if(thousands >= 5)
-		thousands = thousands + 3;
-	if(hundreds >= 5)
-		hundreds = hundreds + 3;
-	if(tens >= 5)
-		tens = tens + 3;	
-	if(ones >= 5)
-		ones = ones + 3;
-		
-	thousands = thousands << 1;
-	thousands[0] = hundreds[3];
-	
-	hundreds = hundreds << 1;
-	hundreds[0] = tens[3];
-	
-	tens = tens << 1;
-	tens[0] = ones[3];
-	
-	ones = ones << 1;
-	ones[0] = binary_number[i];
-	end
-	
-	bcd_number = {thousands,hundreds,tens,ones};
-	
-		
+    // Clear previous number and store new number in shift register
+    shift[31:15] = 0;
+    shift[15:0] = binary_number;
+      
+    // Loop eight times
+    for (i=0; i<16; i=i+1) begin
+		 if (shift[19:16] >= 5)
+          shift[19:16] = shift[19:16] + 3;
+			 
+       if (shift[23:20] >= 5)
+          shift[23:20] = shift[23:20] + 3;
+            
+       if (shift[27:24] >= 5)
+          shift[27:24] = shift[27:24] + 3;
+            
+       if (shift[31:28] >= 5)
+          shift[31:28] = shift[31:28] + 3;
+         
+        // Shift entire register left once
+        shift = shift << 1;
+     end
+      
+     // Push decimal numbers to output
+	  thousands = shift[31:28];
+     hundreds = shift[27:24];
+     tens     = shift[23:20];
+     ones     = shift[19:16];
+	  bcd_number = {thousands, hundreds,tens,ones};
 end
 
 endmodule
