@@ -1,0 +1,113 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : -5.166
+TNS   : -105.887
+
+Type  : Slow 1200mV 85C Model Setup 'clock'
+Slack : -3.927
+TNS   : -48.806
+
+Type  : Slow 1200mV 85C Model Setup 'show_entries'
+Slack : -3.880
+TNS   : -53.959
+
+Type  : Slow 1200mV 85C Model Hold 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clock'
+Slack : 0.633
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'show_entries'
+Slack : 1.205
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock'
+Slack : -3.000
+TNS   : -37.500
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'show_entries'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : -1.500
+TNS   : -46.500
+
+Type  : Slow 1200mV 0C Model Setup 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : -4.687
+TNS   : -95.488
+
+Type  : Slow 1200mV 0C Model Setup 'clock'
+Slack : -3.489
+TNS   : -42.079
+
+Type  : Slow 1200mV 0C Model Setup 'show_entries'
+Slack : -3.483
+TNS   : -47.809
+
+Type  : Slow 1200mV 0C Model Hold 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : 0.344
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clock'
+Slack : 0.581
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'show_entries'
+Slack : 1.127
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock'
+Slack : -3.000
+TNS   : -37.500
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'show_entries'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : -1.500
+TNS   : -46.500
+
+Type  : Fast 1200mV 0C Model Setup 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : -2.163
+TNS   : -39.348
+
+Type  : Fast 1200mV 0C Model Setup 'show_entries'
+Slack : -1.993
+TNS   : -28.004
+
+Type  : Fast 1200mV 0C Model Setup 'clock'
+Slack : -1.582
+TNS   : -14.275
+
+Type  : Fast 1200mV 0C Model Hold 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : 0.166
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clock'
+Slack : 0.288
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'show_entries'
+Slack : 0.426
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock'
+Slack : -3.000
+TNS   : -26.345
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'show_entries'
+Slack : -3.000
+TNS   : -3.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock_divider:lcd_clock_inst|divcounter[22]'
+Slack : -1.000
+TNS   : -31.000
+
+------------------------------------------------------------
