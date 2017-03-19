@@ -32,7 +32,7 @@ output show_result;
  reg [15:0] result; //This register is going to be the cociente
  reg [3:0] counter; //Is use to go over the dividendo
  reg [15:0] dividendo; //Represents the dividendo
- reg [15:0] coeficiente;
+ reg [15:0] residuo; //Contains the substract of the dividendo and the divider
  reg show_result;
  reg number1_written;
  reg number2_written;
@@ -52,6 +52,7 @@ output show_result;
 	show_result = 1'b0;
 	counter = 4'b1111;
 	dividendo = 16'h0000;
+	residuo = 16'h0000;
 	make_division = 1'b0;
 	already_divide = 1'b0;
   end
@@ -78,17 +79,15 @@ output show_result;
 	   
 		if(counter == 4'b0000) //In this part, the division is finished
 		begin
-		//	dividendo = {dividendo[14:0], first_entry[counter]}; //Here I get the dividendo
 			if(dividendo >= second_entry)
 				begin
-		//		dividendo = dividendo - second_entry; //Make the substract between the dividendo and the divisor
-		//		result = {result[14:0], 1'b1}; //Add a 1 to the cociente
+		    	result = {result, 1'b1}; //Add a 1 to the cociente
 				show_result = 1'b1;
 				end
 				
 				else
 				begin
-			//	result = {result[14:0], 1'b0};
+				result = {result, 1'b0};
 				show_result = 1'b1;
 				end
 		end
@@ -100,12 +99,12 @@ output show_result;
 			begin
 				if(dividendo >= second_entry)
 				begin
-				result = dividendo;
-		//		dividendo = dividendo - second_entry; //Make the substract between the dividendo and the divisor
+				residuo = dividendo - second_entry;
 				counter = counter - 1'b1; //Decrement the counter
-		//		result = {result[14:0], 1'b1}; //Add a 1 to the cociente
-				
+				dividendo = {residuo, first_entry[counter]};
+				result = {result, 1'b1}; //Add a 1 to the cociente
 				already_divide = 1'b1;
+				
 				end
 				
 				else
@@ -119,17 +118,17 @@ output show_result;
 			begin
 				if(dividendo >= second_entry)
 				begin
-		//		dividendo = dividendo - second_entry; //Make the substract between the dividendo and the divisor
+				residuo = dividendo - second_entry; //Make the substract between the dividendo and the divisor
 				counter = counter - 1'b1; //Decrement the counter
-			//	result = {result[14:0], 1'b1}; //Add a 1 to the cociente
-			//	result <= 16'h00ff;
+				dividendo = {residuo, first_entry[counter]};
+				result = {result, 1'b1}; //Add a 1 to the cociente
 				end
 				
 				else
 				begin
 				counter = counter - 1'b1;
-			//	dividendo = {dividendo[14:0], first_entry[counter]}; //Here I get the dividendo
-			//	result = {result[14:0], 1'b0};
+				dividendo = {dividendo, first_entry[counter]}; //Here I get the dividendo
+				result = {result, 1'b0};
 				end
 			end
 			

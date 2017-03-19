@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Divider_Module
-Sun Mar 19 15:03:16 2017
+Sun Mar 19 16:33:26 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -46,13 +46,13 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Mar 19 15:03:16 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun Mar 19 16:33:26 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Divider_Module                              ;
 ; Top-level Entity Name              ; top_module                                  ;
 ; Family                             ; Cyclone IV GX                               ;
-; Total logic elements               ; 299                                         ;
-;     Total combinational functions  ; 268                                         ;
+; Total logic elements               ; 317                                         ;
+;     Total combinational functions  ; 301                                         ;
 ;     Dedicated logic registers      ; 126                                         ;
 ; Total registers                    ; 126                                         ;
 ; Total pins                         ; 31                                          ;
@@ -193,8 +193,8 @@ agreement for further details.
 ;                          ;                  ;
 ; Maximum fan-out node     ; clock~input      ;
 ; Maximum fan-out          ; 95               ;
-; Total fan-out            ; 1265             ;
-; Average fan-out          ; 2.77             ;
+; Total fan-out            ; 1392             ;
+; Average fan-out          ; 2.85             ;
 +--------------------------+------------------+
 
 
@@ -203,9 +203,9 @@ agreement for further details.
 +-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+----------------+--------------+
 ; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Entity Name    ; Library Name ;
 +-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+----------------+--------------+
-; |top_module                         ; 268 (1)             ; 126 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 31   ; 0            ; |top_module                                ; top_module     ; work         ;
+; |top_module                         ; 301 (1)             ; 126 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 31   ; 0            ; |top_module                                ; top_module     ; work         ;
 ;    |clock_divider:lcd_clock_inst|   ; 38 (38)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|clock_divider:lcd_clock_inst   ; clock_divider  ; work         ;
-;    |divider_module:divider_inst|    ; 92 (92)             ; 72 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|divider_module:divider_inst    ; divider_module ; work         ;
+;    |divider_module:divider_inst|    ; 125 (125)           ; 72 (72)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|divider_module:divider_inst    ; divider_module ; work         ;
 ;    |write_to_lcd:write_to_lcd_inst| ; 137 (137)           ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|write_to_lcd:write_to_lcd_inst ; write_to_lcd   ; work         ;
 +-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -228,11 +228,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 126   ;
-; Number of registers using Synchronous Clear  ; 21    ;
+; Number of registers using Synchronous Clear  ; 37    ;
 ; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 75    ;
+; Number of registers using Clock Enable       ; 74    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -242,13 +242,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|result[12]                 ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|result[4]                  ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top_module|divider_module:divider_inst|counter[3]                 ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|dividendo[12]              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|second_entry[8]            ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|first_entry[7]             ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|entry_letter_counter[4] ;
-; 12:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|cursor_address[4]       ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|second_entry[9]            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|first_entry[14]            ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|entry_letter_counter[2] ;
+; 6:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |top_module|divider_module:divider_inst|dividendo[1]               ;
+; 12:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|cursor_address[3]       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
 
 
@@ -269,24 +269,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; boundary_port         ; 31                          ;
 ; cycloneiii_ff         ; 126                         ;
-;     ENA               ; 70                          ;
+;     ENA               ; 54                          ;
+;     ENA SCLR          ; 15                          ;
 ;     ENA SLD           ; 5                           ;
-;     SCLR              ; 21                          ;
+;     SCLR              ; 22                          ;
 ;     SLD               ; 3                           ;
 ;     plain             ; 27                          ;
-; cycloneiii_lcell_comb ; 269                         ;
-;     arith             ; 47                          ;
+; cycloneiii_lcell_comb ; 302                         ;
+;     arith             ; 61                          ;
 ;         2 data inputs ; 32                          ;
-;         3 data inputs ; 15                          ;
-;     normal            ; 222                         ;
+;         3 data inputs ; 29                          ;
+;     normal            ; 241                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 3                           ;
-;         2 data inputs ; 43                          ;
-;         3 data inputs ; 27                          ;
-;         4 data inputs ; 147                         ;
+;         2 data inputs ; 47                          ;
+;         3 data inputs ; 25                          ;
+;         4 data inputs ; 164                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 4.02                        ;
+; Average LUT depth     ; 3.72                        ;
 +-----------------------+-----------------------------+
 
 
@@ -305,7 +306,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sun Mar 19 15:02:51 2017
+    Info: Processing started: Sun Mar 19 16:33:01 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Divider_Module -c Divider_Module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -322,8 +323,16 @@ Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:lc
 Warning (10230): Verilog HDL assignment warning at clock_divider.v(23): truncated value with size 32 to match size of target (23) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/clock_divider.v Line: 23
 Info (12128): Elaborating entity "divider_module" for hierarchy "divider_module:divider_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/top_module.v Line: 50
 Warning (10036): Verilog HDL or VHDL warning at divider_module.v(39): object "make_division" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 39
-Warning (10230): Verilog HDL assignment warning at divider_module.v(74): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 74
-Warning (10230): Verilog HDL assignment warning at divider_module.v(114): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 114
+Warning (10230): Verilog HDL assignment warning at divider_module.v(75): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 75
+Warning (10230): Verilog HDL assignment warning at divider_module.v(84): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 84
+Warning (10230): Verilog HDL assignment warning at divider_module.v(90): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 90
+Warning (10230): Verilog HDL assignment warning at divider_module.v(104): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 104
+Warning (10230): Verilog HDL assignment warning at divider_module.v(105): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 105
+Warning (10230): Verilog HDL assignment warning at divider_module.v(113): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 113
+Warning (10230): Verilog HDL assignment warning at divider_module.v(123): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 123
+Warning (10230): Verilog HDL assignment warning at divider_module.v(124): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 124
+Warning (10230): Verilog HDL assignment warning at divider_module.v(130): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 130
+Warning (10230): Verilog HDL assignment warning at divider_module.v(131): truncated value with size 17 to match size of target (16) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/divider_module.v Line: 131
 Info (12128): Elaborating entity "write_to_lcd" for hierarchy "write_to_lcd:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/top_module.v Line: 53
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(162): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/write_to_lcd.v Line: 162
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(164): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Divider_Module/write_to_lcd.v Line: 164
@@ -337,14 +346,14 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 362 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 365 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 12 output pins
-    Info (21061): Implemented 331 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
-    Info: Peak virtual memory: 704 megabytes
-    Info: Processing ended: Sun Mar 19 15:03:16 2017
+    Info (21061): Implemented 334 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 706 megabytes
+    Info: Processing ended: Sun Mar 19 16:33:26 2017
     Info: Elapsed time: 00:00:25
-    Info: Total CPU time (on all processors): 00:00:54
+    Info: Total CPU time (on all processors): 00:00:57
 
 
