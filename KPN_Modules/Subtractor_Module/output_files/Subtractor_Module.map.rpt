@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Subtractor_Module
-Wed Mar 08 23:27:05 2017
+Sat Mar 18 15:00:39 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -47,7 +47,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Mar 08 23:27:04 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sat Mar 18 15:00:39 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Subtractor_Module                           ;
 ; Top-level Entity Name              ; top_module                                  ;
@@ -56,7 +56,7 @@ agreement for further details.
 ;     Total combinational functions  ; 251                                         ;
 ;     Dedicated logic registers      ; 54                                          ;
 ; Total registers                    ; 54                                          ;
-; Total pins                         ; 32                                          ;
+; Total pins                         ; 31                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -167,7 +167,7 @@ agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -188,14 +188,14 @@ agreement for further details.
 +--------------------------+------------------+
 ; Resource                 ; Usage            ;
 +--------------------------+------------------+
-; I/O pins                 ; 32               ;
+; I/O pins                 ; 31               ;
 ;                          ;                  ;
 ; DSP block 9-bit elements ; 0                ;
 ;                          ;                  ;
 ; Maximum fan-out node     ; reset~input      ;
 ; Maximum fan-out          ; 75               ;
-; Total fan-out            ; 1051             ;
-; Average fan-out          ; 2.85             ;
+; Total fan-out            ; 1050             ;
+; Average fan-out          ; 2.86             ;
 +--------------------------+------------------+
 
 
@@ -204,7 +204,7 @@ agreement for further details.
 +----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------+-------------------+--------------+
 ; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                           ; Entity Name       ; Library Name ;
 +----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+-----------------------------------------------+-------------------+--------------+
-; |top_module                            ; 251 (1)             ; 54 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 32   ; 0            ; |top_module                                   ; top_module        ; work         ;
+; |top_module                            ; 251 (1)             ; 54 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 31   ; 0            ; |top_module                                   ; top_module        ; work         ;
 ;    |clock_divider:lcd_clock_inst|      ; 39 (39)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|clock_divider:lcd_clock_inst      ; clock_divider     ; work         ;
 ;    |subtractor_module:subtractor_inst| ; 70 (70)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|subtractor_module:subtractor_inst ; subtractor_module ; work         ;
 ;    |write_to_lcd:write_to_lcd_inst|    ; 141 (141)           ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|write_to_lcd:write_to_lcd_inst    ; write_to_lcd      ; work         ;
@@ -324,7 +324,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 32                          ;
+; boundary_port         ; 31                          ;
 ; cycloneiii_ff         ; 54                          ;
 ;     ENA               ; 7                           ;
 ;     ENA SLD           ; 5                           ;
@@ -352,7 +352,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -362,7 +362,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Mar 08 23:26:33 2017
+    Info: Processing started: Sat Mar 18 15:00:07 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Subtractor_Module -c Subtractor_Module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -375,9 +375,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file write_t
 Info (12021): Found 1 design units, including 1 entities, in source file subtractor_module.v
     Info (12023): Found entity 1: subtractor_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 1
 Info (12127): Elaborating entity "top_module" for the top level hierarchy
-Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:lcd_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 49
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:lcd_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 47
 Warning (10230): Verilog HDL assignment warning at clock_divider.v(23): truncated value with size 32 to match size of target (23) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/clock_divider.v Line: 23
-Info (12128): Elaborating entity "subtractor_module" for hierarchy "subtractor_module:subtractor_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 55
+Info (12128): Elaborating entity "subtractor_module" for hierarchy "subtractor_module:subtractor_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 53
 Warning (10240): Verilog HDL Always Construct warning at subtractor_module.v(38): inferring latch(es) for variable "first_entry", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 38
 Warning (10240): Verilog HDL Always Construct warning at subtractor_module.v(38): inferring latch(es) for variable "second_entry", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 38
 Warning (10240): Verilog HDL Always Construct warning at subtractor_module.v(38): inferring latch(es) for variable "number1_written", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 38
@@ -435,7 +435,7 @@ Info (10041): Inferred latch for "first_entry[12]" at subtractor_module.v(49) Fi
 Info (10041): Inferred latch for "first_entry[13]" at subtractor_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 49
 Info (10041): Inferred latch for "first_entry[14]" at subtractor_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 49
 Info (10041): Inferred latch for "first_entry[15]" at subtractor_module.v(49) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/subtractor_module.v Line: 49
-Info (12128): Elaborating entity "write_to_lcd" for hierarchy "write_to_lcd:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 61
+Info (12128): Elaborating entity "write_to_lcd" for hierarchy "write_to_lcd:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 59
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(162): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/write_to_lcd.v Line: 162
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(164): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/write_to_lcd.v Line: 164
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(189): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/write_to_lcd.v Line: 189
@@ -443,21 +443,19 @@ Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(191): truncate
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(229): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/write_to_lcd.v Line: 229
 Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(231): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/write_to_lcd.v Line: 231
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 24
-    Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 25
+    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 22
+    Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 23
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "add_button" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Subtractor_Module/top_module.v Line: 22
-Info (21057): Implemented 284 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 20 input pins
+Info (21057): Implemented 283 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 19 input pins
     Info (21059): Implemented 12 output pins
     Info (21061): Implemented 252 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 19 warnings
-    Info: Peak virtual memory: 723 megabytes
-    Info: Processing ended: Wed Mar 08 23:27:05 2017
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 717 megabytes
+    Info: Processing ended: Sat Mar 18 15:00:39 2017
     Info: Elapsed time: 00:00:32
-    Info: Total CPU time (on all processors): 00:00:56
+    Info: Total CPU time (on all processors): 00:00:55
 
 

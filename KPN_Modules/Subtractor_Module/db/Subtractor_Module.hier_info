@@ -18,19 +18,18 @@ entry_1[15] => entry_1[15].IN4
 show_entries => show_entries.IN3
 clock => clock.IN1
 reset => reset.IN2
-add_button => ~NO_FANOUT~
-rs <= write_to_lcd:write_to_lcd_inst.rs
-rw <= write_to_lcd:write_to_lcd_inst.rw
-on <= write_to_lcd:write_to_lcd_inst.on
-en <= write_to_lcd:write_to_lcd_inst.enable
-lcd_data[0] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[1] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[2] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[3] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[4] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[5] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[6] <= write_to_lcd:write_to_lcd_inst.lcd_data
-lcd_data[7] <= write_to_lcd:write_to_lcd_inst.lcd_data
+rs << write_to_lcd:write_to_lcd_inst.rs
+rw << write_to_lcd:write_to_lcd_inst.rw
+on << write_to_lcd:write_to_lcd_inst.on
+en << write_to_lcd:write_to_lcd_inst.enable
+lcd_data[0] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[1] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[2] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[3] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[4] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[5] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[6] << write_to_lcd:write_to_lcd_inst.lcd_data
+lcd_data[7] << write_to_lcd:write_to_lcd_inst.lcd_data
 
 
 |top_module|clock_divider:lcd_clock_inst

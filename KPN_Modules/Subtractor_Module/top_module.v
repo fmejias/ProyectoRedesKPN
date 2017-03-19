@@ -3,7 +3,6 @@ entry_1,
 show_entries,
 clock,
 reset,
-add_button,
 rs,
 rw,
 on,
@@ -19,7 +18,6 @@ input [15:0] entry_1;
 input show_entries;
 input clock;
 input reset;
-input add_button;
 output rs;
 output rw;
 output on;

@@ -49,7 +49,6 @@ output [7:0] lcd_data;
  clock_divider lcd_clock_inst(.clk_in(clock), .clk_out(lcd_clock));
  
  //This is the instance of the adder module
- //
  adder_module adder_inst(.entry_1(entry_1), .entry_2(entry_1), .reset(reset),  .add(show_entries), .show_add(entry_2_finished), .result(result), .show_result(show_result));
 
  //This is an instance of the LCD module
