@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Split_Module
-Thu Mar 09 00:14:07 2017
+Sun Mar 19 18:58:33 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -13,10 +13,14 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: clock_divider:lcd_clock_inst
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -43,16 +47,16 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Mar 09 00:14:07 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sun Mar 19 18:58:33 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Split_Module                                ;
-; Top-level Entity Name              ; split_module                                ;
+; Top-level Entity Name              ; top_module                                  ;
 ; Family                             ; Cyclone IV GX                               ;
-; Total logic elements               ; 0                                           ;
-;     Total combinational functions  ; 0                                           ;
-;     Dedicated logic registers      ; 0                                           ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 50                                          ;
+; Total logic elements               ; 180                                         ;
+;     Total combinational functions  ; 180                                         ;
+;     Dedicated logic registers      ; 54                                          ;
+; Total registers                    ; 54                                          ;
+; Total pins                         ; 31                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -70,7 +74,7 @@ agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CGX150DF31C7    ;                    ;
-; Top-level entity name                                                      ; split_module       ; Split_Module       ;
+; Top-level entity name                                                      ; top_module         ; Split_Module       ;
 ; Family name                                                                ; Cyclone IV GX      ; Cyclone V          ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -159,46 +163,75 @@ agreement for further details.
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                     ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                       ; Library ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
-; split_module.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v ;         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                        ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------+---------+
+; clock_divider.v                  ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/clock_divider.v ;         ;
+; top_module.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/top_module.v    ;         ;
+; write_to_lcd.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v  ;         ;
+; split_module.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v  ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary ;
-+--------------------------+------------------+
-; Resource                 ; Usage            ;
-+--------------------------+------------------+
-; I/O pins                 ; 50               ;
-;                          ;                  ;
-; DSP block 9-bit elements ; 0                ;
-;                          ;                  ;
-; Maximum fan-out node     ; entry_1[0]       ;
-; Maximum fan-out          ; 1                ;
-; Total fan-out            ; 51               ;
-; Average fan-out          ; 0.51             ;
-+--------------------------+------------------+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                            ;
++--------------------------+---------------------------------------------+
+; Resource                 ; Usage                                       ;
++--------------------------+---------------------------------------------+
+; I/O pins                 ; 31                                          ;
+;                          ;                                             ;
+; DSP block 9-bit elements ; 0                                           ;
+;                          ;                                             ;
+; Maximum fan-out node     ; clock_divider:lcd_clock_inst|divcounter[22] ;
+; Maximum fan-out          ; 33                                          ;
+; Total fan-out            ; 787                                         ;
+; Average fan-out          ; 2.66                                        ;
++--------------------------+---------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                   ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------+--------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name  ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------+--------------+--------------+
-; |split_module              ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 50   ; 0            ; |split_module       ; split_module ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------+--------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                    ;
++-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node          ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Entity Name   ; Library Name ;
++-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+---------------+--------------+
+; |top_module                         ; 180 (1)             ; 54 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 31   ; 0            ; |top_module                                ; top_module    ; work         ;
+;    |clock_divider:lcd_clock_inst|   ; 38 (38)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|clock_divider:lcd_clock_inst   ; clock_divider ; work         ;
+;    |split_module:split_inst|        ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|split_module:split_inst        ; split_module  ; work         ;
+;    |write_to_lcd:write_to_lcd_inst| ; 140 (140)           ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module|write_to_lcd:write_to_lcd_inst ; write_to_lcd  ; work         ;
++-------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+--------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; split_module:split_inst|show_outputs               ; GND                 ; yes                    ;
+; Number of user-specified and inferred latches = 1  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; write_to_lcd:write_to_lcd_inst|on     ; Stuck at VCC due to stuck port data_in ;
+; write_to_lcd:write_to_lcd_inst|rw     ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 2 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -206,14 +239,35 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 54    ;
+; Number of registers using Synchronous Clear  ; 12    ;
+; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 22    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|entry_letter_counter[1] ;
+; 12:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|cursor_address[2]       ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 28 LEs               ; 20 LEs                 ; Yes        ; |top_module|write_to_lcd:write_to_lcd_inst|lcd_data[1]             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: clock_divider:lcd_clock_inst ;
++----------------+---------+------------------------------------------------+
+; Parameter Name ; Value   ; Type                                           ;
++----------------+---------+------------------------------------------------+
+; M              ; 5000000 ; Signed Integer                                 ;
++----------------+---------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -221,14 +275,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 50                          ;
-; cycloneiii_lcell_comb ; 2                           ;
-;     normal            ; 2                           ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 1                           ;
+; boundary_port         ; 31                          ;
+; cycloneiii_ff         ; 54                          ;
+;     ENA               ; 11                          ;
+;     ENA SCLR          ; 6                           ;
+;     ENA SLD           ; 5                           ;
+;     SCLR              ; 6                           ;
+;     SLD               ; 3                           ;
+;     plain             ; 23                          ;
+; cycloneiii_lcell_comb ; 181                         ;
+;     arith             ; 32                          ;
+;         2 data inputs ; 32                          ;
+;     normal            ; 149                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 8                           ;
+;         3 data inputs ; 32                          ;
+;         4 data inputs ; 104                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 0.67                        ;
+; Max LUT depth         ; 8.00                        ;
+; Average LUT depth     ; 4.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -237,7 +303,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -247,7 +313,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Thu Mar 09 00:13:44 2017
+    Info: Processing started: Sun Mar 19 18:58:05 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Split_Module -c Split_Module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -259,83 +325,33 @@ Info (12021): Found 1 design units, including 1 entities, in source file write_t
     Info (12023): Found entity 1: write_to_lcd File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file split_module.v
     Info (12023): Found entity 1: split_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 1
-Info (12127): Elaborating entity "split_module" for the top level hierarchy
-Warning (10240): Verilog HDL Always Construct warning at split_module.v(32): inferring latch(es) for variable "entry", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 32
-Info (10041): Inferred latch for "entry[0]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[1]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[2]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[3]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[4]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[5]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[6]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[7]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[8]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[9]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[10]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[11]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[12]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[13]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[14]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
-Info (10041): Inferred latch for "entry[15]" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
+Info (12127): Elaborating entity "top_module" for the top level hierarchy
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:lcd_clock_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/top_module.v Line: 48
+Warning (10230): Verilog HDL assignment warning at clock_divider.v(23): truncated value with size 32 to match size of target (23) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/clock_divider.v Line: 23
+Info (12128): Elaborating entity "split_module" for hierarchy "split_module:split_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/top_module.v Line: 52
+Warning (10240): Verilog HDL Always Construct warning at split_module.v(33): inferring latch(es) for variable "show_outputs", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 33
+Info (10041): Inferred latch for "show_outputs" at split_module.v(41) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 41
+Info (12128): Elaborating entity "write_to_lcd" for hierarchy "write_to_lcd:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/top_module.v Line: 59
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(180): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 180
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(182): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 182
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(207): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 207
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(209): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 209
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(234): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 234
+Warning (10230): Verilog HDL assignment warning at write_to_lcd.v(236): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/write_to_lcd.v Line: 236
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "output_1[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[1]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[2]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[4]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[5]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[6]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[7]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[8]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[9]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[10]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[11]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[12]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[13]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[14]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_1[15]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 15
-    Warning (13410): Pin "output_2[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[1]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[2]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[4]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[5]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[6]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[7]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[8]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[9]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[10]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[11]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[12]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[13]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[14]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
-    Warning (13410): Pin "output_2[15]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 16
+    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/top_module.v Line: 22
+    Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/top_module.v Line: 23
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 16 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "entry_1[0]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[1]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[2]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[3]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[4]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[5]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[6]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[7]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[8]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[9]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[10]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[11]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[12]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[13]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[14]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-    Warning (15610): No output dependent on input pin "entry_1[15]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseño/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Split_Module/split_module.v Line: 13
-Info (21057): Implemented 50 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 17 input pins
-    Info (21059): Implemented 33 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 52 warnings
+Info (21057): Implemented 212 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 19 input pins
+    Info (21059): Implemented 12 output pins
+    Info (21061): Implemented 181 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
     Info: Peak virtual memory: 703 megabytes
-    Info: Processing ended: Thu Mar 09 00:14:08 2017
-    Info: Elapsed time: 00:00:24
-    Info: Total CPU time (on all processors): 00:00:55
+    Info: Processing ended: Sun Mar 19 18:58:33 2017
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:54
 
 

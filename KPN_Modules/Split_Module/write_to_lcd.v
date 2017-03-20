@@ -19,7 +19,8 @@ enable,
 lcd_data,
 rs,
 rw,
-on
+on,
+entry_1_finished
 );
 
 /*
@@ -39,7 +40,7 @@ output [7:0] lcd_data;
 output rs;
 output rw;
 output on; 
-
+output entry_1_finished;
 
 
 /*
@@ -109,6 +110,14 @@ begin
     start_writing_entry_1 = 1'b1;
     write_address = 1'b1;
 	 cursor_address = 7'h00;
+	 
+	  /*
+	 * We send this command from the beginning to clear the display data.
+	 */
+	rs = 1'b0;
+	rw = 1'b0;
+	lcd_data = 8'b00000001;
+	command_delay = 1'b1;
 	 
    end
 

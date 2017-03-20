@@ -1,5 +1,5 @@
 Flow report for Split_Module
-Thu Mar 09 00:14:53 2017
+Sun Mar 19 18:59:31 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,18 +41,18 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Mar 09 00:14:45 2017       ;
+; Flow Status                        ; Successful - Sun Mar 19 18:59:23 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Split_Module                                ;
-; Top-level Entity Name              ; split_module                                ;
+; Top-level Entity Name              ; top_module                                  ;
 ; Family                             ; Cyclone IV GX                               ;
 ; Device                             ; EP4CGX150DF31C7                             ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 0 / 149,760 ( 0 % )                         ;
-;     Total combinational functions  ; 0 / 149,760 ( 0 % )                         ;
-;     Dedicated logic registers      ; 0 / 149,760 ( 0 % )                         ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 50 / 508 ( 10 % )                           ;
+; Total logic elements               ; 182 / 149,760 ( < 1 % )                     ;
+;     Total combinational functions  ; 180 / 149,760 ( < 1 % )                     ;
+;     Dedicated logic registers      ; 54 / 149,760 ( < 1 % )                      ;
+; Total registers                    ; 54                                          ;
+; Total pins                         ; 31 / 508 ( 6 % )                            ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 6,635,520 ( 0 % )                       ;
 ; Embedded Multiplier 9-bit elements ; 0 / 720 ( 0 % )                             ;
@@ -69,26 +69,27 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/09/2017 00:13:45 ;
+; Start date & time ; 03/19/2017 18:58:06 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Split_Module        ;
 +-------------------+---------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                         ;
-+-------------------------------------+----------------------------------------+---------------+--------------+------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name  ; Section Id ;
-+-------------------------------------+----------------------------------------+---------------+--------------+------------+
-; COMPILER_SIGNATURE_ID               ; 31288978634878.148904002506740         ; --            ; --           ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --           ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --           ; --         ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --           ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; split_module ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; split_module ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; split_module ; Top        ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --           ; --         ;
-+-------------------------------------+----------------------------------------+---------------+--------------+------------+
++-------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 31288978634878.148997148601868         ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; top_module  ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; top_module  ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; top_module  ; Top        ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; top_module                             ; Split_Module  ; --          ; --         ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -96,11 +97,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:23     ; 1.0                     ; 688 MB              ; 00:00:55                           ;
-; Fitter                    ; 00:00:26     ; 1.0                     ; 1450 MB             ; 00:00:37                           ;
-; Assembler                 ; 00:00:07     ; 1.0                     ; 645 MB              ; 00:00:07                           ;
-; TimeQuest Timing Analyzer ; 00:00:06     ; 1.0                     ; 726 MB              ; 00:00:04                           ;
-; Total                     ; 00:01:02     ; --                      ; --                  ; 00:01:43                           ;
+; Analysis & Synthesis      ; 00:00:27     ; 1.0                     ; 694 MB              ; 00:00:53                           ;
+; Fitter                    ; 00:00:39     ; 1.0                     ; 1516 MB             ; 00:00:52                           ;
+; Assembler                 ; 00:00:08     ; 1.0                     ; 649 MB              ; 00:00:07                           ;
+; TimeQuest Timing Analyzer ; 00:00:06     ; 1.0                     ; 731 MB              ; 00:00:04                           ;
+; Total                     ; 00:01:20     ; --                      ; --                  ; 00:01:56                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
