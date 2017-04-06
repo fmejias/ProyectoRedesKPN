@@ -1,0 +1,97 @@
+//It has a 16 bit input and a 32-bit output port
+/* Input: entry_1[15:0]
+ * Input: show_entry_1
+ * Output: EN
+ * Output: lcd_data[7:0]
+ * Output: RS
+ * Output: R/W
+ */
+module write_entry_to_lcd (
+entry_1,
+show_entry_1,
+enable,
+lcd_data,
+rs,
+rw
+);
+
+/*
+ * We define the type of entries and outputs
+ */
+ 
+input [15:0] entry_1;
+input show_entry_1;
+output enable;
+output [7:0] lcd_data;
+output rs;
+output rw;
+
+
+/*
+ * We define the registers need it to show the entire entry in the LCD
+ * The register entry_letter_counter is updating in order to go over all the letters
+ * Is of 5 bits because the entry is compose by 16 digits.
+ * lcd_data: Contains the address or the letter code
+ * write_address: Indicates if it has to write a letter or the address. 
+ * 		(1 indicates to write the address and 0 indicates to write the letter)
+ * start_writing: Indicates to go over the number and write it in the DDRAM
+ * cursor_address: Contains the cursor address
+ */
+reg [7:0] lcd_data; 
+reg [4:0] entry_letter_counter; 
+reg write_address;
+reg enable;
+reg rs;
+reg rw;
+reg start_writing;
+reg [6:0] cursor_address; //The bit 7 is for write address
+
+always @ (*) // on positive clock edge
+begin
+ if(show_entry_1 == 1'b1 && start_writing == 1'b0)
+  begin
+   start_writing = 1'b1;
+   write_address = 1'b1;
+	cursor_address = 7'h00;
+  end
+  
+ else
+  begin
+   if(start_writing == 1'b1) 
+	 begin
+	  if(entry_letter_counter == 5'h10)
+	  begin
+	   start_writing = 1'b0;
+	  end
+	  else if(write_address == 1'b1)
+	   begin
+		 lcd_data = {1'b1, cursor_address};
+		 entry_letter_counter = entry_letter_counter + 1;
+		 write_address = 1'b0;
+		 cursor_address = cursor_address + 1;
+		 rs = 1'b0;
+		 rw = 1'b0;
+		 enable = 1'b1;
+		end
+	  else if(write_address == 1'b0)
+	  begin
+	    lcd_data = (entry_1[entry_letter_counter] == 1'b1) ? 8'b00110001 : 8'b00110000;
+		 entry_letter_counter = entry_letter_counter + 1;
+		 write_address = 1'b1;
+		 cursor_address = cursor_address + 1;
+		 rs = 1'b1;
+		 rw = 1'b0;
+		 enable = 1'b1;
+	  end
+	
+	 end
+	 
+	 else
+	 begin
+	  enable = 1'b0;
+	 end
+ 
+  end
+end
+
+endmodule // end of module counter
