@@ -1,5 +1,5 @@
 Analysis & Synthesis report for KPN_Modules
-Wed Apr 05 21:52:24 2017
+Thu Apr 06 00:34:56 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -43,7 +43,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Apr 05 21:52:24 2017       ;
+; Analysis & Synthesis Status        ; Successful - Thu Apr 06 00:34:56 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; KPN_Modules                                 ;
 ; Top-level Entity Name              ; top_module                                  ;
@@ -246,7 +246,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed Apr 05 21:52:01 2017
+    Info: Processing started: Thu Apr 06 00:34:33 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off KPN_Modules -c KPN_Modules
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -283,6 +283,11 @@ Info (12021): Found 1 design units, including 1 entities, in source file multipl
     Info (12023): Found entity 1: multiplier_module_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module_testbench.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file divider_module_testbench.v
     Info (12023): Found entity 1: divider_module_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/divider_module_testbench.v Line: 1
+Warning (10238): Verilog Module Declaration warning at queue_module.v(7): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "queue_module" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file queue_module.v
+    Info (12023): Found entity 1: queue_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file queue_module_testbench.v
+    Info (12023): Found entity 1: queue_module_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v Line: 1
 Info (12127): Elaborating entity "top_module" for the top level hierarchy
 Warning (10034): Output port "output_1" at top_module.v(15) has no driver File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module.v Line: 15
 Warning (13024): Output pins are stuck at VCC or GND
@@ -341,9 +346,9 @@ Warning (21074): Design contains 33 input pin(s) that do not drive logic
 Info (21057): Implemented 49 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 33 input pins
     Info (21059): Implemented 16 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 54 warnings
-    Info: Peak virtual memory: 693 megabytes
-    Info: Processing ended: Wed Apr 05 21:52:24 2017
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 55 warnings
+    Info: Peak virtual memory: 692 megabytes
+    Info: Processing ended: Thu Apr 06 00:34:56 2017
     Info: Elapsed time: 00:00:23
     Info: Total CPU time (on all processors): 00:00:56
 

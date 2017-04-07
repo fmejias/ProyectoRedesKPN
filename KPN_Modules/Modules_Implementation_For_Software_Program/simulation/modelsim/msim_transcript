@@ -12,68 +12,135 @@
 # 
 # vlog -vlog01compat -work work +incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program {C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:46:28 on Apr 05,2017
+# Start time: 00:08:24 on Apr 06,2017
 # vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program" C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module.v 
 # -- Compiling module top_module
 # 
 # Top level modules:
 # 	top_module
-# End time: 21:46:28 on Apr 05,2017, Elapsed time: 0:00:00
+# End time: 00:08:25 on Apr 06,2017, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
-vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module.v
+vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:46:47 on Apr 05,2017
-# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module.v 
-# -- Compiling module multiplier_module
+# Start time: 00:08:54 on Apr 06,2017
+# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v 
+# -- Compiling module queue_module
 # 
 # Top level modules:
-# 	multiplier_module
-# End time: 21:46:47 on Apr 05,2017, Elapsed time: 0:00:00
+# 	queue_module
+# End time: 00:08:54 on Apr 06,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module_testbench.v
+vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:46:47 on Apr 05,2017
-# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module_testbench.v 
-# -- Compiling module multiplier_module_testbench
+# Start time: 00:08:54 on Apr 06,2017
+# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v 
+# -- Compiling module queue_module_testbench
 # 
 # Top level modules:
-# 	multiplier_module_testbench
-# End time: 21:46:47 on Apr 05,2017, Elapsed time: 0:00:00
+# 	queue_module_testbench
+# End time: 00:08:55 on Apr 06,2017, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-vsim work.multiplier_module_testbench
-# vsim work.multiplier_module_testbench 
-# Start time: 21:46:58 on Apr 05,2017
-# Loading work.multiplier_module_testbench
-# Loading work.multiplier_module
+vsim work.queue_module_testbench
+# vsim work.queue_module_testbench 
+# Start time: 00:09:03 on Apr 06,2017
+# Loading work.queue_module_testbench
+# Loading work.queue_module
+# ** Warning: (vsim-3017) C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v(18): [TFMPC] - Too few port connections. Expected 6, found 5.
+#    Time: 0 ps  Iteration: 0  Instance: /queue_module_testbench/DUT File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
+vsim work.queue_module_testbench
+# End time: 00:09:16 on Apr 06,2017, Elapsed time: 0:00:13
+# Errors: 0, Warnings: 1
+# vsim work.queue_module_testbench 
+# Start time: 00:09:16 on Apr 06,2017
+# Loading work.queue_module_testbench
+# Loading work.queue_module
+# ** Warning: (vsim-3017) C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v(18): [TFMPC] - Too few port connections. Expected 6, found 5.
+#    Time: 0 ps  Iteration: 0  Instance: /queue_module_testbench/DUT File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
 add wave -position insertpoint  \
-sim:/multiplier_module_testbench/clk_test \
-sim:/multiplier_module_testbench/entry_1_test \
-sim:/multiplier_module_testbench/entry_2_test \
-sim:/multiplier_module_testbench/output_1_test
+sim:/queue_module_testbench/clk_test \
+sim:/queue_module_testbench/rd_test \
+sim:/queue_module_testbench/wr_test \
+sim:/queue_module_testbench/entry_1_test \
+sim:/queue_module_testbench/output_1_test
 run -all
-vlog -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module.v
+vlog -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:53:22 on Apr 05,2017
-# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module.v 
-# -- Compiling module multiplier_module
+# Start time: 00:21:32 on Apr 06,2017
+# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v 
+# -- Compiling module queue_module
 # 
 # Top level modules:
-# 	multiplier_module
-# End time: 21:53:23 on Apr 05,2017, Elapsed time: 0:00:01
+# 	queue_module
+# End time: 00:21:32 on Apr 06,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim work.multiplier_module_testbench
-# End time: 21:53:32 on Apr 05,2017, Elapsed time: 0:06:34
-# Errors: 0, Warnings: 0
-# vsim work.multiplier_module_testbench 
-# Start time: 21:53:32 on Apr 05,2017
-# Loading work.multiplier_module_testbench
-# Loading work.multiplier_module
+vsim work.queue_module_testbench
+# End time: 00:21:38 on Apr 06,2017, Elapsed time: 0:12:22
+# Errors: 0, Warnings: 1
+# vsim work.queue_module_testbench 
+# Start time: 00:21:38 on Apr 06,2017
+# Loading work.queue_module_testbench
+# Loading work.queue_module
+# ** Warning: (vsim-3017) C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v(18): [TFMPC] - Too few port connections. Expected 6, found 5.
+#    Time: 0 ps  Iteration: 0  Instance: /queue_module_testbench/DUT File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
 add wave -position insertpoint  \
-sim:/multiplier_module_testbench/clk_test \
-sim:/multiplier_module_testbench/entry_1_test \
-sim:/multiplier_module_testbench/entry_2_test \
-sim:/multiplier_module_testbench/output_1_test
+sim:/queue_module_testbench/clk_test \
+sim:/queue_module_testbench/rd_test \
+sim:/queue_module_testbench/wr_test \
+sim:/queue_module_testbench/entry_1_test \
+sim:/queue_module_testbench/output_1_test
 run -all
-# End time: 21:54:29 on Apr 05,2017, Elapsed time: 0:00:57
+vlog -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 00:29:15 on Apr 06,2017
+# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v 
+# -- Compiling module queue_module
+# 
+# Top level modules:
+# 	queue_module
+# End time: 00:29:15 on Apr 06,2017, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vsim work.queue_module_testbench
+# End time: 00:29:21 on Apr 06,2017, Elapsed time: 0:07:43
+# Errors: 0, Warnings: 1
+# vsim work.queue_module_testbench 
+# Start time: 00:29:21 on Apr 06,2017
+# Loading work.queue_module_testbench
+# Loading work.queue_module
+# ** Warning: (vsim-3017) C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v(18): [TFMPC] - Too few port connections. Expected 6, found 5.
+#    Time: 0 ps  Iteration: 0  Instance: /queue_module_testbench/DUT File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
+add wave -position insertpoint  \
+sim:/queue_module_testbench/clk_test \
+sim:/queue_module_testbench/rd_test \
+sim:/queue_module_testbench/wr_test \
+sim:/queue_module_testbench/entry_1_test \
+sim:/queue_module_testbench/output_1_test
+run -all
+vlog -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 00:36:50 on Apr 06,2017
+# vlog -reportprogress 300 -work work C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v 
+# -- Compiling module queue_module_testbench
+# 
+# Top level modules:
+# 	queue_module_testbench
+# End time: 00:36:50 on Apr 06,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim work.queue_module_testbench
+# End time: 00:36:55 on Apr 06,2017, Elapsed time: 0:07:34
+# Errors: 0, Warnings: 1
+# vsim work.queue_module_testbench 
+# Start time: 00:36:55 on Apr 06,2017
+# Loading work.queue_module_testbench
+# Loading work.queue_module
+# ** Warning: (vsim-3017) C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v(18): [TFMPC] - Too few port connections. Expected 6, found 5.
+#    Time: 0 ps  Iteration: 0  Instance: /queue_module_testbench/DUT File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
+add wave -position insertpoint  \
+sim:/queue_module_testbench/clk_test \
+sim:/queue_module_testbench/rd_test \
+sim:/queue_module_testbench/wr_test \
+sim:/queue_module_testbench/entry_1_test \
+sim:/queue_module_testbench/output_1_test
+run -all
+# End time: 00:55:09 on Apr 06,2017, Elapsed time: 0:18:14
+# Errors: 0, Warnings: 1
