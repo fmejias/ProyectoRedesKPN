@@ -23,26 +23,6 @@ output [15:0] output_1;
 output wr;
 output rd;
 
-/*
- * We enable rd
- * 
- */
- always @(posedge clk)
- begin
-	wr = 1'b0;
-	rd = 1'b1;
- end
- 
- /*
- * We enable wr
- * 
- */
- always @(negedge clk)
- begin
-	wr = 1'b1;
-	rd = 1'b0;
- end
-
 
 /*
  * We make the delay operation.
@@ -50,8 +30,6 @@ output rd;
  */
 
  reg [15:0] output_1;
- reg wr;
- reg rd;
  reg [15:0] delay_register = 16'hffff;
  reg already_delay = 1'b0;
  
@@ -71,6 +49,14 @@ output rd;
 	end 
   
  end
+ 
+ /*
+ * We set rd and wr
+ * 
+ */
+ 
+ assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
+ assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
 
 
 endmodule // end delay_module

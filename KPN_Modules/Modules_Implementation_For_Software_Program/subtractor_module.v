@@ -25,28 +25,6 @@ output rd;
  */
 	
  reg [15:0] output_1;
- reg wr;
- reg rd;
- 
- /*
- * We enable rd
- * 
- */
- always @(posedge clk)
- begin
-	wr = 1'b0;
-	rd = 1'b1;
- end
- 
- /*
- * We enable wr
- * 
- */
- always @(negedge clk)
- begin
-	wr = 1'b1;
-	rd = 1'b0;
- end
 
 
  /*
@@ -58,6 +36,14 @@ output rd;
  begin
   output_1 = entry_1 - entry_2;
  end
+ 
+ /*
+ * We set rd and wr
+ * 
+ */
+ 
+ assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
+ assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
 
 
 endmodule // end subtractor_module

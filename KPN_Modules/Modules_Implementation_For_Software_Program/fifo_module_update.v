@@ -53,8 +53,6 @@ always @(posedge clk)
 		if(rd)
 		begin
 		output_1 = array_reg[r_ptr_reg];
-	//	output_rd = 1'b1;
-	//	$display("Lee lo siguiente: %d", output_1);
 		end
 	end
 
@@ -85,14 +83,12 @@ begin
 		w_ptr_reg = w_ptr_succ;
 		if (w_ptr_succ==r_ptr_reg)
 			full_reg = 1'b1;
-	   $display("Entra a escribir");
 		end
 	end
 	else if(rd)
 	begin
 		if(~empty_reg)
 		begin
-		$display("Entra a leer");
 		r_ptr_reg = r_ptr_succ;
 		full_reg = 1'b0;
 		if (r_ptr_succ==w_ptr_reg)
@@ -100,7 +96,6 @@ begin
 		end
 		else
 		begin
-		$display("El FIFO esta vacio");
 		end
 	end
 

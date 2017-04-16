@@ -25,35 +25,8 @@ output rd;
  */
 	
  reg [15:0] output_1;
+
  
-/*
- * We enable rd
- * 
- */
- //always @(posedge clk)
- //begin
-//	wr = 1'b0;
-//	rd = 1'b1;
- //end
- 
- /*
- * We enable wr
- * 
- */
- /*always @(posedge clk or negedge clk)
- begin
-	if(clk == 1'b1)
-	begin
-	wr = 1'b0;
-	rd = 1'b1;
-	end
-	else
-	begin
-	wr = 1'b1;
-	rd = 1'b0;
-	end
-	
- end*/
  
 /*
  * We make the add operation.
@@ -67,6 +40,11 @@ output rd;
   $display("La entrada 2 es:", entry_2);
   $display("La salida es:", output_1);
  end
+ 
+ /*
+ * We set rd and wr
+ * 
+ */
  
  assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
  assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;

@@ -53,13 +53,11 @@ always @(posedge clk)
 		if(~empty_reg)
 		begin
 		output_1 = array_reg[r_ptr_reg];
-		$display("La salida de la cola es:", output_1);
 		r_ptr_reg = r_ptr_succ;
 		full_reg = 1'b0;
 		if (r_ptr_succ==w_ptr_reg)
 			empty_reg = 1'b1;
-		
-	//	$display("Lee el siguiente dato: %d", output_1);
+
 		end
 		else
 		output_1 = 16'h0000;
@@ -67,27 +65,5 @@ always @(posedge clk)
 
 assign wr = (clk == 1'b0) ? 1'b1 : 1'b0;
 
-// next-state logic for read and write pointers
-/*always @(rd)
-begin
-	
-	// successive pointer values
-	r_ptr_succ = r_ptr_reg + 1;
-	
-	if(rd)
-	begin
-		if(~empty_reg)
-		begin
-		r_ptr_reg = r_ptr_succ;
-		full_reg = 1'b0;
-		if (r_ptr_succ==w_ptr_reg)
-			empty_reg = 1'b1;
-		end
-
-	end
-
-end
-
-*/
 
 endmodule // end queue_module
