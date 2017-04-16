@@ -23,6 +23,7 @@ input wr;
 input [BITS_NUMBER-1:0] entry_1; 
 output [BITS_NUMBER-1:0] output_1;
 
+
 //signal declaration
 reg [BITS_NUMBER-1:0] array_reg [2**FIFO_ELEMENTS-1:0];  // register array
 reg [FIFO_ELEMENTS-1:0] w_ptr_reg = 0;
@@ -52,7 +53,8 @@ always @(posedge clk)
 		if(rd)
 		begin
 		output_1 = array_reg[r_ptr_reg];
-		$display("Lee lo siguiente: %d", output_1);
+	//	output_rd = 1'b1;
+	//	$display("Lee lo siguiente: %d", output_1);
 		end
 	end
 

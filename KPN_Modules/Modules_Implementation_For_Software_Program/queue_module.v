@@ -1,6 +1,6 @@
 module queue_module(
 clk,
-rd,
+wr,
 output_1
 );
 
@@ -10,13 +10,13 @@ output_1
 
 parameter BITS_NUMBER = 16;
 parameter FIFO_ELEMENTS = 5; //==> 2**5 elements
-parameter NUMBER_OF_PRECHARGE_DATA = 0;
+parameter NUMBER_OF_PRECHARGE_DATA = 4;
 
 /*
  * We define the type of entries and outputs
  */
 input clk;
-input rd;
+output wr;
 output [BITS_NUMBER-1:0] output_1;
 
 //signal declaration
@@ -49,18 +49,26 @@ end
 // Read operation
 always @(posedge clk)
 	begin
-		if(rd && ~empty_reg)
+		r_ptr_succ = r_ptr_reg + 1;
+		if(~empty_reg)
 		begin
 		output_1 = array_reg[r_ptr_reg];
-		$display("Lee el siguiente dato: %d", output_1);
+		$display("La salida de la cola es:", output_1);
+		r_ptr_reg = r_ptr_succ;
+		full_reg = 1'b0;
+		if (r_ptr_succ==w_ptr_reg)
+			empty_reg = 1'b1;
+		
+	//	$display("Lee el siguiente dato: %d", output_1);
 		end
 		else
 		output_1 = 16'h0000;
 	end
 
+assign wr = (clk == 1'b0) ? 1'b1 : 1'b0;
 
 // next-state logic for read and write pointers
-always @(rd)
+/*always @(rd)
 begin
 	
 	// successive pointer values
@@ -80,5 +88,6 @@ begin
 
 end
 
+*/
 
 endmodule // end queue_module

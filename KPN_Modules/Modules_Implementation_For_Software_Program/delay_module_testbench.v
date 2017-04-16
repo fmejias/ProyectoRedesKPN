@@ -6,6 +6,8 @@ module delay_module_testbench;
 reg clk_test;
 reg [15:0] entry_1_test;
 wire [15:0] output_1_test;
+wire rd_test;
+wire wr_test;
 
 
 /*
@@ -14,7 +16,7 @@ wire [15:0] output_1_test;
  * 
  */
 	
-delay_module #(.DELAY_NUMBER(4)) DUT(.clk(clk_test), 
+delay_module #(.DELAY_NUMBER(4)) DUT(.clk(clk_test), .rd(rd_test), .wr(wr_test), 
 					.entry_1(entry_1_test), .output_1(output_1_test));
 						
 

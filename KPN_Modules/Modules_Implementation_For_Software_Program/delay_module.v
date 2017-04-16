@@ -1,5 +1,7 @@
 module delay_module (
 clk,
+rd,
+wr,
 entry_1,
 output_1
 );
@@ -18,6 +20,28 @@ parameter DELAY_NUMBER = 0;
 input clk;
 input [15:0] entry_1; 
 output [15:0] output_1;
+output wr;
+output rd;
+
+/*
+ * We enable rd
+ * 
+ */
+ always @(posedge clk)
+ begin
+	wr = 1'b0;
+	rd = 1'b1;
+ end
+ 
+ /*
+ * We enable wr
+ * 
+ */
+ always @(negedge clk)
+ begin
+	wr = 1'b1;
+	rd = 1'b0;
+ end
 
 
 /*
@@ -26,6 +50,8 @@ output [15:0] output_1;
  */
 
  reg [15:0] output_1;
+ reg wr;
+ reg rd;
  reg [15:0] delay_register = 16'hffff;
  reg already_delay = 1'b0;
  
