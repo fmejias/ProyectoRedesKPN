@@ -5,8 +5,6 @@ module queue_module_testbench;
  */
 reg clk_test;
 reg rd_test;
-reg wr_test;
-reg [15:0] entry_1_test;
 wire [15:0] output_1_test;
 
 
@@ -15,8 +13,8 @@ wire [15:0] output_1_test;
  * 
  */
 	
-queue_module #(.BITS_NUMBER(16), .FIFO_ELEMENTS(5), .NUMBER_OF_PRECHARGE_DATA(4)) DUT(.clk(clk_test), .rd(rd_test),
-			.wr(wr_test), .entry_1(entry_1_test), .output_1(output_1_test));
+queue_module #(.BITS_NUMBER(16), .FIFO_ELEMENTS(5), .NUMBER_OF_PRECHARGE_DATA(4)) DUT(.clk(clk_test),.rd(rd_test),
+			.output_1(output_1_test));
 						
 
 /*
@@ -27,13 +25,13 @@ queue_module #(.BITS_NUMBER(16), .FIFO_ELEMENTS(5), .NUMBER_OF_PRECHARGE_DATA(4)
 initial begin
 
 clk_test = 1'b0;
-wr_test = 1'b0;
-entry_1_test = 16'd0;
+rd_test = 1'b0;
 
 #100
 rd_test = 1'b1;
 
-
+#100
+rd_test = 1'b0;
 end
 
 
@@ -42,7 +40,10 @@ end
  * 
  */
 always
- #100  clk_test =  !clk_test;
- 
+begin
+ #100  
+ clk_test =  !clk_test;
+ //rd_test =  !rd_test;
+ end
  
 endmodule // end queue_module_testbench

@@ -3,7 +3,7 @@ clk,
 rd,
 wr,
 entry_1,
-output_1,
+output_1
 );
 
 /*

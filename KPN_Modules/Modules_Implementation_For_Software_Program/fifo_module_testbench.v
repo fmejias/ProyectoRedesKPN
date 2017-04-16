@@ -15,7 +15,7 @@ wire [15:0] output_1_test;
  * 
  */
 	
-fifo_module_update DUT(.clk(clk_test), .rd(rd_test),
+fifo_module DUT(.clk(clk_test), .rd(rd_test),
 			.wr(wr_test), .entry_1(entry_1_test), .output_1(output_1_test));
 						
 

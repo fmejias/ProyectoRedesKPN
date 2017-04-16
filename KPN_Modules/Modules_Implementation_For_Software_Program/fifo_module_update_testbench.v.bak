@@ -1,4 +1,4 @@
-module fifo_module_update_testbench;
+module fifo_module_testbench;
 
 /*
  * We define the type of the entries and outputs

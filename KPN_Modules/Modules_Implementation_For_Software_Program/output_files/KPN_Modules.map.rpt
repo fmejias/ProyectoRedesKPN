@@ -1,5 +1,5 @@
 Analysis & Elaboration report for KPN_Modules
-Sat Apr 15 23:46:25 2017
+Sun Apr 16 00:58:49 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Sat Apr 15 23:46:25 2017       ;
+; Analysis & Elaboration Status      ; Successful - Sun Apr 16 00:58:49 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; KPN_Modules                                 ;
 ; Top-level Entity Name              ; top_module                                  ;
@@ -166,7 +166,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Sat Apr 15 23:46:03 2017
+    Info: Processing started: Sun Apr 16 00:58:28 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off KPN_Modules -c KPN_Modules --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -176,7 +176,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file delay_m
     Info (12023): Found entity 1: delay_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/delay_module.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file divider_module.v
     Info (12023): Found entity 1: divider_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/divider_module.v Line: 1
-Warning (10238): Verilog Module Declaration warning at fifo_module.v(7): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "fifo_module" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file fifo_module.v
     Info (12023): Found entity 1: fifo_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file multiplier_module.v
@@ -203,19 +202,20 @@ Info (12021): Found 1 design units, including 1 entities, in source file multipl
     Info (12023): Found entity 1: multiplier_module_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/multiplier_module_testbench.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file divider_module_testbench.v
     Info (12023): Found entity 1: divider_module_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/divider_module_testbench.v Line: 1
-Warning (10238): Verilog Module Declaration warning at queue_module.v(7): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "queue_module" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file queue_module.v
     Info (12023): Found entity 1: queue_module File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file queue_module_testbench.v
     Info (12023): Found entity 1: queue_module_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module_testbench.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file fifo_module_update.v
     Info (12023): Found entity 1: fifo_module_update File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module_update.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file fifo_module_update_testbench.v
+    Info (12023): Found entity 1: fifo_module_update_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module_update_testbench.v Line: 1
 Info (12127): Elaborating entity "top_module" for the top level hierarchy
 Warning (10034): Output port "output_1" at top_module.v(15) has no driver File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module.v Line: 15
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 4 warnings
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 663 megabytes
-    Info: Processing ended: Sat Apr 15 23:46:25 2017
-    Info: Elapsed time: 00:00:22
+    Info: Processing ended: Sun Apr 16 00:58:49 2017
+    Info: Elapsed time: 00:00:21
     Info: Total CPU time (on all processors): 00:00:53
 
 
