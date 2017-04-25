@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -28,11 +29,13 @@ public class CodeGenerator {
     //Constructor of the class with no parameters
     public CodeGenerator() throws ParserConfigurationException, SAXException, IOException 
     {
+        //Set the directory path where the verilog modules are located
         directoryPath = "C:/Users/Felipe/Desktop"
                 + "/Tec/ProyectoDiseno/ProyectoGithub"
                 + "/ProyectoRedesKPN/XML_Compiler";  
         
-        xmlParser = new XMLParser(directoryPath + "/SecondTest.xml"); 
+        //Parse the XML File
+        xmlParser = new XMLParser(directoryPath + "/Test3.xml");  
         
     }
     
@@ -41,19 +44,27 @@ public class CodeGenerator {
      * This method creates all the KPN in hardware code
      */
     public void createKPN() throws IOException{
-        //This method is call to create the top mpdule
+        //First, clean all of the files that are the directory name KPNModules
+        cleanKPNDirectory();
+        
+        //This method is call to create the top module
         codeGeneration();
         
-        //This loop is necessary to get the files of the KPN
+        //This loop is necessary to get the modules files of the KPN
         int numberOfModules = xmlParser.getNumberOfModules();
         String moduleType;
         for(int i = 0; i < numberOfModules; i++){
             moduleType = xmlParser.getModuleType(i);
             addFileToKpnDirectory(moduleType);
-            
         }
     }
     
+    /*
+     * This method delete all the files on the KPN Directory
+     */
+    public void cleanKPNDirectory() throws IOException{
+        FileUtils.cleanDirectory(new File(directoryPath + "/KPNModules/")); 
+    }
     
     /*
      * This method add the files need it to create the KPN to the KPN Directory
@@ -65,6 +76,7 @@ public class CodeGenerator {
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/adder_module.v");
             File adderModule = new File(directoryPath + "/KPNModules/adder_module.v");
             if(!adderModule.exists()) { 
+                //Then, copy the file from the source path to the file in the kpn path
                 Files.copy(sourcePath, kpnPath);
             }
         }
@@ -73,31 +85,31 @@ public class CodeGenerator {
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/subtractor_module.v");
             File subtractorModule = new File(directoryPath + "/KPNModules/subtractor_module.v");
             if(!subtractorModule.exists()) { 
+                //Then, copy the file from the source path to the file in the kpn path
                 Files.copy(sourcePath, kpnPath);
             }
         }
         else if(moduleType.equals("delay")){
             Path kpnPath = Paths.get(directoryPath + "/KPNModules/delay_module.v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/delay_module.v");
-            Files.copy(sourcePath, kpnPath);
             File delayModule = new File(directoryPath + "/KPNModules/delay_module.v");
             if(!delayModule.exists()) { 
+                //Then, copy the file from the source path to the file in the kpn path
                 Files.copy(sourcePath, kpnPath);
             }
         }
         else if(moduleType.equals("clock_divider")){
             Path kpnPath = Paths.get(directoryPath + "/KPNModules/clock_divider.v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/clock_divider.v");
-            Files.copy(sourcePath, kpnPath);
             File clockModule = new File(directoryPath + "/KPNModules/clock_divider.v");
             if(!clockModule.exists()) { 
+                //Then, copy the file from the source path to the file in the kpn path
                 Files.copy(sourcePath, kpnPath);
             }
         }
         else if(moduleType.equals("fifo")){
             Path kpnPath = Paths.get(directoryPath + "/KPNModules/fifo_module.v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/fifo_module.v");
-            Files.copy(sourcePath, kpnPath);
             File fifoModule = new File(directoryPath + "/KPNModules/fifo_module.v");
             if(!fifoModule.exists()) { 
                 Files.copy(sourcePath, kpnPath);
@@ -106,7 +118,6 @@ public class CodeGenerator {
         else if(moduleType.equals("multiplier")){
             Path kpnPath = Paths.get(directoryPath + "/KPNModules/multiplier_module.v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/multiplier_module.v");
-            Files.copy(sourcePath, kpnPath);
             File multiplierModule = new File(directoryPath + "/KPNModules/multiplier_module.v");
             if(!multiplierModule.exists()) { 
                 Files.copy(sourcePath, kpnPath);
@@ -115,7 +126,6 @@ public class CodeGenerator {
         else if(moduleType.equals("split")){
             Path kpnPath = Paths.get(directoryPath + "/KPNModules/split_module.v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/split_module.v");
-            Files.copy(sourcePath, kpnPath);
             File splitModule = new File(directoryPath + "/KPNModules/split_module.v");
             if(!splitModule.exists()) { 
                 Files.copy(sourcePath, kpnPath);
@@ -124,7 +134,6 @@ public class CodeGenerator {
         else{ //In this case, the type is queue
             Path kpnPath = Paths.get(directoryPath + "/KPNModules/queue_module.v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/queue_module.v");
-            Files.copy(sourcePath, kpnPath);
             File queueModule = new File(directoryPath + "/KPNModules/queue_module.v");
             if(!queueModule.exists()) { 
                 Files.copy(sourcePath, kpnPath);
@@ -146,7 +155,7 @@ public class CodeGenerator {
     }
     
     /*
-     * Third method: Generate the code for the top module
+     * Third method: Generate the code for the top module file
      */
     public void codeGeneration() throws IOException{
         //First, we have to create the top_module file
@@ -165,11 +174,12 @@ public class CodeGenerator {
         writeCommentsTopModule("Here, we declare some signals need it to pass "
                 + "information between modules");
         
-        //We rite the intermediate signals of the top module
+        //We write the intermediate signals of the top module
         writeIntermediateSignalsTopModule();
         
         //We have to write some comments for the instantiated modules
         writeCommentsTopModule("Here, we instantiate the modules");
+        top_module.newLine();
         
         //We have to write the instantiated modules
         writeInstantiatedModulesTopModule();
@@ -231,7 +241,36 @@ public class CodeGenerator {
         String moduleId;
         String moduleType;
         String generalSignal = "wire [15:0] output_";
+        String rdSignal = "wire [15:0] rd_";
+        String wrSignal = "wire [15:0] wr_";
+        String finalRdSignal;
+        String finalWrSignal;
         String finalSignal;
+        
+        //This loop writes the wr and rd signals of each module
+        for(int j = 0; j < numberOfModules; j++){
+            moduleId = xmlParser.getModuleId(j);
+            moduleType = xmlParser.getModuleType(j);
+            
+            if(moduleType.equals("fifo")){
+                
+            }
+            else if(moduleType.equals("queue")){
+                finalWrSignal = wrSignal + moduleType + "_module_" + moduleId + ";";
+                top_module.write(finalWrSignal);
+                top_module.newLine();
+            }
+            else{
+                finalRdSignal = rdSignal + moduleType + "_module_" + moduleId + ";";
+                finalWrSignal = wrSignal + moduleType + "_module_" + moduleId + ";";
+                top_module.write(finalRdSignal);
+                top_module.newLine();
+                top_module.write(finalWrSignal);
+                top_module.newLine();
+            }
+        }
+        
+        //This loop writes the outputs of each module
         for(int i = 0; i < numberOfModules; i++){
             moduleId = xmlParser.getModuleId(i);
             moduleType = xmlParser.getModuleType(i);
@@ -279,6 +318,12 @@ public class CodeGenerator {
                 top_module.newLine();
                 top_module.newLine();
             }
+            else{
+                instantiatedString = buildInstantiatedString(moduleType, moduleId, "_", "_");
+                top_module.write(instantiatedString);
+                top_module.newLine();
+                top_module.newLine();
+            }
             
         }
     }
@@ -293,66 +338,163 @@ public class CodeGenerator {
         String[] entry_1_information = entry_1.split("_");
         String[] entry_2_information = entry_2.split("_");
         if(type.equals("adder")){
-            instantiatedString = "adder_module adder_module_inst_" + id + " ("
-                    + ".clk(clk), " + ".entry_1(output_" + entry_1_information[0] 
+            String header = "adder_module adder_module_inst_" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String rd = ".rd(rd_" + type + "_module_" + id + ")";
+            String wr = ".wr(wr_" + type + "_module_" + id + ")";
+            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
                     + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")," + ".entry_2(output_" + entry_2_information[0]
+                    entry_1_information[2] + ")";
+            String secondEntry = ".entry_2(output_" + entry_2_information[0].replaceAll("\\s+","")
                     + "_module_"  + entry_2_information[1] + "_" + 
-                    entry_2_information[2] + "), " + ".output_1(output_" + type 
-                    + "_module_" + id + "_1)" + ";"; 
+                    entry_2_information[2] + ")";
+            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + rd + comma + wr + comma +
+                    firstEntry + comma + secondEntry + comma + output + closeParenthesis + semicolon;
+            
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the adder module");
         }
         else if(type.equals("subtractor")){
-            instantiatedString = "subtractor_module subtractor_module_inst_" + id + " ("
-                    + ".clk(clk), " + ".entry_1(output_" + entry_1_information[0] 
+            String header = "subtractor_module subtractor_module_inst_" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String rd = ".rd(rd_" + type + "_module_" + id + ")";
+            String wr = ".wr(wr_" + type + "_module_" + id + ")";
+            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
                     + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")," + ".entry_2(output_" + entry_2_information[0]
+                    entry_1_information[2] + ")";
+            String secondEntry = ".entry_2(output_" + entry_2_information[0].replaceAll("\\s+","")
                     + "_module_"  + entry_2_information[1] + "_" + 
-                    entry_2_information[2] + "), " + ".output_1(output_" + type 
-                    + "_module_" + id + "_1" + ");";
+                    entry_2_information[2] + ")";
+            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + rd + comma + wr + comma +
+                    firstEntry + comma + secondEntry + comma + output + closeParenthesis + semicolon;
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the subtractor module");
         }
         else if(type.equals("delay")){
-            instantiatedString = "delay_module delay_module_inst" + id + "("
-                    + ".clk(clk), " + ".entry_1(output_" + entry_1_information[0] 
+            String header = "delay_module delay_module_inst" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String rd = ".rd(rd_" + type + "_module_" + id + ")";
+            String wr = ".wr(wr_" + type + "_module_" + id + ")";
+            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
                     + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")," + ".output_1(output_" + type 
-                    + "_module_" + id + "_1)" + ";";
+                    entry_1_information[2] + ")";
+            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + rd + comma + wr + comma +
+                    firstEntry +  comma + output + closeParenthesis + semicolon;
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the delay module");
         }
         else if(type.equals("fifo")){
-            instantiatedString = "fifo_module fifo_module_inst" + id + "("
-                    + ".clk(clk), " + ".entry_1(output_" + entry_1_information[0] 
+            String header = "fifo_module fifo_module_inst" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String wr = ".wr(wr_" + entry_1_information[0].replaceAll("\\s+","") + "_"
+                    + "module_" + entry_1_information[1] + ")";
+            String fifo = type + id;
+            String[] rd = searchRdModule(fifo);
+            String rdInstruction = ".rd(rd_" + rd[0] + "_module_" + rd[1] + ")";
+            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
                     + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")," + ".output_1(output_" + type 
-                    + "_module_" + id + "_1)" + ";";
+                    entry_1_information[2] + ")";
+            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + rdInstruction + comma + wr + comma +
+                    firstEntry +  comma + output + closeParenthesis + semicolon;
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the fifo module");
         }
         else if(type.equals("multiplier")){
-            instantiatedString = "multiplier_module multiplier_module_inst" + id + "("
-                    + ".clk(clk), " + ".entry_1(output_" + entry_1_information[0] 
+            String header = "multiplier_module multiplier_module_inst" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String rd = ".rd(rd_" + type + "_module_" + id + ")";
+            String wr = ".wr(wr_" + type + "_module_" + id + ")";
+            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
                     + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")," + ".entry_2(output_" + entry_2_information[0]
+                    entry_1_information[2] + ")";
+            String secondEntry = ".entry_2(output_" + entry_2_information[0].replaceAll("\\s+","")
                     + "_module_"  + entry_2_information[1] + "_" + 
-                    entry_2_information[2] + "), " + ".output_1(output_" + type 
-                    + "_module_" + id + "_1)" + ";";
+                    entry_2_information[2] + ")";
+            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + rd + comma + wr + comma +
+                    firstEntry + comma + secondEntry + comma + output + closeParenthesis + semicolon;
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the multiplier module");
         }
         else if(type.equals("split")){
-            instantiatedString = "split_module split_module_inst" + id + "("
-                    + ".clk(clk), " + ".entry_1(output_" + entry_1_information[0] 
+            String header = "split_module split_module_inst" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String rd = ".rd(rd_" + type + "_module_" + id + ")";
+            String wr = ".wr(wr_" + type + "_module_" + id + ")";
+            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
                     + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")," + ".output_1(output_" + type 
-                    + "_module_" + id + "_1)" + ".output_2(output_" + type 
-                    + "_module_" + id + "_2)" + ";";
+                    entry_1_information[2] + ")";
+            String firstOutput = ".output_1(output_" + type + "_module_" + id + "_1)";
+            String secondOutput = ".output_2(output_" + type + "_module_" + id + "_2)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + rd + comma + wr + comma +
+                    firstEntry +  comma + firstOutput + comma + secondOutput + closeParenthesis + semicolon;
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the split module");
         }
         else{ //This means the type is "queue"
-            instantiatedString = "queue_module queue_module_inst" + id + "("
-                    + ".clk(clk), " + ".output_1(output_" + type 
-                    + "_module_" + id + "_1)" + ";";
+            String header = "queue_module queue_module_inst" + id;
+            String openParenthesis = "(";
+            String closeParenthesis = ")";
+            String comma = ", ";
+            String semicolon = ";";
+            String clk = ".clk(clk)";
+            String wr = ".wr(wr_" + type + "_module_" + id + ")";
+            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            
+            instantiatedString = header + openParenthesis + clk + comma + wr + comma + output 
+                    + closeParenthesis + semicolon;
+            
+            //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the queue module");
         }
         return instantiatedString;
+    }
+    
+    /*
+     * Search for the rd to complete the module
+     */
+    public String[] searchRdModule(String fifo) throws IOException{
+        //First, we have to write the entries
+        return xmlParser.getRdModule(fifo);
     }
 }

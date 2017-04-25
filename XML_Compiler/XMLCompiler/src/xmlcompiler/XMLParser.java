@@ -57,6 +57,49 @@ public class XMLParser {
     }
     
     /*
+     * This method is used to get the rd signal for the FIFO 
+     */
+    public String[] getRdModule(String fifo)
+    {
+        //Get the number of nodes
+        NodeList nodesList = xmlDoc.getElementsByTagName("module");
+        int numberOfModules = getNumberOfModules();
+        String[] rd = {"",""};
+        for(int i = 0; i < numberOfModules; i++){
+            int numberOfEntries = getNumberOfEntries(i);
+            if(numberOfEntries == 1){
+                String entry_1 = getModuleEntry1(i);
+                String[] entry1_information = entry_1.split("_");
+                entry_1 = entry1_information[0].replaceAll("\\s+","") + entry1_information[1];
+                if(entry_1.equals(fifo)){
+                    rd[0] = getModuleType(i);
+                    rd[1] = getModuleId(i);
+                }
+            }
+            else if (numberOfEntries == 2){
+                String entry_1 = getModuleEntry1(i);
+                String entry_2 = getModuleEntry2(i);
+                String[] entry1_information = entry_1.split("_");
+                String[] entry2_information = entry_2.split("_");
+                entry_1 = entry1_information[0].replaceAll("\\s+","") + entry1_information[1];
+                entry_2 = entry2_information[0].replaceAll("\\s+","") + entry2_information[1];
+
+                if(entry_1.equals(fifo)){
+                    rd[0] = getModuleType(i);
+                    rd[1] = getModuleId(i);
+                }
+                else if(entry_2.equals(fifo)){
+                    rd[0] = getModuleType(i);
+                    rd[1] = getModuleId(i);
+                }
+            }
+            
+            
+        }
+        return rd;
+    }
+    
+    /*
      * This method is used to get the type of the module need it for the KPN
      */
     public String getModuleType(int numberOfModule)

@@ -7,7 +7,7 @@ output_1
  * We define the type of entries and outputs
  */
 
-input clk; 
+input clk;
 output [15:0] output_1;
 
 
@@ -17,10 +17,16 @@ output [15:0] output_1;
  *
  */
 
- wire lcd_clock;
- wire show_result;
- wire [15:0] result;
- wire entry_2_finished; //This is use to show the result of the adder
+ wire kpn_clk;
+ wire queue_1_wr;
+ wire[15:0] queue_1_output;
+ wire[15:0] queue_2_output;
+ wire queue_2_wr;
+ wire[15:0] fifo_1_output;
+ wire[15:0] fifo_2_output;
+ wire fifo_3_rd;
+ wire adder_1_rd;
+ wire adder_1_wr;
 
 /*
  * Here, we instantiate the modules
@@ -28,14 +34,25 @@ output [15:0] output_1;
  *
  */
  
-
  //This is the instance of the clock divider module
- clock_divider lcd_clock_inst(.clk_in(clock), .clk_out(lcd_clock));
+ clock_divider clk_inst(.clk_in(clk), .clk_out(kpn_clk));
  
- //This is the instance of the adder module
- adder_module adder_inst(.entry_1(entry_1), .entry_2(entry_1), .reset(reset),  .add(show_entries), .show_add(entry_2_finished), .result(result), .show_result(show_result));
-
- //This is an instance of the LCD module
- write_to_lcd write_to_lcd_inst(.entry_1(entry_1), .entry_2(entry_1), .show_entry_1(show_entries), .show_entry_2(show_entries), .reset(reset), .show_result(show_result), .clock(lcd_clock), .result(result), .rs(rs), .rw(rw), .on(on), .enable(en), .lcd_data(lcd_data), .entry_2_finished(entry_2_finished));
+ //This is the queue1
+ queue_module queue_1_inst(.clk(clk), .wr(queue_1_wr), .output_1(queue_1_output));
+ 
+ //This is the queue2
+ queue_module queue_2_inst(.clk(clk), .wr(queue_2_wr), .output_1(queue_2_output));
+ 
+ //This is the fifo1
+ fifo_module_update fifo_1_inst(.clk(clk), .rd(adder_1_rd),
+ .wr(queue_1_wr), .entry_1(queue_1_output), .output_1(fifo_1_output));
+ 
+ //This is the fifo2
+ fifo_module_update fifo_2_inst(.clk(clk), .rd(adder_1_rd),
+ .wr(queue_2_wr), .entry_1(queue_2_output), .output_1(fifo_2_output));
+ 
+ //This is the adder
+ adder_module adder_inst(.clk(clk), .rd(adder_1_rd), .wr(adder_1_wr), .entry_1(fifo_1_output), .entry_2(fifo_2_output), .output_1(output_1));
+ 
  
 endmodule
