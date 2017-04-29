@@ -1,15 +1,15 @@
-Fitter Status : Successful - Sun Apr 16 03:20:05 2017
+Fitter Status : Successful - Thu Apr 27 05:45:23 2017
 Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 Revision Name : KPN_Modules
-Top-level Entity Name : top_module
+Top-level Entity Name : top_module_lcd
 Family : Cyclone IV GX
 Device : EP4CGX150DF31C7
 Timing Models : Final
-Total logic elements : 0 / 149,760 ( 0 % )
-    Total combinational functions : 0 / 149,760 ( 0 % )
-    Dedicated logic registers : 0 / 149,760 ( 0 % )
-Total registers : 0
-Total pins : 36 / 508 ( 7 % )
+Total logic elements : 1,477 / 149,760 ( < 1 % )
+    Total combinational functions : 1,469 / 149,760 ( < 1 % )
+    Dedicated logic registers : 71 / 149,760 ( < 1 % )
+Total registers : 71
+Total pins : 13 / 508 ( 3 % )
 Total virtual pins : 0
 Total memory bits : 0 / 6,635,520 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 720 ( 0 % )

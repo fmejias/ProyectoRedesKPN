@@ -1,5 +1,7 @@
 module multiplier_module (
 clk,
+rd,
+wr,
 entry_1,
 entry_2,
 output_1
@@ -13,6 +15,8 @@ input clk;
 input [15:0] entry_1;
 input [15:0] entry_2; 
 output [31:0] output_1;
+output wr;
+output rd;
 
 /*
  * We define the type of outputs
@@ -115,7 +119,18 @@ output [31:0] output_1;
 	output_1 = output_1 + mult_14;
 	output_1 = output_1 + mult_15;
 	output_1 = output_1 + mult_16; 
+	$display("La entrada 1 es:", entry_1);
+   $display("La entrada 2 es:", entry_2);
+   $display("La salida es:", output_1);
 
  end
+ 
+/*
+ * We set rd and wr
+ * 
+ */
+ 
+ assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
+ assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
 
 endmodule // end multiplier_module

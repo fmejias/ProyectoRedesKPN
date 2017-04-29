@@ -1,0 +1,20 @@
+|top_module
+clk => ~NO_FANOUT~
+output_1[0] << <GND>
+output_1[1] << <GND>
+output_1[2] << <GND>
+output_1[3] << <GND>
+output_1[4] << <GND>
+output_1[5] << <GND>
+output_1[6] << <GND>
+output_1[7] << <GND>
+output_1[8] << <GND>
+output_1[9] << <GND>
+output_1[10] << <GND>
+output_1[11] << <GND>
+output_1[12] << <GND>
+output_1[13] << <GND>
+output_1[14] << <GND>
+output_1[15] << <GND>
+
+

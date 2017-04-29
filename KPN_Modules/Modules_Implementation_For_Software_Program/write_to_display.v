@@ -62,6 +62,7 @@ output [6:0] hex_0;
  
  always @(posedge clk)
  begin
+	$display("La entrada recibida es:", entry_1);
 	thousands = entry_1[15:12];
 	hundreds = entry_1[11:8];
 	tens = entry_1[7:4];
@@ -118,6 +119,62 @@ output [6:0] hex_0;
  begin
  hex_3 = 7'b0011000; //This instruction draws a 9 in the HEX3
  end
+ else
+ begin
+ hex_3 = 7'b1000000; //This instruction draws a 0 in the HEX3
+ end
+ 
+ 
+ end
+ 
+ 
+ always @(posedge clk)
+ begin
+ 
+ if(hundreds == 4'b0000) 
+ begin
+ hex_2 = 7'b1000000; //This instruction draws a 0 in the HEX3
+ end
+ else if(hundreds == 4'b0001) 
+ begin
+ hex_2 = 7'b1111001; //This instruction draws a 1 in the HEX3
+ end
+ else if(hundreds == 4'b0010) 
+ begin
+ hex_2 = 7'b0100100; //This instruction draws a 2 in the HEX3
+ end
+ else if(hundreds == 4'b0011) 
+ begin
+ hex_2 = 7'b0110000; //This instruction draws a 3 in the HEX3
+ end
+ else if(hundreds == 4'b0100) 
+ begin
+ hex_2 = 7'b0011001; //This instruction draws a 4 in the HEX3
+ end
+ else if(hundreds == 4'b0101) 
+ begin
+ hex_2 = 7'b0010010; //This instruction draws a 5 in the HEX3
+ end
+ else if(hundreds == 4'b0110) 
+ begin
+ hex_2 = 7'b0000010; //This instruction draws a 6 in the HEX3
+ end
+ else if(hundreds == 4'b0111) 
+ begin
+ hex_2 = 7'b1011000; //This instruction draws a 7 in the HEX3
+ end
+ else if(hundreds == 4'b1000) 
+ begin
+ hex_2 = 7'b0000000; //This instruction draws a 8 in the HEX3
+ end
+ else if(hundreds == 4'b1001) 
+ begin
+ hex_2 = 7'b0011000; //This instruction draws a 9 in the HEX3
+ end
+ else
+ begin
+ hex_2 = 7'b1000000; //This instruction draws a 0 in the HEX3
+ end
  
  
  end
@@ -128,7 +185,7 @@ output [6:0] hex_0;
  *
  */
  
- always @(posedge clk)
+ /*always @(posedge clk)
  begin
  
  case(hundreds)
@@ -184,12 +241,12 @@ output [6:0] hex_0;
 		
 	default:
 		begin
-			hex_2 = 7'b1111111; //This instruction turns off HEX2
+			hex_2 = 7'b1000000; //This instruction draws a 0 in the HEX2; 
 		end
 		
  endcase
  end
- 
+ */
  
  /*
  * Here, we draw in the HEX1 display
@@ -253,7 +310,7 @@ output [6:0] hex_0;
 		
 	default:
 		begin
-			hex_1 = 7'b1111111; //This instruction turns off HEX1
+			hex_1 = 7'b1000000; //This instruction draws a 0 in the HEX1
 		end
 		
  endcase
@@ -321,7 +378,7 @@ output [6:0] hex_0;
 		
 	default:
 		begin
-			hex_0 = 7'b1111111; //This instruction turns off HEX0
+			hex_0 = 7'b1000000; //This instruction draws a 0 in the HEX0
 		end
 		
  endcase

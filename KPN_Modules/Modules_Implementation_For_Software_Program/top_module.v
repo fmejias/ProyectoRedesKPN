@@ -28,6 +28,7 @@ output [15:0] output_1;
  wire fifo_3_rd;
  wire adder_1_rd;
  wire adder_1_wr;
+ 
 
 /*
  * Here, we instantiate the modules
@@ -55,6 +56,8 @@ output [15:0] output_1;
  //This is the adder
  adder_module adder_inst(.clk(clk), .rd(adder_1_rd), .wr(adder_1_wr), .entry_1(fifo_1_output), .entry_2(fifo_2_output), .output_1(output_1));
  
+ //This is the multiplier
+ //multiplier_module adder_inst(.clk(clk), .rd(adder_1_rd), .wr(adder_1_wr), .entry_1(fifo_1_output), .entry_2(fifo_2_output), .output_1(output_1));
 
  
  //This is the first instance of the bcd_converter

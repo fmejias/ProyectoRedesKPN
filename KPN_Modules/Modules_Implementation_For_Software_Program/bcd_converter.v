@@ -1,4 +1,5 @@
 module bcd_converter (
+clk,
 binary_number,
 bcd_number
 );
@@ -6,7 +7,7 @@ bcd_number
 /*
  * We define the type of entries and outputs
  */
- 
+input clk;
 input [15:0] binary_number;
 output [15:0] bcd_number;
 
@@ -27,11 +28,13 @@ reg [3:0] ones;
 reg [31:0] shift;
 integer i;
    
-always @(binary_number)
+always @(negedge clk)
 begin
+	 // $display("La entrada recibida es:", binary_number);
     // Clear previous number and store new number in shift register
     shift[31:15] = 0;
     shift[15:0] = binary_number;
+	// prueba = prueba + 16'd10;
       
     // Loop eight times
     for (i=0; i<16; i=i+1) begin

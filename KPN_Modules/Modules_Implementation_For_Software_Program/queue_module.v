@@ -30,7 +30,7 @@ reg empty_reg = 1'b0;
 reg full_next, empty_next;
 wire wr_en;
 wire empty;
-reg [BITS_NUMBER-1:0] output_1;
+reg [BITS_NUMBER-1:0] output_1 = 16'h0000;
 
 
 /*
@@ -43,6 +43,8 @@ begin
 	w_ptr_reg = 5'h04;
 	r_ptr_reg = 5'h00;
 	empty_reg = 1'b0;
+	
+	output_1 = 16'h0000;
 
 end
 
