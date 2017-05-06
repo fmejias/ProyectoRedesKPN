@@ -1,5 +1,5 @@
 Analysis & Synthesis report for KPN_Modules
-Thu Apr 27 05:44:23 2017
+Sat May 06 10:34:06 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -13,21 +13,23 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. User-Specified and Inferred Latches
+  8. Analysis & Synthesis RAM Summary
   9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: clock_divider:clk_inst
- 15. Parameter Settings for User Entity Instance: queue_module:queue_1_inst
- 16. Parameter Settings for User Entity Instance: queue_module:queue_2_inst
- 17. Parameter Settings for User Entity Instance: fifo_module:fifo_1_inst
- 18. Parameter Settings for User Entity Instance: fifo_module:fifo_2_inst
- 19. Parameter Settings for User Entity Instance: fifo_module:fifo_3_inst
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+ 10. General Register Statistics
+ 11. Registers Packed Into Inferred Megafunctions
+ 12. Source assignments for fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0|altsyncram_vpb1:auto_generated
+ 13. Parameter Settings for User Entity Instance: clock_divider:clk_inst
+ 14. Parameter Settings for User Entity Instance: queue_module:queue_1_inst
+ 15. Parameter Settings for User Entity Instance: queue_module:queue_2_inst
+ 16. Parameter Settings for User Entity Instance: fifo_pong_chu:fifo_1_inst
+ 17. Parameter Settings for User Entity Instance: fifo_pong_chu:fifo_2_inst
+ 18. Parameter Settings for Inferred Entity Instance: fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0
+ 19. altsyncram Parameter Settings by Entity Instance
+ 20. Port Connectivity Checks: "bcd_converter:bcd_converter_inst"
+ 21. Port Connectivity Checks: "adder_module:adder_inst"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -54,18 +56,18 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 27 05:44:23 2017       ;
+; Analysis & Synthesis Status        ; Successful - Sat May 06 10:34:06 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; KPN_Modules                                 ;
-; Top-level Entity Name              ; top_module_lcd                              ;
+; Top-level Entity Name              ; top_module_display                          ;
 ; Family                             ; Cyclone IV GX                               ;
-; Total logic elements               ; 1,469                                       ;
-;     Total combinational functions  ; 1,469                                       ;
-;     Dedicated logic registers      ; 71                                          ;
-; Total registers                    ; 71                                          ;
-; Total pins                         ; 13                                          ;
+; Total logic elements               ; 99                                          ;
+;     Total combinational functions  ; 99                                          ;
+;     Dedicated logic registers      ; 41                                          ;
+; Total registers                    ; 41                                          ;
+; Total pins                         ; 36                                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
+; Total memory bits                  ; 512                                         ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total GXB Receiver Channel PCS     ; 0                                           ;
 ; Total GXB Receiver Channel PMA     ; 0                                           ;
@@ -81,7 +83,7 @@ agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CGX150DF31C7    ;                    ;
-; Top-level entity name                                                      ; top_module_lcd     ; KPN_Modules        ;
+; Top-level entity name                                                      ; top_module_display ; KPN_Modules        ;
 ; Family name                                                                ; Cyclone IV GX      ; Cyclone V          ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -178,19 +180,30 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                ;
-+---------------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path      ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                                                                             ; Library ;
-+---------------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
-; adder_module.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/adder_module.v                        ;         ;
-; fifo_module.v                         ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v                         ;         ;
-; clock_divider_module.v                ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v                ;         ;
-; queue_module.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v                        ;         ;
-; lcd_module.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v                          ;         ;
-; top_module_lcd.v                      ; yes             ; User Verilog HDL File  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v                      ;         ;
-; test_modules/queue_precharge_data.txt ; yes             ; Auto-Found File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/test_modules/queue_precharge_data.txt ;         ;
-+---------------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                      ;
++---------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path      ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                                                             ; Library ;
++---------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; adder_module.v                        ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/adder_module.v                        ;         ;
+; clock_divider_module.v                ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v                ;         ;
+; queue_module.v                        ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v                        ;         ;
+; write_to_display.v                    ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v                    ;         ;
+; bcd_converter.v                       ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v                       ;         ;
+; top_module_display.v                  ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v                  ;         ;
+; fifo_pong_chu.v                       ; yes             ; User Verilog HDL File        ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v                       ;         ;
+; test_modules/queue_precharge_data.txt ; yes             ; Auto-Found File              ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/test_modules/queue_precharge_data.txt ;         ;
+; altsyncram.tdf                        ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf                                                                                                    ;         ;
+; stratix_ram_block.inc                 ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                                             ;         ;
+; lpm_mux.inc                           ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc                                                                                                       ;         ;
+; lpm_decode.inc                        ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_decode.inc                                                                                                    ;         ;
+; aglobal161.inc                        ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc                                                                                                    ;         ;
+; a_rdenreg.inc                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                                                     ;         ;
+; altrom.inc                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc                                                                                                        ;         ;
+; altram.inc                            ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc                                                                                                        ;         ;
+; altdpram.inc                          ; yes             ; Megafunction                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc                                                                                                      ;         ;
+; db/altsyncram_vpb1.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/db/altsyncram_vpb1.tdf                ;         ;
++---------------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------+
@@ -198,181 +211,67 @@ agreement for further details.
 +--------------------------+---------------------------------------+
 ; Resource                 ; Usage                                 ;
 +--------------------------+---------------------------------------+
-; I/O pins                 ; 13                                    ;
+; I/O pins                 ; 36                                    ;
+; Total memory bits        ; 512                                   ;
 ;                          ;                                       ;
 ; DSP block 9-bit elements ; 0                                     ;
 ;                          ;                                       ;
-; Maximum fan-out node     ; clock_divider:clk_inst|divcounter[22] ;
-; Maximum fan-out          ; 169                                   ;
-; Total fan-out            ; 5217                                  ;
-; Average fan-out          ; 3.33                                  ;
+; Maximum fan-out node     ; clock_divider:clk_inst|divcounter[26] ;
+; Maximum fan-out          ; 33                                    ;
+; Total fan-out            ; 644                                   ;
+; Average fan-out          ; 2.82                                  ;
 +--------------------------+---------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                     ;
-+-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------------------+----------------+--------------+
-; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                          ; Entity Name    ; Library Name ;
-+-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------------------+----------------+--------------+
-; |top_module_lcd                   ; 1469 (96)           ; 71 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0         ; 13   ; 0            ; |top_module_lcd                              ; top_module_lcd ; work         ;
-;    |adder_module:adder_inst|      ; 9 (9)               ; 9 (9)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|adder_module:adder_inst      ; adder_module   ; work         ;
-;    |clock_divider:clk_inst|       ; 38 (38)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|clock_divider:clk_inst       ; clock_divider  ; work         ;
-;    |fifo_module:fifo_1_inst|      ; 337 (337)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|fifo_module:fifo_1_inst      ; fifo_module    ; work         ;
-;    |fifo_module:fifo_2_inst|      ; 338 (338)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|fifo_module:fifo_2_inst      ; fifo_module    ; work         ;
-;    |fifo_module:fifo_3_inst|      ; 535 (535)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|fifo_module:fifo_3_inst      ; fifo_module    ; work         ;
-;    |lcd_module:write_to_lcd_inst| ; 100 (100)           ; 28 (28)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|lcd_module:write_to_lcd_inst ; lcd_module     ; work         ;
-;    |queue_module:queue_1_inst|    ; 8 (8)               ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|queue_module:queue_1_inst    ; queue_module   ; work         ;
-;    |queue_module:queue_2_inst|    ; 8 (8)               ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_lcd|queue_module:queue_2_inst    ; queue_module   ; work         ;
-+-----------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------------------+----------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                            ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                     ; Entity Name        ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------------+--------------+
+; |top_module_display                       ; 99 (1)              ; 41 (0)                    ; 512         ; 0            ; 0       ; 0         ; 0         ; 36   ; 0            ; |top_module_display                                                                                     ; top_module_display ; work         ;
+;    |clock_divider:clk_inst|               ; 49 (49)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_display|clock_divider:clk_inst                                                              ; clock_divider      ; work         ;
+;    |fifo_pong_chu:fifo_1_inst|            ; 7 (7)               ; 5 (5)                     ; 512         ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_display|fifo_pong_chu:fifo_1_inst                                                           ; fifo_pong_chu      ; work         ;
+;       |altsyncram:array_reg_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_display|fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0                                ; altsyncram         ; work         ;
+;          |altsyncram_vpb1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_display|fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0|altsyncram_vpb1:auto_generated ; altsyncram_vpb1    ; work         ;
+;    |queue_module:queue_1_inst|            ; 14 (14)             ; 9 (9)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_display|queue_module:queue_1_inst                                                           ; queue_module       ; work         ;
+;    |write_to_display:display_inst|        ; 28 (28)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |top_module_display|write_to_display:display_inst                                                       ; write_to_display   ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                                  ;
-+------------------------------------------------------+--------------------------------------+------------------------+
-; Latch Name                                           ; Latch Enable Signal                  ; Free of Timing Hazards ;
-+------------------------------------------------------+--------------------------------------+------------------------+
-; fifo_module:fifo_3_inst|output_1[1]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[2]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[3]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[6]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[5]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[4]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[7]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[8]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|output_1[9]                  ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~45                 ; rtl~0                                ; yes                    ;
-; fifo_module:fifo_3_inst|r_ptr_reg[2]                 ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~27                 ; rtl~1                                ; yes                    ;
-; fifo_module:fifo_3_inst|r_ptr_reg[1]                 ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~9                  ; rtl~2                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~63                 ; rtl~3                                ; yes                    ;
-; fifo_module:fifo_3_inst|r_ptr_reg[0]                 ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~90                 ; rtl~4                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~108                ; rtl~5                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~72                 ; rtl~6                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~126                ; rtl~7                                ; yes                    ;
-; fifo_module:fifo_3_inst|r_ptr_reg[3]                 ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~36                 ; rtl~8                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~18                 ; rtl~9                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~0                  ; rtl~10                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~54                 ; rtl~11                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~99                 ; rtl~12                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~117                ; rtl~13                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~81                 ; rtl~14                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~135                ; rtl~15                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~234                ; rtl~16                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~171                ; rtl~17                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~162                ; rtl~18                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~243                ; rtl~19                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~189                ; rtl~20                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~252                ; rtl~21                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~180                ; rtl~22                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~261                ; rtl~23                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~216                ; rtl~24                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~153                ; rtl~25                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~144                ; rtl~26                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~225                ; rtl~27                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~207                ; rtl~28                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~270                ; rtl~29                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~198                ; rtl~30                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~279                ; rtl~31                               ; yes                    ;
-; fifo_module:fifo_3_inst|r_ptr_reg[4]                 ; fifo_module:fifo_3_inst|output_1[15] ; yes                    ;
-; fifo_module:fifo_3_inst|empty_reg                    ; fifo_module:fifo_3_inst|empty_reg    ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~109                ; rtl~5                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~91                 ; rtl~4                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~73                 ; rtl~6                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~127                ; rtl~7                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~28                 ; rtl~1                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~46                 ; rtl~0                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~10                 ; rtl~2                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~64                 ; rtl~3                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~37                 ; rtl~8                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~19                 ; rtl~9                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~1                  ; rtl~10                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~55                 ; rtl~11                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~118                ; rtl~13                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~100                ; rtl~12                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~82                 ; rtl~14                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~136                ; rtl~15                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~172                ; rtl~17                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~235                ; rtl~16                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~163                ; rtl~18                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~244                ; rtl~19                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~253                ; rtl~21                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~190                ; rtl~20                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~181                ; rtl~22                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~262                ; rtl~23                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~154                ; rtl~25                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~217                ; rtl~24                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~145                ; rtl~26                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~226                ; rtl~27                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~271                ; rtl~29                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~208                ; rtl~28                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~199                ; rtl~30                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~280                ; rtl~31                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~47                 ; rtl~0                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~29                 ; rtl~1                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~11                 ; rtl~2                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~65                 ; rtl~3                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~92                 ; rtl~4                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~110                ; rtl~5                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~74                 ; rtl~6                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~128                ; rtl~7                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~38                 ; rtl~8                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~20                 ; rtl~9                                ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~2                  ; rtl~10                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~56                 ; rtl~11                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~101                ; rtl~12                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~119                ; rtl~13                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~83                 ; rtl~14                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~137                ; rtl~15                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~236                ; rtl~16                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~173                ; rtl~17                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~164                ; rtl~18                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~245                ; rtl~19                               ; yes                    ;
-; fifo_module:fifo_3_inst|array_reg~191                ; rtl~20                               ; yes                    ;
-; Number of user-specified and inferred latches = 861  ;                                      ;                        ;
-+------------------------------------------------------+--------------------------------------+------------------------+
-Table restricted to first 100 entries. Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                   ;
++------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                           ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0|altsyncram_vpb1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 16           ; 32           ; 16           ; 512  ; None ;
++------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
-+-----------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                        ;
-+------------------------------------------------------+----------------------------------------------------+
-; Register name                                        ; Reason for Removal                                 ;
-+------------------------------------------------------+----------------------------------------------------+
-; queue_module:queue_2_inst|empty_reg                  ; Merged with queue_module:queue_1_inst|empty_reg    ;
-; queue_module:queue_2_inst|r_ptr_reg[0]               ; Merged with queue_module:queue_1_inst|r_ptr_reg[0] ;
-; queue_module:queue_2_inst|r_ptr_reg[1]               ; Merged with queue_module:queue_1_inst|r_ptr_reg[1] ;
-; queue_module:queue_2_inst|r_ptr_reg[2]               ; Merged with queue_module:queue_1_inst|r_ptr_reg[2] ;
-; queue_module:queue_2_inst|r_ptr_reg[3]               ; Merged with queue_module:queue_1_inst|r_ptr_reg[3] ;
-; queue_module:queue_2_inst|r_ptr_reg[4]               ; Merged with queue_module:queue_1_inst|r_ptr_reg[4] ;
-; lcd_module:write_to_lcd_inst|rw                      ; Stuck at GND due to stuck port data_in             ;
-; queue_module:queue_2_inst|output_1[0,9..15]          ; Stuck at GND due to stuck port data_in             ;
-; queue_module:queue_1_inst|output_1[0,9..15]          ; Stuck at GND due to stuck port data_in             ;
-; adder_module:adder_inst|output_1[0,10..15]           ; Stuck at GND due to stuck port data_in             ;
-; queue_module:queue_1_inst|output_1[1]                ; Merged with queue_module:queue_2_inst|output_1[1]  ;
-; queue_module:queue_2_inst|output_1[4]                ; Merged with queue_module:queue_2_inst|output_1[2]  ;
-; queue_module:queue_1_inst|output_1[2,4]              ; Merged with queue_module:queue_2_inst|output_1[2]  ;
-; queue_module:queue_1_inst|output_1[3]                ; Merged with queue_module:queue_2_inst|output_1[3]  ;
-; queue_module:queue_2_inst|output_1[6,8]              ; Merged with queue_module:queue_2_inst|output_1[5]  ;
-; queue_module:queue_1_inst|output_1[5,6,8]            ; Merged with queue_module:queue_2_inst|output_1[5]  ;
-; queue_module:queue_1_inst|output_1[7]                ; Merged with queue_module:queue_2_inst|output_1[7]  ;
-; lcd_module:write_to_lcd_inst|entry_letter_counter[4] ; Lost fanout                                        ;
-; Total Number of Removed Registers = 42               ;                                                    ;
-+------------------------------------------------------+----------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                     ;
-+---------------------------------------+---------------------------+-----------------------------------------------------------------------------+
-; Register name                         ; Reason for Removal        ; Registers Removed due to This Register                                      ;
-+---------------------------------------+---------------------------+-----------------------------------------------------------------------------+
-; queue_module:queue_2_inst|output_1[0] ; Stuck at GND              ; adder_module:adder_inst|output_1[10], adder_module:adder_inst|output_1[11], ;
-;                                       ; due to stuck port data_in ; adder_module:adder_inst|output_1[12], adder_module:adder_inst|output_1[13], ;
-;                                       ;                           ; adder_module:adder_inst|output_1[14], adder_module:adder_inst|output_1[15]  ;
-+---------------------------------------+---------------------------+-----------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                             ;
++-------------------------------------------+----------------------------------------------------+
+; Register name                             ; Reason for Removal                                 ;
++-------------------------------------------+----------------------------------------------------+
+; write_to_display:display_inst|hex_4[5,6]  ; Stuck at GND due to stuck port data_in             ;
+; write_to_display:display_inst|hex_4[4]    ; Stuck at VCC due to stuck port data_in             ;
+; write_to_display:display_inst|hex_4[2,3]  ; Stuck at GND due to stuck port data_in             ;
+; write_to_display:display_inst|hex_4[1]    ; Stuck at VCC due to stuck port data_in             ;
+; write_to_display:display_inst|hex_4[0]    ; Stuck at GND due to stuck port data_in             ;
+; adder_module:adder_inst|pruebaWr          ; Merged with adder_module:adder_inst|pruebaRd       ;
+; queue_module:queue_1_inst|pruebaRd        ; Merged with adder_module:adder_inst|pruebaRd       ;
+; queue_module:queue_1_inst|pruebaWr        ; Merged with adder_module:adder_inst|pruebaRd       ;
+; adder_module:adder_inst|pruebaRd          ; Lost fanout                                        ;
+; fifo_pong_chu:fifo_1_inst|empty_reg       ; Lost fanout                                        ;
+; fifo_pong_chu:fifo_1_inst|w_ptr_reg[0]    ; Merged with fifo_pong_chu:fifo_1_inst|r_ptr_reg[0] ;
+; fifo_pong_chu:fifo_1_inst|w_ptr_reg[1]    ; Merged with fifo_pong_chu:fifo_1_inst|r_ptr_reg[1] ;
+; fifo_pong_chu:fifo_1_inst|w_ptr_reg[2]    ; Merged with fifo_pong_chu:fifo_1_inst|r_ptr_reg[2] ;
+; fifo_pong_chu:fifo_1_inst|w_ptr_reg[3]    ; Merged with fifo_pong_chu:fifo_1_inst|r_ptr_reg[3] ;
+; fifo_pong_chu:fifo_1_inst|w_ptr_reg[4]    ; Merged with fifo_pong_chu:fifo_1_inst|r_ptr_reg[4] ;
+; fifo_pong_chu:fifo_1_inst|full_reg        ; Stuck at GND due to stuck port data_in             ;
+; queue_module:queue_1_inst|output_1[3..15] ; Stuck at GND due to stuck port data_in             ;
+; Total Number of Removed Registers = 31    ;                                                    ;
++-------------------------------------------+----------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -380,49 +279,41 @@ Table restricted to first 100 entries. Note: All latches listed above may not be
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 71    ;
-; Number of registers using Synchronous Clear  ; 8     ;
-; Number of registers using Synchronous Load   ; 7     ;
+; Total registers                              ; 41    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 29    ;
+; Number of registers using Clock Enable       ; 5     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------+
-; Inverted Register Statistics                                   ;
-+------------------------------------------------------+---------+
-; Inverted Register                                    ; Fan out ;
-+------------------------------------------------------+---------+
-; lcd_module:write_to_lcd_inst|enable                  ; 2       ;
-; lcd_module:write_to_lcd_inst|lcd_data[0]             ; 2       ;
-; lcd_module:write_to_lcd_inst|command_delay           ; 20      ;
-; lcd_module:write_to_lcd_inst|entry_letter_counter[1] ; 5       ;
-; lcd_module:write_to_lcd_inst|entry_letter_counter[0] ; 3       ;
-; lcd_module:write_to_lcd_inst|entry_letter_counter[3] ; 3       ;
-; lcd_module:write_to_lcd_inst|entry_letter_counter[2] ; 2       ;
-; Total number of inverted registers = 7               ;         ;
-+------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                                 ;
++-------------------------------------------+-------------------------------------------+------+
+; Register Name                             ; Megafunction                              ; Type ;
++-------------------------------------------+-------------------------------------------+------+
+; fifo_pong_chu:fifo_1_inst|output_1[0..15] ; fifo_pong_chu:fifo_1_inst|array_reg_rtl_0 ; RAM  ;
++-------------------------------------------+-------------------------------------------+------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
-; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; Yes        ; |top_module_lcd|lcd_module:write_to_lcd_inst|cursor_address[1]       ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |top_module_lcd|lcd_module:write_to_lcd_inst|entry_letter_counter[3] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------+
+; Source assignments for fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0|altsyncram_vpb1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                           ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                            ;
++---------------------------------+--------------------+------+----------------------------------------------+
 
 
 +---------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: clock_divider:clk_inst ;
-+----------------+---------+------------------------------------------+
-; Parameter Name ; Value   ; Type                                     ;
-+----------------+---------+------------------------------------------+
-; M              ; 5000000 ; Signed Integer                           ;
-+----------------+---------+------------------------------------------+
++----------------+-----------+----------------------------------------+
+; Parameter Name ; Value     ; Type                                   ;
++----------------+-----------+----------------------------------------+
+; M              ; 100000000 ; Signed Integer                         ;
++----------------+-----------+----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -450,37 +341,125 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: fifo_module:fifo_1_inst ;
-+----------------+-------+---------------------------------------------+
-; Parameter Name ; Value ; Type                                        ;
-+----------------+-------+---------------------------------------------+
-; BITS_NUMBER    ; 16    ; Signed Integer                              ;
-; FIFO_ELEMENTS  ; 5     ; Signed Integer                              ;
-+----------------+-------+---------------------------------------------+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_pong_chu:fifo_1_inst ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; B              ; 16    ; Signed Integer                                ;
+; W              ; 5     ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: fifo_module:fifo_2_inst ;
-+----------------+-------+---------------------------------------------+
-; Parameter Name ; Value ; Type                                        ;
-+----------------+-------+---------------------------------------------+
-; BITS_NUMBER    ; 16    ; Signed Integer                              ;
-; FIFO_ELEMENTS  ; 5     ; Signed Integer                              ;
-+----------------+-------+---------------------------------------------+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_pong_chu:fifo_2_inst ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; B              ; 16    ; Signed Integer                                ;
+; W              ; 5     ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: fifo_module:fifo_3_inst ;
-+----------------+-------+---------------------------------------------+
-; Parameter Name ; Value ; Type                                        ;
-+----------------+-------+---------------------------------------------+
-; BITS_NUMBER    ; 16    ; Signed Integer                              ;
-; FIFO_ELEMENTS  ; 5     ; Signed Integer                              ;
-+----------------+-------+---------------------------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0 ;
++------------------------------------+----------------------+-------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                      ;
++------------------------------------+----------------------+-------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                   ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                            ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                   ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                   ;
+; WIDTH_A                            ; 16                   ; Untyped                                   ;
+; WIDTHAD_A                          ; 5                    ; Untyped                                   ;
+; NUMWORDS_A                         ; 32                   ; Untyped                                   ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                   ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                   ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                   ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                   ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                   ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                   ;
+; WIDTH_B                            ; 16                   ; Untyped                                   ;
+; WIDTHAD_B                          ; 5                    ; Untyped                                   ;
+; NUMWORDS_B                         ; 32                   ; Untyped                                   ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                   ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                   ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                   ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                   ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                                   ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                   ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                   ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                   ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                   ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                   ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                   ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                   ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                                   ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                   ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                   ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                   ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                   ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                   ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                   ;
+; INIT_FILE                          ; UNUSED               ; Untyped                                   ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                   ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                   ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                                   ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                   ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                   ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                   ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                   ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                   ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                   ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                   ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                   ;
+; DEVICE_FAMILY                      ; Cyclone IV GX        ; Untyped                                   ;
+; CBXI_PARAMETER                     ; altsyncram_vpb1      ; Untyped                                   ;
++------------------------------------+----------------------+-------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                 ;
++-------------------------------------------+------------------------------------------------------+
+; Name                                      ; Value                                                ;
++-------------------------------------------+------------------------------------------------------+
+; Number of entity instances                ; 1                                                    ;
+; Entity Instance                           ; fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                            ;
+;     -- WIDTH_A                            ; 16                                                   ;
+;     -- NUMWORDS_A                         ; 32                                                   ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                         ;
+;     -- WIDTH_B                            ; 16                                                   ;
+;     -- NUMWORDS_B                         ; 32                                                   ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                               ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                               ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                            ;
++-------------------------------------------+------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "bcd_converter:bcd_converter_inst"                                                         ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; bcd_number ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "adder_module:adder_inst"                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; wr   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -488,25 +467,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 13                          ;
-; cycloneiii_ff         ; 71                          ;
-;     ENA               ; 22                          ;
-;     ENA SCLR SLD      ; 7                           ;
-;     SCLR              ; 1                           ;
-;     plain             ; 41                          ;
-; cycloneiii_lcell_comb ; 1473                        ;
-;     arith             ; 39                          ;
-;         2 data inputs ; 31                          ;
-;         3 data inputs ; 8                           ;
-;     normal            ; 1434                        ;
-;         0 data inputs ; 3                           ;
-;         1 data inputs ; 10                          ;
-;         2 data inputs ; 27                          ;
-;         3 data inputs ; 723                         ;
-;         4 data inputs ; 671                         ;
+; boundary_port         ; 36                          ;
+; cycloneiii_ff         ; 41                          ;
+;     ENA               ; 5                           ;
+;     plain             ; 36                          ;
+; cycloneiii_lcell_comb ; 104                         ;
+;     arith             ; 26                          ;
+;         2 data inputs ; 26                          ;
+;     normal            ; 78                          ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 52                          ;
+; cycloneiii_ram_block  ; 16                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 4.12                        ;
+; Max LUT depth         ; 4.60                        ;
+; Average LUT depth     ; 2.71                        ;
 +-----------------------+-----------------------------+
 
 
@@ -515,7 +492,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:05     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -525,7 +502,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Thu Apr 27 05:43:54 2017
+    Info: Processing started: Sat May 06 10:33:40 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off KPN_Modules -c KPN_Modules
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -585,300 +562,132 @@ Info (12021): Found 1 design units, including 1 entities, in source file top_mod
     Info (12023): Found entity 1: top_module_display_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display_testbench.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file top_module_lcd_testbench.v
     Info (12023): Found entity 1: top_module_lcd_testbench File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd_testbench.v Line: 1
-Info (12127): Elaborating entity "top_module_lcd" for the top level hierarchy
-Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:clk_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 52
-Warning (10230): Verilog HDL assignment warning at clock_divider_module.v(28): truncated value with size 32 to match size of target (23) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 28
-Info (12128): Elaborating entity "queue_module" for hierarchy "queue_module:queue_1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 55
+Info (12021): Found 1 design units, including 1 entities, in source file fifo_pong_chu.v
+    Info (12023): Found entity 1: fifo_pong_chu File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file fifo_online_version.v
+    Info (12023): Found entity 1: fifo_online_version File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_online_version.v Line: 1
+Info (12127): Elaborating entity "top_module_display" for the top level hierarchy
+Info (12128): Elaborating entity "clock_divider" for hierarchy "clock_divider:clk_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 50
+Warning (10230): Verilog HDL assignment warning at clock_divider_module.v(28): truncated value with size 32 to match size of target (27) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 28
+Info (12128): Elaborating entity "queue_module" for hierarchy "queue_module:queue_1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 53
 Warning (10036): Verilog HDL or VHDL warning at queue_module.v(28): object "full_reg" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 28
-Warning (10850): Verilog HDL warning at queue_module.v(42): number of words (4) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 42
-Warning (10230): Verilog HDL assignment warning at queue_module.v(54): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 54
+Warning (10850): Verilog HDL warning at queue_module.v(41): number of words (4) in memory file does not match the number of elements in the address range [0:31] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 41
+Warning (10230): Verilog HDL assignment warning at queue_module.v(55): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 55
 Warning (10030): Net "array_reg.data_a" at queue_module.v(23) has no driver or initial value, using a default initial value '0' File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 23
 Warning (10030): Net "array_reg.waddr_a" at queue_module.v(23) has no driver or initial value, using a default initial value '0' File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 23
 Warning (10030): Net "array_reg.we_a" at queue_module.v(23) has no driver or initial value, using a default initial value '0' File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 23
-Info (12128): Elaborating entity "fifo_module" for hierarchy "fifo_module:fifo_1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 62
-Warning (10036): Verilog HDL or VHDL warning at fifo_module.v(38): object "empty" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 38
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(48): variable "full_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 48
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(51): variable "entry_1" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 51
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(51): variable "w_ptr_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 51
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(52): variable "w_ptr_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 52
-Warning (10230): Verilog HDL assignment warning at fifo_module.v(52): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 52
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(54): variable "r_ptr_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 54
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(60): variable "empty_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 60
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(62): variable "r_ptr_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 62
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(63): variable "r_ptr_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 63
-Warning (10230): Verilog HDL assignment warning at fifo_module.v(63): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 63
-Warning (10235): Verilog HDL Always Construct warning at fifo_module.v(66): variable "w_ptr_reg" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 66
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "empty_reg", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "w_ptr_succ", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "w_ptr_reg", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "full_reg", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "output_1", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "r_ptr_succ", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Warning (10240): Verilog HDL Always Construct warning at fifo_module.v(42): inferring latch(es) for variable "r_ptr_reg", which holds its previous value in one or more paths through the always construct File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 42
-Info (10041): Inferred latch for "r_ptr_reg[0]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "r_ptr_reg[1]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "r_ptr_reg[2]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "r_ptr_reg[3]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "r_ptr_reg[4]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[0]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[1]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[2]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[3]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[4]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[5]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[6]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[7]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[8]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[9]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[10]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[11]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[12]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[13]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[14]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "output_1[15]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "full_reg" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "w_ptr_reg[0]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "w_ptr_reg[1]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "w_ptr_reg[2]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "w_ptr_reg[3]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "w_ptr_reg[4]" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (10041): Inferred latch for "empty_reg" at fifo_module.v(58) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-Info (12128): Elaborating entity "adder_module" for hierarchy "adder_module:adder_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 73
-Info (12128): Elaborating entity "lcd_module" for hierarchy "lcd_module:write_to_lcd_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 76
-Warning (10230): Verilog HDL assignment warning at lcd_module.v(122): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v Line: 122
-Warning (10230): Verilog HDL assignment warning at lcd_module.v(124): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v Line: 124
-Warning (10230): Verilog HDL assignment warning at lcd_module.v(160): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v Line: 160
-Warning (10230): Verilog HDL assignment warning at lcd_module.v(162): truncated value with size 32 to match size of target (7) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v Line: 162
-Info (276014): Found 2 instances of uninferred RAM logic
-    Info (276004): RAM logic "queue_module:queue_2_inst|array_reg" is uninferred due to inappropriate RAM size File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 23
+Info (12128): Elaborating entity "fifo_pong_chu" for hierarchy "fifo_pong_chu:fifo_1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 60
+Warning (10036): Verilog HDL or VHDL warning at fifo_pong_chu.v(24): object "empty" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 24
+Warning (10036): Verilog HDL or VHDL warning at fifo_pong_chu.v(25): object "full" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 25
+Warning (10036): Verilog HDL or VHDL warning at fifo_pong_chu.v(26): object "prueba" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 26
+Warning (10230): Verilog HDL assignment warning at fifo_pong_chu.v(82): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 82
+Warning (10230): Verilog HDL assignment warning at fifo_pong_chu.v(83): truncated value with size 32 to match size of target (5) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 83
+Warning (10270): Verilog HDL Case Statement warning at fifo_pong_chu.v(89): incomplete case statement has no default case item File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v Line: 89
+Info (12128): Elaborating entity "adder_module" for hierarchy "adder_module:adder_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 67
+Info (12128): Elaborating entity "bcd_converter" for hierarchy "bcd_converter:bcd_converter_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 70
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(42): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v Line: 42
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(45): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v Line: 45
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(48): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v Line: 48
+Warning (10230): Verilog HDL assignment warning at bcd_converter.v(51): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v Line: 51
+Info (12128): Elaborating entity "write_to_display" for hierarchy "write_to_display:display_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 74
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(93): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 93
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(97): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 97
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(101): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 101
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(105): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 105
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(109): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 109
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(113): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 113
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(117): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 117
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(121): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 121
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(125): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 125
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(129): variable "thousands" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 129
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(145): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 145
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(149): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 149
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(153): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 153
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(157): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 157
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(161): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 161
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(165): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 165
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(169): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 169
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(173): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 173
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(177): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 177
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(181): variable "hundreds" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 181
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(272): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 272
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(276): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 276
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(280): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 280
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(284): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 284
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(288): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 288
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(292): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 292
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(296): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 296
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(300): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 300
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(304): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 304
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(308): variable "tens" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 308
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(398): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 398
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(402): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 402
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(406): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 406
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(410): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 410
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(414): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 414
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(418): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 418
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(422): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 422
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(426): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 426
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(430): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 430
+Warning (10235): Verilog HDL Always Construct warning at write_to_display.v(434): variable "ones" is read inside the Always Construct but isn't in the Always Construct's Event Control File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v Line: 434
+Info (276014): Found 1 instances of uninferred RAM logic
     Info (276004): RAM logic "queue_module:queue_1_inst|array_reg" is uninferred due to inappropriate RAM size File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v Line: 23
 Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/db/KPN_Modules.ram0_queue_module_dacf37a8.hdl.mif" contains "don't care" values -- overwriting them with 0s
-Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/db/KPN_Modules.ram0_queue_module_dacf37a8.hdl.mif" contains "don't care" values -- overwriting them with 0s
-Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~99" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~97" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~83" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~81" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~67" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~65" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~115" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~113" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~27" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~25" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~43" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~41" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~11" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~9" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~59" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~57" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~35" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~33" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~19" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~17" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~3" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~1" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~51" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~49" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~107" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~105" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~91" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~89" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~75" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~73" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~123" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~121" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~155" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~153" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~211" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~209" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~147" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~145" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~219" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~217" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~227" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~225" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~171" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~169" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~163" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~161" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~235" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~233" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~139" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~137" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~195" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~193" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~131" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~129" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~203" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~201" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~243" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~241" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~187" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~185" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~179" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~177" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~251" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~249" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~99" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~97" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~83" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~81" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~67" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~65" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~115" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~113" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~27" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~25" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~43" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~41" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~11" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~9" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~59" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~57" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~35" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~33" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~19" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~17" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~3" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~1" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~51" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~49" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~107" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~105" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~91" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~89" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~75" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~73" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~123" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~121" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~155" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~153" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~211" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~209" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~147" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~145" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~219" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~217" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~227" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~225" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~171" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~169" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~163" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~161" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~235" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~233" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~139" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~137" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~195" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~193" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~131" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~129" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~203" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~201" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~243" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~241" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~187" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~185" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~179" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~177" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~251" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~249" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~100" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~101" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~103" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~101" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~84" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~85" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~87" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~85" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~68" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~69" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~71" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~69" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~116" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~117" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~119" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~117" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~28" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~29" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~31" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~29" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~44" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~45" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~47" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~45" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~12" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~13" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~15" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~13" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~60" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~61" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~63" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~61" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~36" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~37" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~39" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~37" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~20" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~21" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~23" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~21" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~4" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~5" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~7" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~5" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~52" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~53" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~55" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~53" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~108" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~109" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~111" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~109" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~92" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~93" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~95" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~93" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~76" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~77" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~79" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~77" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~124" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~125" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~127" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~125" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~156" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~157" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~159" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~157" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~212" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~213" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~215" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~213" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~148" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~149" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~151" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~149" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~220" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~221" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~223" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~221" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~228" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~229" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~231" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~229" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~172" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~173" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~175" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~173" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~164" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~165" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~167" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~165" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~236" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~237" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~239" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~237" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~140" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~141" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~143" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~141" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~196" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~197" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~199" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~197" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~132" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~133" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~135" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~133" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~204" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~205" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~207" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~205" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~244" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~245" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~247" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~245" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~188" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~189" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~191" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~189" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~180" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~181" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~183" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~181" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~252" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~253" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|array_reg~255" merged with LATCH primitive "fifo_module:fifo_2_inst|array_reg~253" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~100" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~101" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~103" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~101" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~84" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~85" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~87" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~85" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~68" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~69" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~71" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~69" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~116" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~117" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~119" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~117" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~28" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~29" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~31" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~29" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~44" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~45" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~47" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~45" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~12" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~13" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~15" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~13" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~60" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~61" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~63" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~61" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~36" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~37" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~39" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~37" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~20" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~21" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~23" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~21" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~4" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~5" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~7" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~5" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~52" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~53" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~55" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~53" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~108" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~109" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~111" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~109" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~92" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~93" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~95" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~93" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~76" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~77" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~79" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~77" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~124" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~125" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~127" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~125" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~156" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~157" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~159" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~157" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~212" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~213" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~215" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~213" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~148" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~149" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~151" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~149" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~220" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~221" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~223" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~221" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~228" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~229" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~231" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~229" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~172" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~173" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~175" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~173" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~164" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~165" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~167" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~165" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~236" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~237" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~239" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~237" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~140" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~141" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~143" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~141" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~196" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~197" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~199" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~197" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~132" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~133" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~135" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~133" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~204" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~205" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~207" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~205" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~244" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~245" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~247" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~245" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~188" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~189" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~191" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~189" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~180" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~181" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~183" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~181" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~252" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~253" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|array_reg~255" merged with LATCH primitive "fifo_module:fifo_1_inst|array_reg~253" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 28
-Warning (13012): Latch fifo_module:fifo_3_inst|empty_reg has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 34
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal clock_divider:clk_inst|divcounter[22] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 24
-Warning (13012): Latch fifo_module:fifo_3_inst|full_reg has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 33
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal clock_divider:clk_inst|divcounter[22] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 24
-Warning (13012): Latch fifo_module:fifo_2_inst|empty_reg has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 34
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal clock_divider:clk_inst|divcounter[22] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 24
-Warning (13012): Latch fifo_module:fifo_1_inst|empty_reg has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 34
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal clock_divider:clk_inst|divcounter[22] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 24
-Warning (13012): Latch fifo_module:fifo_2_inst|full_reg has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 33
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal clock_divider:clk_inst|divcounter[22] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 24
-Warning (13012): Latch fifo_module:fifo_1_inst|full_reg has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 33
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal clock_divider:clk_inst|divcounter[22] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v Line: 24
-Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|output_1[4]" merged with LATCH primitive "fifo_module:fifo_2_inst|output_1[2]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|output_1[4]" merged with LATCH primitive "fifo_module:fifo_1_inst|output_1[2]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_2_inst|output_1[8]" merged with LATCH primitive "fifo_module:fifo_2_inst|output_1[6]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
-    Info (13026): Duplicate LATCH primitive "fifo_module:fifo_1_inst|output_1[8]" merged with LATCH primitive "fifo_module:fifo_1_inst|output_1[6]" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v Line: 58
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "fifo_pong_chu:fifo_1_inst|array_reg_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to CLOCK0
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+Info (12130): Elaborated megafunction instantiation "fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0"
+Info (12133): Instantiated megafunction "fifo_pong_chu:fifo_1_inst|altsyncram:array_reg_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "CLOCK0"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_vpb1.tdf
+    Info (12023): Found entity 1: altsyncram_vpb1 File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/db/altsyncram_vpb1.tdf Line: 28
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 16
-    Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v Line: 17
+    Warning (13410): Pin "hex_4[0]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
+    Warning (13410): Pin "hex_4[1]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
+    Warning (13410): Pin "hex_4[2]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
+    Warning (13410): Pin "hex_4[3]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
+    Warning (13410): Pin "hex_4[4]" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
+    Warning (13410): Pin "hex_4[5]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
+    Warning (13410): Pin "hex_4[6]" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v Line: 15
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1483 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 155 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
-    Info (21059): Implemented 12 output pins
-    Info (21061): Implemented 1470 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 48 warnings
+    Info (21059): Implemented 35 output pins
+    Info (21061): Implemented 103 logic cells
+    Info (21064): Implemented 16 RAM segments
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 67 warnings
     Info: Peak virtual memory: 711 megabytes
-    Info: Processing ended: Thu Apr 27 05:44:23 2017
-    Info: Elapsed time: 00:00:29
-    Info: Total CPU time (on all processors): 00:01:02
+    Info: Processing ended: Sat May 06 10:34:06 2017
+    Info: Elapsed time: 00:00:26
+    Info: Total CPU time (on all processors): 00:00:57
 
 

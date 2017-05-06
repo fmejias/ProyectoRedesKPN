@@ -32,7 +32,6 @@ wire wr_en;
 wire empty;
 reg [BITS_NUMBER-1:0] output_1 = 16'h0000;
 
-
 /*
  * Initialize the file with precharge data
  */
@@ -40,13 +39,15 @@ reg [BITS_NUMBER-1:0] output_1 = 16'h0000;
 initial
 begin
 	$readmemh("C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/Test_Modules/queue_precharge_data.txt", array_reg);
-	w_ptr_reg = 5'h04;
+	w_ptr_reg = 5'h05;
 	r_ptr_reg = 5'h00;
 	empty_reg = 1'b0;
-	
 	output_1 = 16'h0000;
 
 end
+
+reg pruebaRd = 1'b0;
+reg pruebaWr = 1'b0;
 
 // Read operation
 always @(posedge clk)
@@ -65,7 +66,27 @@ always @(posedge clk)
 		output_1 = 16'h0000;
 	end
 
-assign wr = (clk == 1'b0) ? 1'b1 : 1'b0;
+always @(posedge clk)
+ begin
+	pruebaRd = ~pruebaRd;
+ end
+ 
+  always @(posedge clk)
+ begin
+	pruebaWr = ~pruebaWr;
+ end
+ 
+ 
+ /*
+ * We set rd and wr
+ * 
+ */
+ assign wr = ((pruebaRd == 1'b1 && pruebaWr == 1'b1) || (pruebaRd == 1'b0 && pruebaWr == 1'b0)) ? 1'b1 : 1'b0;
+
+// assign wr = (clk == 1'b1) ? 1'b1 : 1'b0;
+// assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
+ 
+//assign wr = (clk == 1'b1) ? 1'b1 : 1'b0;
 
 
 endmodule // end queue_module

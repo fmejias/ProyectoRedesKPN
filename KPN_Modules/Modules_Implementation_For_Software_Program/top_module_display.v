@@ -56,11 +56,11 @@ output [6:0] hex_0;
  queue_module queue_2_inst(.clk(kpn_clk), .wr(queue_2_wr), .output_1(queue_2_output));
  
  //This is the fifo1
- fifo_module fifo_1_inst(.clk(kpn_clk), .rd(adder_1_rd),
+ fifo_pong_chu fifo_1_inst(.clk(kpn_clk), .rd(adder_1_rd),
  .wr(queue_1_wr), .entry_1(queue_1_output), .output_1(fifo_1_output));
  
  //This is the fifo2
- fifo_module fifo_2_inst(.clk(kpn_clk), .rd(adder_1_rd),
+ fifo_pong_chu fifo_2_inst(.clk(kpn_clk), .rd(adder_1_rd),
  .wr(queue_2_wr), .entry_1(queue_2_output), .output_1(fifo_2_output));
  
  //This is the adder
@@ -70,7 +70,7 @@ output [6:0] hex_0;
  bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(output_1), .bcd_number(bcd_output));
  
  //This is the instance of the display module
- write_to_display display_inst(.clk(kpn_clk), .entry_1(bcd_output), .hex_4(hex_4), .hex_3(hex_3), .hex_2(hex_2), 
+ write_to_display display_inst(.clk(clk), .entry_1(fifo_1_output), .hex_4(hex_4), .hex_3(hex_3), .hex_2(hex_2), 
  .hex_1(hex_1), .hex_0(hex_0));
  
 endmodule

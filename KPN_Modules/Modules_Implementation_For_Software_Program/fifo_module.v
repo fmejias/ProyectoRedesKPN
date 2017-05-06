@@ -68,10 +68,10 @@ begin
 			empty_reg = 1'b1;
 		end
 		end
-		
+			
 		else
 		begin
-
+			
 		end
 	end
 

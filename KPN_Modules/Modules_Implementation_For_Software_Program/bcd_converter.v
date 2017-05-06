@@ -28,9 +28,9 @@ reg [3:0] ones;
 reg [31:0] shift;
 integer i;
    
-always @(negedge clk)
+always @(posedge clk)
 begin
-	 // $display("La entrada recibida es:", binary_number);
+	  $display("La entrada recibida es:", binary_number);
     // Clear previous number and store new number in shift register
     shift[31:15] = 0;
     shift[15:0] = binary_number;

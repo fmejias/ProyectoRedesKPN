@@ -9,154 +9,177 @@ z2
 cModel Technology
 Z0 dC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/simulation/modelsim
 vadder_module
-!s110 1493290863
+Z1 !s110 1494043755
 !i10b 1
-!s100 CblN[h9F3]nzEGabGUMGA3
-ISLK^bo3BQ2WaXEN5R1RH;2
-Z1 VDg1SIo80bB@j0V0VzS_@n1
+!s100 P_<?WSKR7P2CSL^]Uj6ZF2
+I>X2`PJa;;0a:@]Q0QOh?=1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1493290805
+w1494038619
 8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/adder_module.v
 FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/adder_module.v
 L0 1
-Z2 OV;L;10.5b;63
+Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1493290863.000000
+Z4 !s108 1494043755.000000
 !s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/adder_module.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/adder_module.v|
 !i113 1
-Z3 o-vlog01compat -work work
-Z4 !s92 -vlog01compat -work work +incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program
-Z5 tCvgOpt 0
-vclock_divider
-!s110 1493287304
-!i10b 1
-!s100 H9nNNMj<zin>2Z9R<91g23
-IfW`@6T^kLjTEXL2651[OF0
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program
+Z7 tCvgOpt 0
+vbcd_converter
 R1
+!i10b 1
+!s100 ?]D>@jjY9`;UBImn:XngM0
+Im8h;V_2>zFM2bh9^DjJAK1
+R2
 R0
-w1493285467
+w1494033059
+8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v
+FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/bcd_converter.v|
+!i113 1
+R5
+R6
+R7
+vclock_divider
+R1
+!i10b 1
+!s100 JRD^2D0z0Pek3fnE:]B301
+IWn?>ck8PATkU]9h=e63CO1
+R2
+R0
+w1493963513
 8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v
 FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v
 L0 1
-R2
+R3
 r1
 !s85 0
 31
-!s108 1493287304.000000
+R4
 !s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/clock_divider_module.v|
 !i113 1
-R3
-R4
 R5
-vfifo_module
-!s110 1493293021
+R6
+R7
+vfifo_pong_chu
+Z8 !s110 1494043756
 !i10b 1
-!s100 nZkHc;5]bElRTGTBQ][ZU2
-IzR5TJG[Nb]4:HU6i<kHZ90
-R1
-R0
-w1493292981
-8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v
-FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v
-L0 1
+!s100 cIdiILR<UlbQ;kR^GUo6U3
+I2>?BH56eecNfGmSYO^8Pk0
 R2
+R0
+w1494042352
+8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v
+FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v
+L0 2
+R3
 r1
 !s85 0
 31
-!s108 1493293021.000000
-!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_module.v|
+Z9 !s108 1494043756.000000
+!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/fifo_pong_chu.v|
 !i113 1
-R3
-R4
 R5
-vlcd_module
-!s110 1493293335
-!i10b 1
-!s100 ?59>3L]8J<f6JNz27i=Dm2
-I50ae0=gZEYaFEo2eigf4c1
-R1
-R0
-w1493293280
-8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v
-FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v
-L0 9
-R2
-r1
-!s85 0
-31
-!s108 1493293335.000000
-!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/lcd_module.v|
-!i113 1
-R3
-R4
-R5
+R6
+R7
 vqueue_module
-!s110 1493292116
+R8
 !i10b 1
-!s100 M>`g0@T]<Y32hDEGR@Cf?1
-IYmjzmVFa?46`A2HhWPNzk1
-R1
+!s100 bOAD7`MJ=OkX`A>4IBnRX3
+IOG?e;^C5iTeTY:z42z]7:3
+R2
 R0
-w1493290657
+w1494036519
 8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
 FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v
 L0 1
-R2
+R3
 r1
 !s85 0
 31
-!s108 1493292116.000000
+R9
 !s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/queue_module.v|
 !i113 1
-R3
-R4
 R5
-vtop_module_lcd
-!s110 1493291561
-!i10b 1
-!s100 d2AVM_bV9[76i7ZjE?Dm43
-IFz`SgPgoL?BW]ahIh_>Ub3
-R1
-R0
-w1493290779
-8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v
-FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v
-L0 1
-R2
-r1
-!s85 0
-31
-!s108 1493291561.000000
-!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v|
-!s90 -reportprogress|300|-work|work|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd.v|
-!i113 1
-Z6 o-work work
-R5
-vtop_module_lcd_testbench
-!s110 1493292426
-!i10b 1
-!s100 540R^IE4eWBLI2[Cl?e510
-IKSIkeE7>zcLdSoDW<oXPD1
-R1
-R0
-w1493292391
-8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd_testbench.v
-FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd_testbench.v
-L0 1
-R2
-r1
-!s85 0
-31
-!s108 1493292426.000000
-!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd_testbench.v|
-!s90 -reportprogress|300|-work|work|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_lcd_testbench.v|
-!i113 1
 R6
+R7
+vtop_module_display
+R8
+!i10b 1
+!s100 hnSa@mk<?F65i6b8=2nT^0
+Id_QizCMAZYA]T4akzB4bJ0
+R2
+R0
+w1494043437
+8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v
+FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v
+L0 1
+R3
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display.v|
+!i113 1
 R5
+R6
+R7
+vtop_module_display_testbench
+!s110 1494043775
+!i10b 1
+!s100 C0h]<D[JAa7nW=ikNzXY93
+I;8I<>DRJoEc>D0=oeV;OW0
+R2
+R0
+w1493264863
+8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display_testbench.v
+FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display_testbench.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1494043775.000000
+!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display_testbench.v|
+!s90 -reportprogress|300|-work|work|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/top_module_display_testbench.v|
+!i113 1
+o-work work
+R7
+vwrite_to_display
+R1
+!i10b 1
+!s100 ]a@k8KNbHmkY_0GWAfE6?2
+I7;dIhULC=SRZAhA<WFf4=1
+R2
+R0
+w1494038160
+8C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v
+FC:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program|C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/write_to_display.v|
+!i113 1
+R5
+R6
+R7

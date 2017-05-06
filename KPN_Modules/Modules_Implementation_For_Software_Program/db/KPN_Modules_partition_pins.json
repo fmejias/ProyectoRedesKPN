@@ -4,43 +4,115 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "rs",
+					"name" : "hex_3[0]",
 					"strict" : false
 				},
 				{
-					"name" : "en",
+					"name" : "hex_3[1]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[0]",
+					"name" : "hex_3[2]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[1]",
+					"name" : "hex_3[3]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[2]",
+					"name" : "hex_3[4]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[3]",
+					"name" : "hex_3[5]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[4]",
+					"name" : "hex_3[6]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[5]",
+					"name" : "hex_2[0]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[6]",
+					"name" : "hex_2[1]",
 					"strict" : false
 				},
 				{
-					"name" : "lcd_data[7]",
+					"name" : "hex_2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "hex_0[6]",
 					"strict" : false
 				},
 				{
