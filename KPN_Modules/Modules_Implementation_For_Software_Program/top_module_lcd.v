@@ -4,7 +4,12 @@ rs,
 rw,
 on,
 en,
-lcd_data
+lcd_data,
+hex_4,
+hex_3,
+hex_2,
+hex_1,
+hex_0
 );
 
 /*
@@ -17,6 +22,11 @@ output rw;
 output on;
 output en;
 output [7:0] lcd_data;
+output [6:0] hex_4;
+output [6:0] hex_3;
+output [6:0] hex_2;
+output [6:0] hex_1;
+output [6:0] hex_0;
 
 
 /*
@@ -39,6 +49,7 @@ output [7:0] lcd_data;
  wire adder_1_rd;
  wire adder_1_wr;
  wire [15:0] adder_1_output;
+ wire [15:0] bcd_output;
 
  
 
@@ -66,14 +77,20 @@ output [7:0] lcd_data;
  .wr(queue_2_wr), .entry_1(queue_2_output), .output_1(fifo_2_output));
  
  //This is the fifo3
- fifo_module fifo_3_inst(.clk(kpn_clk), .rd(lcd_rd),
+ fifo_pong_chu fifo_3_inst(.clk(kpn_clk), .rd(lcd_rd),
  .wr(adder_1_wr), .entry_1(adder_1_output), .output_1(fifo_3_output));
  
  //This is the adder
  adder_module adder_inst(.clk(kpn_clk), .rd(adder_1_rd), .wr(adder_1_wr), .entry_1(fifo_1_output), .entry_2(fifo_2_output), .output_1(adder_1_output));
 
+ //This is the first instance of the bcd_converter
+ bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(fifo_3_output), .bcd_number(bcd_output));
+ 
  //This is an instance of the LCD module
  lcd_module write_to_lcd_inst(.clock(kpn_clk), .entry_1(fifo_3_output), .rs(rs), .rw(rw), .on(on), .enable(en), .lcd_data(lcd_data) , .rd(lcd_rd));
  
+ //This is the instance of the display module
+ write_to_display display_inst(.clk(kpn_clk), .entry_1(bcd_output), .hex_4(hex_4), .hex_3(hex_3), .hex_2(hex_2), 
+ .hex_1(hex_1), .hex_0(hex_0));
  
 endmodule

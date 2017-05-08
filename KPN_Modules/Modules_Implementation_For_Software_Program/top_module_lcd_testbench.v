@@ -31,7 +31,7 @@ initial begin
 clk_test = 1'b0;
 i = 4'b0000;
 
-#100000
+#250000
 i = 4'b1111;
 end
 
@@ -51,7 +51,6 @@ else
 clk_test = 1'b0;
  
 end
- 
  
 
 endmodule // end top_module_lcd_testbench

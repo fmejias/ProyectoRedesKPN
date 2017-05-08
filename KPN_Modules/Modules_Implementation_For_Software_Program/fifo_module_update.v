@@ -40,9 +40,9 @@ wire empty;
 
 // body
 // Write operation
-always @(negedge clk)
+always @(posedge clk)
 	if (wr_en) begin
-		array_reg[w_ptr_reg] <= entry_1;
+		array_reg[w_ptr_reg] = entry_1;
 	end
 	
 

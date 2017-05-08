@@ -1,55 +1,155 @@
+// FIFO_Module
 module fifo_online_version
-  (input wire clk,
-   input wire [15:0] entry_1,
-   input wire wr,
-   input wire rd,
-   output reg [15:0] output_1); // N
+   #(
+    parameter B=16, // number of bits in a word
+              W=5  // number of address bits
+   )
+   (
+    input wire clk,
+    input wire rd, wr,
+    input wire [B-1:0] entry_1,
+    output reg [B-1:0] output_1
+   );
+
+   //signal declaration
+   reg [B-1:0] array_reg [2**W-1:0];  // register array
+   reg [W-1:0] w_ptr_next, w_ptr_succ;
+   reg [W-1:0] r_ptr_next, r_ptr_succ;
+   reg full_next, empty_next;
+	reg [W-1:0] w_ptr_reg = 5'h00;
+	reg [W-1:0] r_ptr_reg = 5'h00;
+	reg empty_reg = 1'b1;
+	reg full_reg = 1'b0;
+	reg [15:0] buffer = 16'h0000;
+   wire wr_en;
+	wire empty;
+	wire full;
+	integer i;
+	reg count = 1'b0;
+	
+	/*
+    * Initialize the file with precharge data
+    */
  
-  reg [7:0] wr_ptr= 8'b0; // N-1
-  reg [7:0] rd_ptr= 8'b0; // N-1
-  reg [8:0] full_indicator = 9'b0;
- 
-  reg[15:0] fifo_mem[2**8-1:0];
-  
-  wire full;
-  wire empty;
- 
-  assign full = (full_indicator == 2**8);
-  assign empty = (full_indicator == 8'b0);
- 
-  always @(posedge clk)
-      begin
-        case ({rd, wr})
-          2'b00: // nothing
+    initial
+	 begin
+  //     for (i=0; i<32; i=i+1) 
+//		  begin
+//		  array_reg[i] = 16'h0000;
+//		  end
+		output_1 = 16'h0000;
+    end
+	
+   // body
+   // register file write operation
+//   always @(posedge clk)
+//      if (wr_en)
+//		begin
+		//	output_1 = entry_1;
+		//	output_1 = buffer;
+//         array_reg[w_ptr_reg] = buffer;
+		//	array_reg[5'd2] = 16'h0005;
+		//	array_reg[5'd3] = 16'h0007;
+//		end
+	
+/*	always @(posedge clk)
+	begin
+      if (rd == 1'b1)begin
+      //   output_1 = array_reg[r_ptr_reg];
+			if(output_1 == 16'd12)
+			begin
+		//		output_1 = 16'd5;
+			end
+			else
+				output_1 = 16'd1;
+			//output_1 = r_ptr_reg;
+		end
+	end */
+   
+	// write enabled only when FIFO is not full
+   assign wr_en = wr & ~full_reg;
+
+   // fifo control logic
+   // register for read and write pointers
+   always @(posedge clk)
+	begin
+		w_ptr_reg = w_ptr_next;
+		r_ptr_reg = r_ptr_next;
+		full_reg = full_next;
+		empty_reg = empty_next;
+	end
+	
+	always @*
+	begin
+		if(wr == 1'b1 && entry_1 > 16'h0000)begin
+		//	buffer = entry_1;
+	//		if(entry_1 == 16'd8)
+	//			output_1 = w_ptr_reg;
+		//	else
+		//	begin
+	//		array_reg[w_ptr_reg] = entry_1;
+			//	output_1 = 16'h0000;
+		//	end
+		//	lcd_data = {3'b000, w_ptr_reg};
+		end
+	//	if(rd == 1'b1)
+	//		output_1 = array_reg[r_ptr_reg];//array_reg[r_ptr_reg];
+	end
+	
+   // next-state logic for read and write pointers
+   always @*
+   begin
+      // successive pointer values
+      w_ptr_succ = w_ptr_reg + 1;
+      r_ptr_succ = r_ptr_reg + 1;
+      // default: keep old values
+      w_ptr_next = w_ptr_reg;
+      r_ptr_next = r_ptr_reg;
+      full_next = full_reg;
+      empty_next = empty_reg;
+      case ({wr, rd})
+         // 2'b00:  no op
+         2'b01: // read
+            if (~empty_reg) // not empty
+               begin
+                  r_ptr_next = r_ptr_succ;
+                  full_next = 1'b0;
+                  if (r_ptr_succ==w_ptr_reg)
+                     empty_next = 1'b1;
+               end
+         2'b10: // write
+            if (~full_reg && entry_1 > 16'h0000) // not full
+               begin
+                  w_ptr_next = w_ptr_succ;
+                  empty_next = 1'b0;
+						
+						/*This is need it  to write correctly*/
+						if(entry_1 != buffer && count == 1'b1) begin
+							if(buffer == 16'd12)
+								array_reg[w_ptr_reg] = entry_1;
+							count = 1'b0;
+						end
+						if(entry_1 != buffer)
+							count = 1'b1;
+						
+						/* Add the buffer */
+						buffer = entry_1;
+
+                  if (w_ptr_succ==r_ptr_reg)
+                     full_next = 1'b1;
+               end
+         2'b11: // write and read
             begin
-              full_indicator = full_indicator;
+					w_ptr_next = w_ptr_succ;
+               r_ptr_next = r_ptr_succ;
+					
+					
             end
-          2'b01: // write
-            begin
-              if  (full_indicator < 2**8)
-                begin
-                  full_indicator = full_indicator + 1;
-                  fifo_mem[wr_ptr] = entry_1;
-                  wr_ptr = wr_ptr + 1;
-                end
-            end
-          2'b10: // read
-            begin
-              if (full_indicator > 0)
-                begin
-                  output_1 = fifo_mem[rd_ptr];
-                  full_indicator = full_indicator - 1;
-                  rd_ptr = rd_ptr + 1;
-                end
-            end
-          2'b11: // read+write
-            begin
-              wr_ptr = wr_ptr + 1;
-              rd_ptr = rd_ptr + 1;
-              output_1 = fifo_mem[rd_ptr];
-              fifo_mem[wr_ptr] = entry_1;
-              full_indicator = full_indicator;
-            end
-        endcase
-      end
+      endcase
+   end
+
+   // output
+   assign full = full_reg;
+   assign empty = empty_reg;
+
 endmodule

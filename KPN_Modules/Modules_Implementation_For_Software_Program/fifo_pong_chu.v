@@ -20,47 +20,36 @@ module fifo_pong_chu
 	reg [W-1:0] r_ptr_reg = 5'h00;
 	reg empty_reg = 1'b1;
 	reg full_reg = 1'b0;
+	reg [15:0] buffer = 16'h0000;
    wire wr_en;
 	wire empty;
 	wire full;
-	reg [15:0] prueba = 16'h0000;
+	integer i;
+	reg count = 1'b0;
 	
-   // body
-   // register file write operation
-   always @(posedge clk)
-      if (wr_en)
-         array_reg[w_ptr_reg] = entry_1;
+	/*
+    * Initialize the file with precharge data
+    */
+ 
+    initial
+	 begin
+		output_1 = 16'h0000;
+    end
+
 	
 	always @(posedge clk)
 	begin
-      if (rd == 1'b1)
+      if (rd == 1'b1)begin
          output_1 = array_reg[r_ptr_reg];
-	end 
-	
-/*	always @(posedge clk)
-	begin
-	if(rd == 1'b1 && prueba < 4'b1010)
-	begin
-	output_1 = array_reg[r_ptr_reg];
-	prueba = prueba + 1;
-	end
-	else if (rd == 1'b1 && prueba >= 4'b1010)
-	begin
-	output_1 = prueba;
-	prueba = 16'h0000;
-	//output_1 = prueba;
-	end
-	
-	end */
-//		if(rd)
+	//		if(output_1 == 16'd12)
 	//		begin
-			//output_1 = r_ptr_reg; //array_reg[r_ptr_reg];
-		//	output_1 = 16'h0004;
-		//	$display("Entra a leer en la posicion: ", r_ptr_reg);
+	//	//		output_1 = 16'd5;
 		//	end
-   
-	// register file read operation
- //  assign output_1 = array_reg[r_ptr_reg];
+		//	else
+			//	output_1 = 16'd1;
+			//output_1 = r_ptr_reg;
+		end
+	end 
    
 	// write enabled only when FIFO is not full
    assign wr_en = wr & ~full_reg;
@@ -74,7 +63,24 @@ module fifo_pong_chu
 		full_reg = full_next;
 		empty_reg = empty_next;
 	end
-
+	
+//	always @*
+//	begin
+	//	if(wr == 1'b1 && entry_1 > 16'h0000)begin
+		//	buffer = entry_1;
+	//		if(entry_1 == 16'd8)
+	//			output_1 = w_ptr_reg;
+		//	else
+		//	begin
+	//		array_reg[w_ptr_reg] = entry_1;
+			//	output_1 = 16'h0000;
+		//	end
+		//	lcd_data = {3'b000, w_ptr_reg};
+//		end
+//		if(rd == 1'b1)
+//			output_1 = array_reg[r_ptr_reg];//array_reg[r_ptr_reg];
+//	end
+	
    // next-state logic for read and write pointers
    always @*
    begin
@@ -97,17 +103,31 @@ module fifo_pong_chu
                      empty_next = 1'b1;
                end
          2'b10: // write
-            if (~full_reg) // not full
+            if (~full_reg && entry_1 > 16'h0000) // not full
                begin
                   w_ptr_next = w_ptr_succ;
                   empty_next = 1'b0;
+						
+						/*This is need it  to write correctly*/
+						if(entry_1 != buffer && count == 1'b1) 
+						begin
+							array_reg[w_ptr_reg] = buffer;
+							count = 1'b0;
+						end
+						if(entry_1 != buffer)
+							count = 1'b1;
+						
+						/* Add the buffer */
+						buffer = entry_1;
+
                   if (w_ptr_succ==r_ptr_reg)
                      full_next = 1'b1;
                end
          2'b11: // write and read
             begin
-               w_ptr_next = w_ptr_succ;
+					w_ptr_next = w_ptr_succ;
                r_ptr_next = r_ptr_succ;
+					
 					
             end
       endcase

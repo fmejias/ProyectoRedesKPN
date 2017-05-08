@@ -25,9 +25,15 @@ output rd;
  */
 	
  reg [15:0] output_1 = 16'h0000;
+
  
- reg pruebaRd = 1'b0;
- reg pruebaWr = 1'b0;
+/*
+ * We define some registers need it to activate the outputs rd and wr
+ * 
+ */
+ 
+ reg activateRd = 1'b0;
+ reg activateWr = 1'b0;
  
 /*
  * We make the add operation.
@@ -37,33 +43,27 @@ output rd;
  always @(posedge clk)
  begin
   output_1 = entry_1 + entry_2;
-  $display("La entrada 1 es:", entry_1);
-  $display("La entrada 2 es:", entry_2);
-  $display("La salida es:", output_1);
  end
  
+ //In this part we activate the rd output
  always @(posedge clk)
  begin
-	pruebaRd = ~pruebaRd;
+	activateRd = ~activateRd;
  end
  
-  always @(posedge clk)
+ //In this part we activate the wr output
+ always @(posedge clk)
  begin
-	pruebaWr = ~pruebaWr;
+	activateWr = ~activateWr;
  end
  
  
- /*
+/*
  * We set rd and wr
  * 
  */
  
- assign wr = (clk == 1'b1) ? 1'b1 : 1'b0;
-// assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
+ assign wr = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ assign rd = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
  
- assign rd = ((pruebaRd == 1'b1 && pruebaWr == 1'b1) || (pruebaRd == 1'b0 && pruebaWr == 1'b0)) ? 1'b1 : 1'b0;
-// assign rd = ((pruebaRd == 1'b1 || pruebaRd == 1'b0)) ? 1'b1 : 1'b0;
- //assign wr = ((pruebaRd == 1'b1 && pruebaWr == 1'b1) || (pruebaRd == 1'b0 && pruebaWr == 1'b0)) ? 1'b1 : 1'b0;
-
-
 endmodule // end adder_module

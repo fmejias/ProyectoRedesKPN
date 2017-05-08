@@ -26,6 +26,14 @@ output rd;
 	
  reg [15:0] output_1;
  reg [15:0] output_2;
+ 
+ /*
+ * We define some registers need it to activate the outputs rd and wr
+ * 
+ */
+ 
+ reg activateRd = 1'b0;
+ reg activateWr = 1'b0;
 
 
 /*
@@ -38,13 +46,26 @@ output rd;
 	output_2 = entry_1;
  end
  
- /*
+ //In this part we activate the rd output
+ always @(posedge clk)
+ begin
+	activateRd = ~activateRd;
+ end
+ 
+ //In this part we activate the wr output
+ always @(posedge clk)
+ begin
+	activateWr = ~activateWr;
+ end
+ 
+ 
+/*
  * We set rd and wr
  * 
  */
  
- assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
- assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
-
+ assign wr = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ assign rd = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ 
 
 endmodule // end split_module

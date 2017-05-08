@@ -33,11 +33,25 @@ wire empty;
 reg [BITS_NUMBER-1:0] output_1 = 16'h0000;
 
 /*
+ * We define some registers need it to activate the outputs rd and wr
+ * 
+ */
+ 
+ reg activateRd = 1'b0;
+ reg activateWr = 1'b0;
+ integer i;
+
+/*
  * Initialize the file with precharge data
  */
  
 initial
 begin
+	for (i=0; i<32; i=i+1) 
+		  begin
+			array_reg[i] = 16'h0000;
+		 end
+		 
 	$readmemh("C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/Test_Modules/queue_precharge_data.txt", array_reg);
 	w_ptr_reg = 5'h05;
 	r_ptr_reg = 5'h00;
@@ -46,8 +60,6 @@ begin
 
 end
 
-reg pruebaRd = 1'b0;
-reg pruebaWr = 1'b0;
 
 // Read operation
 always @(posedge clk)
@@ -66,14 +78,16 @@ always @(posedge clk)
 		output_1 = 16'h0000;
 	end
 
-always @(posedge clk)
+ //In this part we activate the rd output
+ always @(posedge clk)
  begin
-	pruebaRd = ~pruebaRd;
+	activateRd = ~activateRd;
  end
  
-  always @(posedge clk)
+ //In this part we activate the wr output
+ always @(posedge clk)
  begin
-	pruebaWr = ~pruebaWr;
+	activateWr = ~activateWr;
  end
  
  
@@ -81,12 +95,8 @@ always @(posedge clk)
  * We set rd and wr
  * 
  */
- assign wr = ((pruebaRd == 1'b1 && pruebaWr == 1'b1) || (pruebaRd == 1'b0 && pruebaWr == 1'b0)) ? 1'b1 : 1'b0;
-
-// assign wr = (clk == 1'b1) ? 1'b1 : 1'b0;
-// assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
  
-//assign wr = (clk == 1'b1) ? 1'b1 : 1'b0;
+ assign wr = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
 
 
 endmodule // end queue_module

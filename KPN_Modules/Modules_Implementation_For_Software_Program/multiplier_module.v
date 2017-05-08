@@ -52,6 +52,14 @@ output rd;
  
  //This reg is use to do the and operation of number1 and number2[i]
  reg [15:0] and_number = 16'h0000; 
+ 
+/*
+ * We define some registers need it to activate the outputs rd and wr
+ * 
+ */
+ 
+ reg activateRd = 1'b0;
+ reg activateWr = 1'b0;
 
  
  always @(posedge clk)
@@ -125,12 +133,26 @@ output rd;
 
  end
  
+//In this part we activate the rd output
+ always @(posedge clk)
+ begin
+	activateRd = ~activateRd;
+ end
+ 
+ //In this part we activate the wr output
+ always @(posedge clk)
+ begin
+	activateWr = ~activateWr;
+ end
+ 
+ 
 /*
  * We set rd and wr
  * 
  */
  
- assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
- assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
+ assign wr = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ assign rd = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ 
 
 endmodule // end multiplier_module
