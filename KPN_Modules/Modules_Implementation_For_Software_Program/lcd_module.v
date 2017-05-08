@@ -51,32 +51,15 @@ reg start_writing_entry_1 = 1'b0;
 reg start_writing_result = 1'b0;
 reg [6:0] cursor_address = 7'b0000000; //The bit 7 is for write address
 reg [15:0] entry_from_fifo = 16'h0000;
-reg [4:0] prueba = 5'd0;
+reg [4:0] up_counter = 16'h000f;
+reg [4:0] down_counter = 16'h000c;
 
+
+//This part is need it to update the activateRd signal 
 always @(posedge clock)
 begin
 activateRd = ~activateRd;
 end
-
-//In this part we activate the rd output
- /*always @(posedge clock)
- begin
-	if(prueba == 4'd11)
-	begin
-		activateRd = 1'b1;
-		prueba = prueba + 1;
-		rd = 1'b1;
-	end
-	else if(prueba == 4'd14)
-	begin
-		rd = 1'b0;
-		activateRd = 1'b0;
-		prueba = 4'd0;
-	end
-	else
-		prueba = prueba + 1;
-		
- end*/
 
 
 always @ (posedge clock) // on positive clock edge
@@ -115,6 +98,7 @@ begin
 	 start_writing_result = 1'b0;
 	 entry_from_fifo = entry_1;
 	 need_to_read = 1'b1;
+	 up_counter = 16'd15;
 	 $display("La entrada recibida es:", entry_1);
    end
 
@@ -129,9 +113,9 @@ begin
 				 rs = 1'b0;
 				 rw = 1'b0;
 				 enable = 1'b1; 
-				 entry_1_finished = (cursor_address == 7'h50 && entry_1_finished == 1'b0) ? 1'b1 : entry_1_finished;
+				 entry_1_finished = (cursor_address == 7'h44 && entry_1_finished == 1'b0) ? 1'b1 : entry_1_finished;
 				 start_writing_entry_1 =  (entry_1_finished == 1'b1) ? 1'b0 : 1'b1;
-			    cursor_address = (cursor_address == 7'h50) ? 7'h00 : cursor_address;
+			    cursor_address = (cursor_address == 7'h44) ? 7'h00 : cursor_address;
 				 lcd_data = {1'b1, cursor_address};		 
 				 write_address = 1'b0;
 				 command_delay = 1'b1;
@@ -143,13 +127,36 @@ begin
 			    already_read = 1'b1;
 			    rs = 1'b1;
 				 rw = 1'b0;
+				 if(up_counter == 16'd15) begin
+					entry_from_fifo[3:0] = entry_1[15:12];
+				 end
+				 else if(up_counter == 16'd11) begin
+					entry_from_fifo[3:0] = entry_1[11:8];
+				 end
+				 else if(up_counter == 16'd7) begin
+					entry_from_fifo[3:0] = entry_1[7:4];
+				 end
+				 else if(up_counter == 16'd3) begin
+					entry_from_fifo[3:0] = entry_1[3:0];
+				 end
 				 $display("Estoy escribiendo:", entry_1[entry_letter_counter]);
-			    lcd_data = (entry_1[entry_letter_counter] == 1'b1) ? 8'b00110001: 8'b00110000;
+				 lcd_data = (entry_from_fifo[3:0] == 7'h00) ? 8'b00110000: 8'b10110000; //0
+				 lcd_data = (entry_from_fifo[3:0] == 7'h01) ? 8'b00110001: lcd_data; //1
+				 lcd_data = (entry_from_fifo[3:0] == 7'h02) ? 8'b00110010: lcd_data; //2
+				 lcd_data = (entry_from_fifo[3:0] == 7'h03) ? 8'b00110011: lcd_data; //3
+				 lcd_data = (entry_from_fifo[3:0] == 7'h04) ? 8'b00110100: lcd_data; //4
+				 lcd_data = (entry_from_fifo[3:0] == 7'h05) ? 8'b00110101: lcd_data; //5
+				 lcd_data = (entry_from_fifo[3:0] == 7'h06) ? 8'b00110110: lcd_data; //6
+				 lcd_data = (entry_from_fifo[3:0] == 7'h07) ? 8'b00110111: lcd_data; //7
+				 lcd_data = (entry_from_fifo[3:0] == 7'h08) ? 8'b00111000: lcd_data; //8
+				 lcd_data = (entry_from_fifo[3:0] == 7'h09) ? 8'b00111001: lcd_data; //9
+				 
 				 entry_letter_counter = (entry_letter_counter == 5'b00000) ? 5'b01111 : entry_letter_counter - 1;
 				 write_address = 1'b1;
 				 cursor_address = cursor_address + 1;
 				 enable = 1'b1;
 				 command_delay = 1'b1;
+				 up_counter = up_counter - 4;
 			  end
 		  end
 		  
@@ -200,8 +207,6 @@ end
 //Assign the read signal 
 assign rd = ((activateRd == 1'b1 && start_writing_entry_1 == 1'b1 && already_read == 1'b0) 
 				|| (activateRd == 1'b0 && start_writing_entry_1 == 1'b1 && already_read == 1'b0)) ? 1'b1 : 1'b0;
-
-//assign rd = ((activateRd == 1'b1) ||(activateRd == 1'b0) ) ? 1'b1 : 1'b0;
-//assign rd = (prueba == 4'd11) ? 1'b1 : 1'b0;			
+		
 				
 endmodule // end of module lcd

@@ -87,7 +87,7 @@ output [6:0] hex_0;
  bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(fifo_3_output), .bcd_number(bcd_output));
  
  //This is an instance of the LCD module
- lcd_module write_to_lcd_inst(.clock(kpn_clk), .entry_1(fifo_3_output), .rs(rs), .rw(rw), .on(on), .enable(en), .lcd_data(lcd_data) , .rd(lcd_rd));
+ lcd_module write_to_lcd_inst(.clock(kpn_clk), .entry_1(bcd_output), .rs(rs), .rw(rw), .on(on), .enable(en), .lcd_data(lcd_data) , .rd(lcd_rd));
  
  //This is the instance of the display module
  write_to_display display_inst(.clk(kpn_clk), .entry_1(bcd_output), .hex_4(hex_4), .hex_3(hex_3), .hex_2(hex_2), 

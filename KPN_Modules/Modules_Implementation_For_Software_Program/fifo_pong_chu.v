@@ -41,13 +41,6 @@ module fifo_pong_chu
 	begin
       if (rd == 1'b1)begin
          output_1 = array_reg[r_ptr_reg];
-	//		if(output_1 == 16'd12)
-	//		begin
-	//	//		output_1 = 16'd5;
-		//	end
-		//	else
-			//	output_1 = 16'd1;
-			//output_1 = r_ptr_reg;
 		end
 	end 
    
@@ -63,23 +56,6 @@ module fifo_pong_chu
 		full_reg = full_next;
 		empty_reg = empty_next;
 	end
-	
-//	always @*
-//	begin
-	//	if(wr == 1'b1 && entry_1 > 16'h0000)begin
-		//	buffer = entry_1;
-	//		if(entry_1 == 16'd8)
-	//			output_1 = w_ptr_reg;
-		//	else
-		//	begin
-	//		array_reg[w_ptr_reg] = entry_1;
-			//	output_1 = 16'h0000;
-		//	end
-		//	lcd_data = {3'b000, w_ptr_reg};
-//		end
-//		if(rd == 1'b1)
-//			output_1 = array_reg[r_ptr_reg];//array_reg[r_ptr_reg];
-//	end
 	
    // next-state logic for read and write pointers
    always @*
