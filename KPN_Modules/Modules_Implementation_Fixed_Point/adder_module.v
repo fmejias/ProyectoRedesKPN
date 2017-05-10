@@ -26,6 +26,14 @@ output rd;
 	
  reg [15:0] output_1 = 16'h0000;
  
+/*
+ * We define some registers need it to activate the outputs rd and wr
+ * 
+ */
+ 
+ reg activateRd = 1'b0;
+ reg activateWr = 1'b0;
+ 
  /*
   * We define the registers need it to save the integer and the decimal values
   *
@@ -36,6 +44,7 @@ output rd;
  reg [3:0] decimal_part_entry_1 = 4'h0;
  reg [3:0] decimal_part_entry_2 = 4'h0;
  reg [3:0] decimal_result = 4'h0;
+
  
 /*
  * We make the add operation.
@@ -70,10 +79,24 @@ output rd;
   output_1[15:4] = integer_result;
   output_1[3:0] = decimal_result;
   
+  
   //Shows the output on the testbench
   $display("La entrada 1 es:", entry_1[15:4], ",", entry_1[3:0]);
   $display("La entrada 2 es:", entry_2[15:4], ",", entry_2[3:0]);
   $display("La salida es:", output_1[15:4], ",", output_1[3:0]);
+ end
+ 
+ 
+//In this part we activate the rd output
+ always @(posedge clk)
+ begin
+	activateRd = ~activateRd;
+ end
+ 
+ //In this part we activate the wr output
+ always @(posedge clk)
+ begin
+	activateWr = ~activateWr;
  end
  
  
@@ -82,8 +105,7 @@ output rd;
  * 
  */
  
- assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
- assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
-
+ assign wr = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ assign rd = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
 
 endmodule // end adder_module

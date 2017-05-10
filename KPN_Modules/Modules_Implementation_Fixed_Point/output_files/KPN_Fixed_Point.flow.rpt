@@ -1,5 +1,5 @@
 Flow report for KPN_Fixed_Point
-Sat Apr 29 17:04:11 2017
+Wed May 10 15:21:13 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,26 +41,26 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Sat Apr 29 17:04:11 2017       ;
+; Flow Status                        ; Successful - Wed May 10 15:21:13 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; KPN_Fixed_Point                             ;
-; Top-level Entity Name              ; top_module                                  ;
+; Top-level Entity Name              ; top_module_lcd                              ;
 ; Family                             ; Cyclone IV GX                               ;
 ; Device                             ; EP4CGX150DF31C7                             ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total GXB Receiver Channel PCS     ; N/A until Partition Merge                   ;
-; Total GXB Receiver Channel PMA     ; N/A until Partition Merge                   ;
-; Total GXB Transmitter Channel PCS  ; N/A until Partition Merge                   ;
-; Total GXB Transmitter Channel PMA  ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 1,230 / 149,760 ( < 1 % )                   ;
+;     Total combinational functions  ; 1,226 / 149,760 ( < 1 % )                   ;
+;     Dedicated logic registers      ; 142 / 149,760 ( < 1 % )                     ;
+; Total registers                    ; 142                                         ;
+; Total pins                         ; 48 / 508 ( 9 % )                            ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 1,408 / 6,635,520 ( < 1 % )                 ;
+; Embedded Multiplier 9-bit elements ; 0 / 720 ( 0 % )                             ;
+; Total GXB Receiver Channel PCS     ; 0 / 8 ( 0 % )                               ;
+; Total GXB Receiver Channel PMA     ; 0 / 8 ( 0 % )                               ;
+; Total GXB Transmitter Channel PCS  ; 0 / 8 ( 0 % )                               ;
+; Total GXB Transmitter Channel PMA  ; 0 / 8 ( 0 % )                               ;
+; Total PLLs                         ; 0 / 8 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -69,55 +69,67 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/29/2017 17:03:50 ;
+; Start date & time ; 05/10/2017 15:19:14 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; KPN_Fixed_Point     ;
 +-------------------+---------------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                 ;
++-------------------------------------+----------------------------------------+-----------------+----------------+----------------+
+; Assignment Name                     ; Value                                  ; Default Value   ; Entity Name    ; Section Id     ;
++-------------------------------------+----------------------------------------+-----------------+----------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 31288978634878.149445115300740         ; --              ; --             ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --              ; --             ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>          ; --             ; --             ;
+; EDA_TIME_SCALE                      ; 1 ps                                   ; --              ; --             ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --              ; --             ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --              ; --             ; --             ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --              ; --             ; --             ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --              ; top_module_lcd ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --              ; top_module_lcd ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --              ; top_module_lcd ; Top            ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --              ; --             ; --             ;
+; TOP_LEVEL_ENTITY                    ; top_module_lcd                         ; KPN_Fixed_Point ; --             ; --             ;
++-------------------------------------+----------------------------------------+-----------------+----------------+----------------+
+
+
 +-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                              ;
-+-------------------------------------+----------------------------------------+-----------------+-------------+----------------+
-; Assignment Name                     ; Value                                  ; Default Value   ; Entity Name ; Section Id     ;
-+-------------------------------------+----------------------------------------+-----------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 31288978634878.149350702905448         ; --              ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --              ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>          ; --          ; --             ;
-; EDA_TIME_SCALE                      ; 1 ps                                   ; --              ; --          ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --              ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --              ; --          ; --             ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --              ; --          ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --              ; top_module  ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --              ; top_module  ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --              ; top_module  ; Top            ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --              ; --          ; --             ;
-; TOP_LEVEL_ENTITY                    ; top_module                             ; KPN_Fixed_Point ; --          ; --             ;
-+-------------------------------------+----------------------------------------+-----------------+-------------+----------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:32     ; 1.0                     ; 710 MB              ; 00:01:05                           ;
+; Fitter                    ; 00:01:01     ; 1.0                     ; 1521 MB             ; 00:01:20                           ;
+; Assembler                 ; 00:00:08     ; 1.0                     ; 647 MB              ; 00:00:07                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.1                     ; 737 MB              ; 00:00:06                           ;
+; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 623 MB              ; 00:00:04                           ;
+; Total                     ; 00:01:54     ; --                      ; --                  ; 00:02:42                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                          ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:22     ; 1.0                     ; 664 MB              ; 00:00:55                           ;
-; Total                  ; 00:00:22     ; --                      ; --                  ; 00:00:55                           ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-
-
-+--------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                      ;
-+------------------------+------------------+------------+------------+----------------+
-; Module Name            ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+------------------------+------------------+------------+------------+----------------+
-; Analysis & Elaboration ; DESKTOP-66BC8G9  ; Windows 10 ; 10.0       ; x86_64         ;
-+------------------------+------------------+------------+------------+----------------+
++-----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                         ;
++---------------------------+------------------+------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++---------------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis      ; DESKTOP-66BC8G9  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; DESKTOP-66BC8G9  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; DESKTOP-66BC8G9  ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; DESKTOP-66BC8G9  ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-66BC8G9  ; Windows 10 ; 10.0       ; x86_64         ;
++---------------------------+------------------+------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off KPN_Fixed_Point -c KPN_Fixed_Point --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off KPN_Fixed_Point -c KPN_Fixed_Point
+quartus_fit --read_settings_files=off --write_settings_files=off KPN_Fixed_Point -c KPN_Fixed_Point
+quartus_asm --read_settings_files=off --write_settings_files=off KPN_Fixed_Point -c KPN_Fixed_Point
+quartus_sta KPN_Fixed_Point -c KPN_Fixed_Point
+quartus_eda --read_settings_files=off --write_settings_files=off KPN_Fixed_Point -c KPN_Fixed_Point
 
 
 

@@ -24,6 +24,14 @@ output rd;
  */
 	
  reg [31:0] output_1;
+ 
+ /*
+ * We define some registers need it to activate the outputs rd and wr
+ * 
+ */
+ 
+ reg activateRd = 1'b0;
+ reg activateWr = 1'b0;
 
  /*
   * We define the registers need it to save the integer and the decimal values
@@ -32,18 +40,6 @@ output rd;
  reg [11:0] integer_result = 12'h000;
  reg [3:0] decimal_result = 4'h0;
  
- /*
-  * We define some registers need it to convert the output to BCD format
-  *
-  */
-  
- reg [3:0] thousands;
- reg [3:0] hundreds;
- reg [3:0] tens;
- reg [3:0] ones;
- reg [31:0] shift = 32'h00000000;
- reg [15:0] bcd_output = 16'h0000;
- integer i;
  
  /*
   * We define registers need it to convert the entry to the correct form
@@ -179,38 +175,6 @@ output rd;
 	output_1 = output_1 + mult_15;
 	output_1 = output_1 + mult_16;
 	
-	//Now, we have to convert the output to BCD format
-   
-	shift[15:0] = output_1;
-      
-   // Loop eight times
-   for (i=0; i<16; i=i+1) begin
-		if (shift[19:16] >= 5)
-         shift[19:16] = shift[19:16] + 3;
-			 
-      if (shift[23:20] >= 5)
-         shift[23:20] = shift[23:20] + 3;
-            
-      if (shift[27:24] >= 5)
-         shift[27:24] = shift[27:24] + 3;
-            
-      if (shift[31:28] >= 5)
-         shift[31:28] = shift[31:28] + 3;
-         
-       // Shift entire register left once
-       shift = shift << 1;
-    end
-      
-    // Push decimal numbers to output
-	 thousands = shift[31:28];
-    hundreds = shift[27:24];
-    tens     = shift[23:20];
-    ones     = shift[19:16];
-	 bcd_output = {thousands, hundreds,tens,ones};
-	 
-	 //Then assign the new output
-	 output_1 = bcd_output[15:4];
-
 
 	 //Assign the corresponding bits to the output_1
     integer_result = output_1[15:4];
@@ -222,12 +186,25 @@ output rd;
 
  end
  
+ //In this part we activate the rd output
+ always @(posedge clk)
+ begin
+	activateRd = ~activateRd;
+ end
+ 
+ //In this part we activate the wr output
+ always @(posedge clk)
+ begin
+	activateWr = ~activateWr;
+ end
+ 
 /*
  * We set rd and wr
  * 
  */
  
- assign wr = (clk == 1'b1) ? 1'b0 : 1'b1;
- assign rd = (clk == 1'b1) ? 1'b1 : 1'b0;
+ assign wr = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+ assign rd = ((activateRd == 1'b1 && activateWr == 1'b1) || (activateRd == 1'b0 && activateWr == 1'b0)) ? 1'b1 : 1'b0;
+
 
 endmodule // end multiplier_module

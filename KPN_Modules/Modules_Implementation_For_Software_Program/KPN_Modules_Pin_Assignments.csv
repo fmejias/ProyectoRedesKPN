@@ -1,0 +1,70 @@
+# Copyright (C) 2016  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Intel and sold by Intel or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+
+# Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+# File: C:\Users\Felipe\Desktop\Tec\ProyectoDiseno\ProyectoGithub\ProyectoRedesKPN\KPN_Modules\Modules_Implementation_For_Software_Program\KPN_Modules_Pin_Assignments.csv
+# Generated on: Tue May 09 22:52:15 2017
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Strict Preservation
+clk,Input,PIN_AJ16,4,B4_N2,PIN_AJ16,2.5 V,,,,,
+en,Output,PIN_AF4,3,B3_N2,PIN_AF4,2.5 V,,,,,
+hex_0[6],Output,PIN_F14,8,B8_N0,PIN_F14,2.5 V,,,,,
+hex_0[5],Output,PIN_D16,8,B8_N0,PIN_D16,2.5 V,,,,,
+hex_0[4],Output,PIN_F16,8,B8_N0,PIN_F16,2.5 V,,,,,
+hex_0[3],Output,PIN_F11,8,B8_N1,PIN_F11,2.5 V,,,,,
+hex_0[2],Output,PIN_G11,8,B8_N1,PIN_G11,2.5 V,,,,,
+hex_0[1],Output,PIN_E12,8,B8_N1,PIN_E12,2.5 V,,,,,
+hex_0[0],Output,PIN_E15,8,B8_N0,PIN_E15,2.5 V,,,,,
+hex_1[6],Output,PIN_G10,8,B8_N2,PIN_G10,2.5 V,,,,,
+hex_1[5],Output,PIN_J9,8,B8_N2,PIN_J9,2.5 V,,,,,
+hex_1[4],Output,PIN_G12,8,B8_N1,PIN_G12,2.5 V,,,,,
+hex_1[3],Output,PIN_F12,8,B8_N1,PIN_F12,2.5 V,,,,,
+hex_1[2],Output,PIN_G13,8,B8_N0,PIN_G13,2.5 V,,,,,
+hex_1[1],Output,PIN_B13,8,B8_N0,PIN_B13,2.5 V,,,,,
+hex_1[0],Output,PIN_G14,8,B8_N0,PIN_G14,2.5 V,,,,,
+hex_2[6],Output,PIN_F10,8,B8_N2,PIN_F10,2.5 V,,,,,
+hex_2[5],Output,PIN_F4,8,B8_N2,PIN_F4,2.5 V,,,,,
+hex_2[4],Output,PIN_F6,8,B8_N2,PIN_F6,2.5 V,,,,,
+hex_2[3],Output,PIN_AG30,5,B5_N2,PIN_AG30,2.5 V,,,,,
+hex_2[2],Output,PIN_F7,8,B8_N2,PIN_F7,2.5 V,,,,,
+hex_2[1],Output,PIN_G7,8,B8_N2,PIN_G7,2.5 V,,,,,
+hex_2[0],Output,PIN_G8,8,B8_N2,PIN_G8,2.5 V,,,,,
+hex_3[6],Output,PIN_D4,8,B8_N1,PIN_D4,2.5 V,,,,,
+hex_3[5],Output,PIN_D5,8,B8_N2,PIN_D5,2.5 V,,,,,
+hex_3[4],Output,PIN_E3,8,B8_N2,PIN_E3,2.5 V,,,,,
+hex_3[3],Output,PIN_E4,8,B8_N2,PIN_E4,2.5 V,,,,,
+hex_3[2],Output,PIN_E6,8,B8_N2,PIN_E6,2.5 V,,,,,
+hex_3[1],Output,PIN_D7,8,B8_N1,PIN_D7,2.5 V,,,,,
+hex_3[0],Output,PIN_D10,8,B8_N2,PIN_D10,2.5 V,,,,,
+hex_4[6],Output,PIN_C3,8,B8_N2,PIN_C3,2.5 V,,,,,
+hex_4[5],Output,PIN_C4,8,B8_N1,PIN_C4,2.5 V,,,,,
+hex_4[4],Output,PIN_C5,8,B8_N1,PIN_C5,2.5 V,,,,,
+hex_4[3],Output,PIN_C6,8,B8_N1,PIN_C6,2.5 V,,,,,
+hex_4[2],Output,PIN_C7,8,B8_N2,PIN_C7,2.5 V,,,,,
+hex_4[1],Output,PIN_A13,8,B8_N0,PIN_A13,2.5 V,,,,,
+hex_4[0],Output,PIN_A14,8,B8_N0,PIN_A14,2.5 V,,,,,
+lcd_data[7],Output,PIN_AE4,3,B3_N2,PIN_AE4,2.5 V,,,,,
+lcd_data[6],Output,PIN_AH4,3,B3_N2,PIN_AH4,2.5 V,,,,,
+lcd_data[5],Output,PIN_AE3,3,B3_N2,PIN_AE3,2.5 V,,,,,
+lcd_data[4],Output,PIN_AH2,3,B3_N2,PIN_AH2,2.5 V,,,,,
+lcd_data[3],Output,PIN_AE5,3,B3_N2,PIN_AE5,2.5 V,,,,,
+lcd_data[2],Output,PIN_AH3,3,B3_N2,PIN_AH3,2.5 V,,,,,
+lcd_data[1],Output,PIN_AF3,3,B3_N2,PIN_AF3,2.5 V,,,,,
+lcd_data[0],Output,PIN_AG4,3,B3_N2,PIN_AG4,2.5 V,,,,,
+on,Output,PIN_AF27,5,B5_N2,PIN_AF27,2.5 V,,,,,
+rs,Output,PIN_AG3,3,B3_N2,PIN_AG3,2.5 V,,,,,
+rw,Output,PIN_AJ3,3,B3_N2,PIN_AJ3,2.5 V,,,,,
