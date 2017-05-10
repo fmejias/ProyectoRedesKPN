@@ -70,12 +70,18 @@ always @(posedge clk)
 		output_1 = array_reg[r_ptr_reg];
 		r_ptr_reg = r_ptr_succ;
 		full_reg = 1'b0;
-		if (r_ptr_succ==w_ptr_reg)
-			empty_reg = 1'b1;
+		if (r_ptr_succ==w_ptr_reg) begin
+		
+		/* This part makes the queue go back to the beginning */
+			w_ptr_reg = 5'h05;
+			r_ptr_reg = 5'h00;
+			empty_reg = 1'b0;
+		end
 
 		end
 		else
 		output_1 = 16'h0000;
+		
 	end
 
  //In this part we activate the rd output
