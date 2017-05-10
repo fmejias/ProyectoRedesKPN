@@ -99,7 +99,8 @@ begin
 	 entry_from_fifo = entry_1;
 	 need_to_read = 1'b1;
 	 up_counter = 16'd15;
-	 $display("La entrada recibida es:", entry_1);
+	 entry_from_fifo = 16'h0000;
+
    end
 
  else
@@ -139,7 +140,6 @@ begin
 				 else if(up_counter == 16'd3) begin
 					entry_from_fifo[3:0] = entry_1[3:0];
 				 end
-				 $display("Estoy escribiendo:", entry_1[entry_letter_counter]);
 				 lcd_data = (entry_from_fifo[3:0] == 7'h00) ? 8'b00110000: 8'b10110000; //0
 				 lcd_data = (entry_from_fifo[3:0] == 7'h01) ? 8'b00110001: lcd_data; //1
 				 lcd_data = (entry_from_fifo[3:0] == 7'h02) ? 8'b00110010: lcd_data; //2
@@ -150,8 +150,6 @@ begin
 				 lcd_data = (entry_from_fifo[3:0] == 7'h07) ? 8'b00110111: lcd_data; //7
 				 lcd_data = (entry_from_fifo[3:0] == 7'h08) ? 8'b00111000: lcd_data; //8
 				 lcd_data = (entry_from_fifo[3:0] == 7'h09) ? 8'b00111001: lcd_data; //9
-				 
-				 entry_letter_counter = (entry_letter_counter == 5'b00000) ? 5'b01111 : entry_letter_counter - 1;
 				 write_address = 1'b1;
 				 cursor_address = cursor_address + 1;
 				 enable = 1'b1;

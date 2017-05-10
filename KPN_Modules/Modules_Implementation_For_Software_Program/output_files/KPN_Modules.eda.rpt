@@ -1,5 +1,5 @@
 EDA Netlist Writer report for KPN_Modules
-Tue May 09 18:14:42 2017
+Tue May 09 20:51:47 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue May 09 18:14:42 2017 ;
+; EDA Netlist Writer Status ; Successful - Tue May 09 20:51:47 2017 ;
 ; Revision Name             ; KPN_Modules                           ;
 ; Top-level Entity Name     ; top_module_lcd                        ;
 ; Family                    ; Cyclone IV GX                         ;
@@ -89,7 +89,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Tue May 09 18:14:37 2017
+    Info: Processing started: Tue May 09 20:51:43 2017
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off KPN_Modules -c KPN_Modules
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file KPN_Modules_7_1200mv_85c_slow.vo in folder "C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/simulation/modelsim/" for EDA simulation tool
@@ -101,9 +101,9 @@ Info (204019): Generated file KPN_Modules_7_1200mv_0c_v_slow.sdo in folder "C:/U
 Info (204019): Generated file KPN_Modules_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/simulation/modelsim/" for EDA simulation tool
 Info (204019): Generated file KPN_Modules_v.sdo in folder "C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_For_Software_Program/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 623 megabytes
-    Info: Processing ended: Tue May 09 18:14:43 2017
-    Info: Elapsed time: 00:00:06
+    Info: Peak virtual memory: 628 megabytes
+    Info: Processing ended: Tue May 09 20:51:47 2017
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 
 
