@@ -144,9 +144,23 @@ public class XMLParser {
         NodeList nodesList = xmlDoc.getElementsByTagName("module");
         Node node = nodesList.item(numberOfModule);
         Element eElement = (Element) node;
-        String moduleType = eElement.getAttribute("id");
-        return moduleType;
+        String moduleId = eElement.getAttribute("id");
+        return moduleId;
     }
+    
+    /*
+     * This method is used to get all of the elements of the queues
+     */
+    public String getQueueElements(int numberOfModule)
+    {
+        NodeList nodesList = xmlDoc.getElementsByTagName("module");
+        Node node = nodesList.item(numberOfModule);
+        Element eElement = (Element) node;
+        String queueElements = eElement.getAttribute("elements");
+        return queueElements;
+    }
+    
+    
     
     /*
      * This method is used to get the entry_1 of the module need it for the KPN

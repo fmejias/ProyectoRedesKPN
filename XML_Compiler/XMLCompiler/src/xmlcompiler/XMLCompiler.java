@@ -23,7 +23,12 @@ public class XMLCompiler {
         
         // TODO code application logic here
         CodeGenerator xmlCompiler = new CodeGenerator();
-        xmlCompiler.createKPN();
+        FixedPointParser parser = new FixedPointParser();
+        String path = "C:/Users/Felipe/Desktop"
+                + "/Tec/ProyectoDiseno/ProyectoGithub"
+                + "/ProyectoRedesKPN/XML_Compiler/QueueFiles/queue_precharge_data.txt";
+        parser.parserFixedPointNumbers(path, "4.7,6.5,200.4");
+      //  xmlCompiler.createKPN();
 
     }
     

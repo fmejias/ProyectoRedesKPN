@@ -1,5 +1,5 @@
 Fitter report for KPN_Fixed_Point
-Wed May 10 15:20:48 2017
+Wed May 10 18:51:04 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -10,42 +10,43 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   2. Fitter Summary
   3. Fitter Settings
   4. Parallel Compilation
-  5. Incremental Compilation Preservation Summary
-  6. Incremental Compilation Partition Settings
-  7. Incremental Compilation Placement Preservation
-  8. Pin-Out File
-  9. Fitter Resource Usage Summary
- 10. Fitter Partition Statistics
- 11. Input Pins
- 12. Output Pins
- 13. Dual Purpose and Dedicated Pins
- 14. I/O Bank Usage
- 15. All Package Pins
- 16. I/O Assignment Warnings
- 17. Fitter Resource Utilization by Entity
- 18. Delay Chain Summary
- 19. Pad To Core Delay Chain Fanout
- 20. Control Signals
- 21. Global & Other Fast Signals
- 22. Fitter RAM Summary
- 23. |top_module_lcd|fifo_module:fifo_3_inst|altsyncram:array_reg_rtl_0|altsyncram_umh1:auto_generated|ALTSYNCRAM
- 24. |top_module_lcd|fifo_module:fifo_1_inst|altsyncram:array_reg_rtl_0|altsyncram_umh1:auto_generated|ALTSYNCRAM
- 25. |top_module_lcd|fifo_module:fifo_2_inst|altsyncram:array_reg_rtl_0|altsyncram_umh1:auto_generated|ALTSYNCRAM
- 26. Routing Usage Summary
- 27. LAB Logic Elements
- 28. LAB-wide Signals
- 29. LAB Signals Sourced
- 30. LAB Signals Sourced Out
- 31. LAB Distinct Inputs
- 32. I/O Rules Summary
- 33. I/O Rules Details
- 34. I/O Rules Matrix
- 35. Fitter Device Options
- 36. Operating Settings and Conditions
- 37. Estimated Delay Added for Hold Timing Summary
- 38. Estimated Delay Added for Hold Timing Details
- 39. Fitter Messages
- 40. Fitter Suppressed Messages
+  5. Ignored Assignments
+  6. Incremental Compilation Preservation Summary
+  7. Incremental Compilation Partition Settings
+  8. Incremental Compilation Placement Preservation
+  9. Pin-Out File
+ 10. Fitter Resource Usage Summary
+ 11. Fitter Partition Statistics
+ 12. Input Pins
+ 13. Output Pins
+ 14. Dual Purpose and Dedicated Pins
+ 15. I/O Bank Usage
+ 16. All Package Pins
+ 17. I/O Assignment Warnings
+ 18. Fitter Resource Utilization by Entity
+ 19. Delay Chain Summary
+ 20. Pad To Core Delay Chain Fanout
+ 21. Control Signals
+ 22. Global & Other Fast Signals
+ 23. Fitter RAM Summary
+ 24. |top_module_lcd|fifo_module:fifo_3_inst|altsyncram:array_reg_rtl_0|altsyncram_umh1:auto_generated|ALTSYNCRAM
+ 25. |top_module_lcd|fifo_module:fifo_1_inst|altsyncram:array_reg_rtl_0|altsyncram_umh1:auto_generated|ALTSYNCRAM
+ 26. |top_module_lcd|fifo_module:fifo_2_inst|altsyncram:array_reg_rtl_0|altsyncram_umh1:auto_generated|ALTSYNCRAM
+ 27. Routing Usage Summary
+ 28. LAB Logic Elements
+ 29. LAB-wide Signals
+ 30. LAB Signals Sourced
+ 31. LAB Signals Sourced Out
+ 32. LAB Distinct Inputs
+ 33. I/O Rules Summary
+ 34. I/O Rules Details
+ 35. I/O Rules Matrix
+ 36. Fitter Device Options
+ 37. Operating Settings and Conditions
+ 38. Estimated Delay Added for Hold Timing Summary
+ 39. Estimated Delay Added for Hold Timing Details
+ 40. Fitter Messages
+ 41. Fitter Suppressed Messages
 
 
 
@@ -72,7 +73,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Wed May 10 15:20:48 2017       ;
+; Fitter Status                      ; Successful - Wed May 10 18:51:04 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; KPN_Fixed_Point                             ;
 ; Top-level Entity Name              ; top_module_lcd                              ;
@@ -172,6 +173,21 @@ agreement for further details.
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   1.8%      ;
 +----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------+
+; Ignored Assignments                                                                    ;
++----------+----------------+--------------+------------+---------------+----------------+
+; Name     ; Ignored Entity ; Ignored From ; Ignored To ; Ignored Value ; Ignored Source ;
++----------+----------------+--------------+------------+---------------+----------------+
+; Location ;                ;              ; hex_5[0]   ; PIN_D3        ; QSF Assignment ;
+; Location ;                ;              ; hex_5[1]   ; PIN_A10       ; QSF Assignment ;
+; Location ;                ;              ; hex_5[2]   ; PIN_A9        ; QSF Assignment ;
+; Location ;                ;              ; hex_5[3]   ; PIN_A7        ; QSF Assignment ;
+; Location ;                ;              ; hex_5[4]   ; PIN_A6        ; QSF Assignment ;
+; Location ;                ;              ; hex_5[5]   ; PIN_A11       ; QSF Assignment ;
+; Location ;                ;              ; hex_5[6]   ; PIN_B6        ; QSF Assignment ;
++----------+----------------+--------------+------------+---------------+----------------+
 
 
 +---------------------------------------------------------------------------------------------------+
@@ -2183,6 +2199,14 @@ Info (176353): Automatically promoted node rtl~5
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
+Warning (15705): Ignored locations or region assignments to the following nodes
+    Warning (15706): Node "hex_5[0]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "hex_5[1]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "hex_5[2]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "hex_5[3]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "hex_5[4]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "hex_5[5]" is assigned to location or region, but does not exist in design
+    Warning (15706): Node "hex_5[6]" is assigned to location or region, but does not exist in design
 Info (171121): Fitter preparation operations ending: elapsed time is 00:00:05
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
@@ -2196,18 +2220,19 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:18
-Info (11888): Total time spent on timing analysis during the Fitter is 2.55 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 2.58 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:03
+Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/output_files/KPN_Fixed_Point.fit.smsg
-Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 1521 megabytes
-    Info: Processing ended: Wed May 10 15:20:49 2017
+Info: Quartus Prime Fitter was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 1522 megabytes
+    Info: Processing ended: Wed May 10 18:51:06 2017
     Info: Elapsed time: 00:01:02
-    Info: Total CPU time (on all processors): 00:01:21
+    Info: Total CPU time (on all processors): 00:01:20
 
 
 +----------------------------+

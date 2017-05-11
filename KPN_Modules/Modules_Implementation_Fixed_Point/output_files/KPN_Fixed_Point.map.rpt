@@ -1,5 +1,5 @@
 Analysis & Synthesis report for KPN_Fixed_Point
-Wed May 10 15:19:46 2017
+Wed May 10 18:50:03 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -64,7 +64,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 10 15:19:46 2017       ;
+; Analysis & Synthesis Status        ; Successful - Wed May 10 18:50:03 2017       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; KPN_Fixed_Point                             ;
 ; Top-level Entity Name              ; top_module_lcd                              ;
@@ -908,7 +908,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed May 10 15:19:13 2017
+    Info: Processing started: Wed May 10 18:49:30 2017
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off KPN_Fixed_Point -c KPN_Fixed_Point
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -991,9 +991,7 @@ Info (10041): Inferred latch for "buffer[14]" at lcd_fifo.v(64) File: C:/Users/F
 Info (10041): Inferred latch for "buffer[15]" at lcd_fifo.v(64) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
 Info (10041): Inferred latch for "count" at lcd_fifo.v(64) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
 Info (12128): Elaborating entity "adder_module" for hierarchy "adder_module:adder_1_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/top_module_lcd.v Line: 101
-Warning (10036): Verilog HDL or VHDL warning at adder_module.v(57): object "shift" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 57
-Warning (10036): Verilog HDL or VHDL warning at adder_module.v(58): object "bcd_output" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 58
-Warning (10230): Verilog HDL assignment warning at adder_module.v(87): truncated value with size 32 to match size of target (12) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 87
+Warning (10230): Verilog HDL assignment warning at adder_module.v(75): truncated value with size 32 to match size of target (12) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 75
 Info (12128): Elaborating entity "bcd_converter" for hierarchy "bcd_converter:bcd_converter_inst" File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/top_module_lcd.v Line: 110
 Warning (10036): Verilog HDL or VHDL warning at bcd_converter.v(22): object "thousands" assigned a value but never read File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/bcd_converter.v Line: 22
 Warning (10230): Verilog HDL assignment warning at bcd_converter.v(42): truncated value with size 32 to match size of target (4) File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/bcd_converter.v Line: 42
@@ -2110,35 +2108,35 @@ Warning (13012): Latch lcd_fifo:fifo_4_inst|array_reg~285 has unsafe behavior Fi
 Warning (13012): Latch lcd_fifo:fifo_4_inst|array_reg~465 has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 15
     Warning (13013): Ports D and ENA on the latch are fed by the same signal lcd_fifo:fifo_4_inst|buffer[1] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[11] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[11] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[11] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[1] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[1] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[1] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[2] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[2] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[2] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[3] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[3] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[3] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[4] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[4] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[4] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[5] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[5] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[5] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[6] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[6] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[6] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[7] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[7] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[7] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[8] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[8] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[8] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[9] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[9] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[9] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[10] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[10] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[10] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[12] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[12] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[12] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[13] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[13] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[13] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[14] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[14] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[14] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13012): Latch lcd_fifo:fifo_4_inst|buffer[15] has unsafe behavior File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/lcd_fifo.v Line: 64
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[15] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 66
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal adder_module:adder_2_inst|output_1[15] File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/adder_module.v Line: 54
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "rw" is stuck at GND File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/top_module_lcd.v Line: 21
     Warning (13410): Pin "on" is stuck at VCC File: C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/top_module_lcd.v Line: 22
@@ -2158,10 +2156,10 @@ Info (21057): Implemented 1344 device resources after synthesis - the final reso
     Info (21059): Implemented 47 output pins
     Info (21061): Implemented 1252 logic cells
     Info (21064): Implemented 44 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1088 warnings
-    Info: Peak virtual memory: 724 megabytes
-    Info: Processing ended: Wed May 10 15:19:46 2017
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1086 warnings
+    Info: Peak virtual memory: 731 megabytes
+    Info: Processing ended: Wed May 10 18:50:03 2017
     Info: Elapsed time: 00:00:33
-    Info: Total CPU time (on all processors): 00:01:05
+    Info: Total CPU time (on all processors): 00:01:04
 
 
