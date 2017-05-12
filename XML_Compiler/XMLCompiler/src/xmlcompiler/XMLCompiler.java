@@ -5,6 +5,7 @@
  */
 package xmlcompiler;
 
+import java.io.File;
 import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
@@ -23,12 +24,17 @@ public class XMLCompiler {
         
         // TODO code application logic here
         CodeGenerator xmlCompiler = new CodeGenerator();
-        FixedPointParser parser = new FixedPointParser();
-        String path = "C:/Users/Felipe/Desktop"
-                + "/Tec/ProyectoDiseno/ProyectoGithub"
-                + "/ProyectoRedesKPN/XML_Compiler/QueueFiles/queue_precharge_data.txt";
-        parser.parserFixedPointNumbers(path, "4.7,6.5,200.4");
-      //  xmlCompiler.createKPN();
+        xmlCompiler.createKPN();
+     //   FixedPointParser parser = new FixedPointParser();
+     //   String path = "C:/Users/Felipe/Desktop"
+     //           + "/Tec/ProyectoDiseno/ProyectoGithub"
+     //           + "/ProyectoRedesKPN/XML_Compiler/QueueFiles/queue_precharge_data.txt";
+     //   parser.parserFixedPointNumbers(path, "4.7,6.5,200.4");
+      //  UpdateQueueFiles update = new UpdateQueueFiles();
+      //  update.updateFile();
+      //  File directory = new File("KPNModules/UpdateQueueTest.v");
+      //  System.out.println(directory.getAbsolutePath());
+      
 
     }
     

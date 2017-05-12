@@ -23,8 +23,12 @@ public class CodeGenerator {
      * List of attributes
      */
     String directoryPath; //Directory path of the KPNModules and Verilog Modules directory
+    String firstQueueStringToChange; //Contains the string: module queue_module
+    String secondQueueStringToChange; //Containts the string: $readmemh 
+    int queueModuleFiles; //Use to update the queue file name
     XMLParser xmlParser; //Need it to parse the XML File
     BufferedWriter top_module; //File that represents the top module
+    FixedPointParser fixedPointTranslator; //Use to parse the fixed point for the queue file
     
     //Constructor of the class with no parameters
     public CodeGenerator() throws ParserConfigurationException, SAXException, IOException 
@@ -35,8 +39,22 @@ public class CodeGenerator {
                 + "/ProyectoRedesKPN/XML_Compiler";  
         
         //Parse the XML File
-        xmlParser = new XMLParser(directoryPath + "/Test3.xml");  
+        xmlParser = new XMLParser(directoryPath + "/EjemploCompletoKPN1.xml");  
         
+        //Set the first string value to change in the queue module
+        firstQueueStringToChange = "module queue_module\\(";
+        
+        //Set the second string value to change in the queue module
+        secondQueueStringToChange = "\\$readmemh\\(\"C:/Users/Felipe/Desktop/Tec/"
+                + "ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/"
+                + "Modules_Implementation_For_Software_Program/Test_Modules/"
+                + "queue_precharge_data.txt\", array_reg\\);";
+        
+        //Set the queueModuleFiles to 1
+        queueModuleFiles = 1;
+        
+        //Create the FixedPointTranslator
+        fixedPointTranslator = new FixedPointParser();
     }
     
     
@@ -57,6 +75,9 @@ public class CodeGenerator {
             moduleType = xmlParser.getModuleType(i);
             addFileToKpnDirectory(moduleType);
         }
+        
+        //Update the queue_modules files
+        updateQueueModules();
     }
     
     /*
@@ -132,12 +153,13 @@ public class CodeGenerator {
             }
         }
         else{ //In this case, the type is queue
-            Path kpnPath = Paths.get(directoryPath + "/KPNModules/queue_module.v");
+            Path kpnPath = Paths.get(directoryPath + "/KPNModules/queue_module" + Integer.toString(queueModuleFiles) + ".v");
             Path sourcePath = Paths.get(directoryPath + "/VerilogModules/queue_module.v");
-            File queueModule = new File(directoryPath + "/KPNModules/queue_module.v");
+            File queueModule = new File(directoryPath + "/KPNModules/queue_module" + Integer.toString(queueModuleFiles) + ".v");
             if(!queueModule.exists()) { 
                 Files.copy(sourcePath, kpnPath);
             }
+            queueModuleFiles = queueModuleFiles + 1;
         }
     }
     
@@ -183,6 +205,12 @@ public class CodeGenerator {
         
         //We have to write the instantiated modules
         writeInstantiatedModulesTopModule();
+        
+        //We have to create the queue_precharge_data_files
+        createQueuePrechargeDataFiles();
+        
+        //Set the variable queueModuleFiles to 1 again
+        queueModuleFiles = 1;
         
         //We close the top_module file
         top_module.close();
@@ -472,7 +500,7 @@ public class CodeGenerator {
             writeCommentsTopModule("This is an instance of the split module");
         }
         else{ //This means the type is "queue"
-            String header = "queue_module queue_module_inst" + id;
+            String header = "queue_module" + Integer.toString(queueModuleFiles) + " queue_module_inst" + id;
             String openParenthesis = "(";
             String closeParenthesis = ")";
             String comma = ", ";
@@ -486,6 +514,9 @@ public class CodeGenerator {
             
             //Write a comment for the instantiated module
             writeCommentsTopModule("This is an instance of the queue module");
+            
+            //Update the variable queueModuleFiles
+            queueModuleFiles = queueModuleFiles + 1;
         }
         return instantiatedString;
     }
@@ -496,5 +527,73 @@ public class CodeGenerator {
     public String[] searchRdModule(String fifo) throws IOException{
         //First, we have to write the entries
         return xmlParser.getRdModule(fifo);
+    }
+    
+    /*
+     * Create the queue_precharge_data files
+     */
+    public void createQueuePrechargeDataFiles() throws IOException{
+        
+        //Directory for the queue output files
+        String queueFilesPath = directoryPath + "/QueueFiles/";
+        String fileName = "queue_precharge_data";
+        String newQueueFilePath = "";
+        String queueElements = "";
+        int outputFileNumber = 1;
+        
+        //This loop is necessary to get the modules files of the KPN
+        int numberOfModules = xmlParser.getNumberOfModules();
+        String moduleType;
+        
+        for(int i = 0; i < numberOfModules; i++){
+            moduleType = xmlParser.getModuleType(i);
+            
+            if(moduleType.equals("queue")){
+                //Get all the elements of the queue
+                queueElements = xmlParser.getQueueElements(i);
+                
+                //Set the new path
+                newQueueFilePath = queueFilesPath + fileName + Integer.toString(outputFileNumber) + ".txt";
+                
+                //Go and create the file
+                fixedPointTranslator.parserFixedPointNumbers(newQueueFilePath, queueElements);
+                
+                //Update the output file number
+                outputFileNumber = outputFileNumber + 1;
+            }
+        }
+     
+    }
+    
+    
+    /*
+    This method is use to change some lines in the queue files
+    */
+    public void updateQueueModules() throws IOException{
+        //Directory for the queue output files
+        String queueFilesPath = directoryPath + "/KPNModules/";
+        String fileName = "queue_module";
+        String newQueueFilePath = "";
+        String firstString = "module queue_module";
+        String secondString = "\\$readmemh\\(\"C:/Users/Felipe/Desktop/Tec/"
+                + "ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/"
+                + "Modules_Implementation_For_Software_Program/Test_Modules/"
+                + "queue_precharge_data";
+        
+        for(int i = 1; i < queueModuleFiles; i++){
+            newQueueFilePath = queueFilesPath + fileName + Integer.toString(i) + ".v";
+            File f = new File(newQueueFilePath);
+            String content = FileUtils.readFileToString(new File(newQueueFilePath));
+            FileUtils.writeStringToFile(f, content.replaceAll(firstQueueStringToChange, 
+                    firstString + Integer.toString(i) + "("));      
+        }
+        
+        for(int i = 1; i < queueModuleFiles; i++){
+            newQueueFilePath = queueFilesPath + fileName + Integer.toString(i) + ".v";
+            File f = new File(newQueueFilePath);
+            String content = FileUtils.readFileToString(new File(newQueueFilePath));
+            FileUtils.writeStringToFile(f, content.replaceAll(secondQueueStringToChange, 
+                    secondString + Integer.toString(i) + ".txt\", array_reg\\);")); 
+        }
     }
 }
