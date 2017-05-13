@@ -68,27 +68,27 @@ lcd_module write_to_lcd_inst(.clock(kpn_clk), .entry_1(bcd_output), .rs(rs), .rw
 /*
  * This is an instance of the queue module
  */
-queue_module1 queue_module_inst1(.clk(clk), .wr(wr_queue_module_1), .output_1(output_queue_module_1_1));
+queue_module1 queue_module_inst1(.clk(kpn_clk), .wr(wr_queue_module_1), .output_1(output_queue_module_1_1));
 
 /*
  * This is an instance of the queue module
  */
-queue_module2 queue_module_inst2(.clk(clk), .wr(wr_queue_module_2), .output_1(output_queue_module_2_1));
+queue_module2 queue_module_inst2(.clk(kpn_clk), .wr(wr_queue_module_2), .output_1(output_queue_module_2_1));
 
 /*
  * This is an instance of the fifo module
  */
-fifo_module fifo_module_inst1(.clk(clk), .rd(rd_adder_module_1), .wr(wr_queue_module_1), .entry_1(output_queue_module_1_1 ), .output_1(output_fifo_module_1_1));
+fifo_module fifo_module_inst1(.clk(kpn_clk), .rd(rd_adder_module_1), .wr(wr_queue_module_1), .entry_1(output_queue_module_1_1 ), .output_1(output_fifo_module_1_1));
 
 /*
  * This is an instance of the fifo module
  */
-fifo_module fifo_module_inst2(.clk(clk), .rd(rd_adder_module_1), .wr(wr_queue_module_2), .entry_1(output_queue_module_2_1 ), .output_1(output_fifo_module_2_1));
+fifo_module fifo_module_inst2(.clk(kpn_clk), .rd(rd_adder_module_1), .wr(wr_queue_module_2), .entry_1(output_queue_module_2_1 ), .output_1(output_fifo_module_2_1));
 
 /*
  * This is an instance of the adder module
  */
-adder_module adder_module_inst_1(.clk(clk), .rd(rd_adder_module_1), .wr(wr_adder_module_1), .entry_1(output_fifo_module_1_1 ), .entry_2(output_fifo_module_2_1 ), .output_1(output_adder_module_1_1));
+adder_module adder_module_inst_1(.clk(kpn_clk), .rd(rd_adder_module_1), .wr(wr_adder_module_1), .entry_1(output_fifo_module_1_1 ), .entry_2(output_fifo_module_2_1 ), .output_1(output_adder_module_1_1));
 
 /*
  * This is an instance of the bcd_converter module
@@ -98,5 +98,6 @@ bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(output_fifo_modul
 /*
  * This is an instance of the fifo module
  */
-lcd_fifo fifo_module_inst3(.clk(clk), .rd(lcd_rd), .wr(wr_adder_module_1), .entry_1(output_adder_module_1_1 ), .output_1(output_fifo_module_3_1));
+lcd_fifo fifo_module_inst3(.clk(kpn_clk), .rd(lcd_rd), .wr(wr_adder_module_1), .entry_1(output_adder_module_1_1 ), .output_1(output_fifo_module_3_1));
 
+endmodule

@@ -52,7 +52,7 @@ begin
 			array_reg[i] = 16'h0000;
 		 end
 		 
-	$readmemh("C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/Modules_Implementation_Fixed_Point/Test_Modules/queue_precharge_data.txt", array_reg);
+	$readmemh("C:/Users/Felipe/Desktop/Tec/ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/KPN_From_XML/QueueFiles/queue_precharge_data.txt", array_reg);
 	w_ptr_reg = 5'h04;
 	r_ptr_reg = 5'h00;
 	empty_reg = 1'b0;

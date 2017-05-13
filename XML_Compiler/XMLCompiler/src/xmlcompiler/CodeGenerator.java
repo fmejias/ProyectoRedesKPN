@@ -48,7 +48,7 @@ public class CodeGenerator {
         //Set the second string value to change in the queue module
         secondQueueStringToChange = "\\$readmemh\\(\"C:/Users/Felipe/Desktop/Tec/"
                 + "ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/"
-                + "Modules_Implementation_For_Software_Program/Test_Modules/"
+                + "KPN_From_XML/QueueFiles/"
                 + "queue_precharge_data.txt\", array_reg\\);";
         
         //Set the queueModuleFiles to 1
@@ -108,6 +108,14 @@ public class CodeGenerator {
         kpnPath = Paths.get(directoryPath + "/KPNModules/write_to_display.v");
         sourcePath = Paths.get(directoryPath + "/VerilogModules/write_to_display.v");
         module = new File(directoryPath + "/KPNModules/write_to_display.v");
+        if(!module.exists()) { 
+            //Then, copy the file from the source path to the file in the kpn path
+            Files.copy(sourcePath, kpnPath);
+        }
+        
+        kpnPath = Paths.get(directoryPath + "/KPNModules/clock_divider_module.v");
+        sourcePath = Paths.get(directoryPath + "/VerilogModules/clock_divider_module.v");
+        module = new File(directoryPath + "/KPNModules/clock_divider_module.v");
         if(!module.exists()) { 
             //Then, copy the file from the source path to the file in the kpn path
             Files.copy(sourcePath, kpnPath);
@@ -245,6 +253,10 @@ public class CodeGenerator {
         
         //We have to create the queue_precharge_data_files
         createQueuePrechargeDataFiles();
+        
+        //Write the last line endmodule
+        top_module.write("endmodule");
+        top_module.newLine();
         
         //Set the variable queueModuleFiles to 1 again
         queueModuleFiles = 1;
@@ -488,7 +500,7 @@ public class CodeGenerator {
             String closeParenthesis = ")";
             String comma = ", ";
             String semicolon = ";";
-            String clk = ".clk(clk)";
+            String clk = ".clk(kpn_clk)";
             String rd = ".rd(rd_" + type + "_module_" + id + ")";
             String wr = ".wr(wr_" + type + "_module_" + id + ")";
             String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
@@ -512,7 +524,7 @@ public class CodeGenerator {
             String closeParenthesis = ")";
             String comma = ", ";
             String semicolon = ";";
-            String clk = ".clk(clk)";
+            String clk = ".clk(kpn_clk)";
             String rd = ".rd(rd_" + type + "_module_" + id + ")";
             String wr = ".wr(wr_" + type + "_module_" + id + ")";
             String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
@@ -535,7 +547,7 @@ public class CodeGenerator {
             String closeParenthesis = ")";
             String comma = ", ";
             String semicolon = ";";
-            String clk = ".clk(clk)";
+            String clk = ".clk(kpn_clk)";
             String rd = ".rd(rd_" + type + "_module_" + id + ")";
             String wr = ".wr(wr_" + type + "_module_" + id + ")";
             String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
@@ -556,7 +568,7 @@ public class CodeGenerator {
                 String closeParenthesis = ")";
                 String comma = ", ";
                 String semicolon = ";";
-                String clk = ".clk(clk)";
+                String clk = ".clk(kpn_clk)";
                 String wr = ".wr(wr_" + entry_1_information[0].replaceAll("\\s+","") + "_"
                         + "module_" + entry_1_information[1] + ")";
                 String fifo = type + id;
@@ -579,7 +591,7 @@ public class CodeGenerator {
                 String closeParenthesis = ")";
                 String comma = ", ";
                 String semicolon = ";";
-                String clk = ".clk(clk)";
+                String clk = ".clk(kpn_clk)";
                 String wr = ".wr(wr_" + entry_1_information[0].replaceAll("\\s+","") + "_"
                         + "module_" + entry_1_information[1] + ")";
                 String fifo = type + id;
@@ -612,7 +624,7 @@ public class CodeGenerator {
             String closeParenthesis = ")";
             String comma = ", ";
             String semicolon = ";";
-            String clk = ".clk(clk)";
+            String clk = ".clk(kpn_clk)";
             String rd = ".rd(rd_" + type + "_module_" + id + ")";
             String wr = ".wr(wr_" + type + "_module_" + id + ")";
             String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
@@ -635,7 +647,7 @@ public class CodeGenerator {
             String closeParenthesis = ")";
             String comma = ", ";
             String semicolon = ";";
-            String clk = ".clk(clk)";
+            String clk = ".clk(kpn_clk)";
             String rd = ".rd(rd_" + type + "_module_" + id + ")";
             String wr = ".wr(wr_" + type + "_module_" + id + ")";
             String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
@@ -656,7 +668,7 @@ public class CodeGenerator {
             String closeParenthesis = ")";
             String comma = ", ";
             String semicolon = ";";
-            String clk = ".clk(clk)";
+            String clk = ".clk(kpn_clk)";
             String wr = ".wr(wr_" + type + "_module_" + id + ")";
             String output = ".output_1(output_" + type + "_module_" + id + "_1)";
             
@@ -728,7 +740,7 @@ public class CodeGenerator {
         String firstString = "module queue_module";
         String secondString = "\\$readmemh\\(\"C:/Users/Felipe/Desktop/Tec/"
                 + "ProyectoDiseno/ProyectoGithub/ProyectoRedesKPN/KPN_Modules/"
-                + "Modules_Implementation_For_Software_Program/Test_Modules/"
+                + "KPN_From_XML/QueueFiles/"
                 + "queue_precharge_data";
         
         for(int i = 1; i < queueModuleFiles; i++){
@@ -737,14 +749,15 @@ public class CodeGenerator {
             String content = FileUtils.readFileToString(new File(newQueueFilePath));
             FileUtils.writeStringToFile(f, content.replaceAll(firstQueueStringToChange, 
                     firstString + Integer.toString(i) + "("));      
-        }
+        } 
         
         for(int i = 1; i < queueModuleFiles; i++){
             newQueueFilePath = queueFilesPath + fileName + Integer.toString(i) + ".v";
             File f = new File(newQueueFilePath);
             String content = FileUtils.readFileToString(new File(newQueueFilePath));
             FileUtils.writeStringToFile(f, content.replaceAll(secondQueueStringToChange, 
-                    secondString + Integer.toString(i) + ".txt\", array_reg\\);")); 
+                    secondString + Integer.toString(i) + ".txt\", array_reg\\);"));
+            
         }
     }
 }
