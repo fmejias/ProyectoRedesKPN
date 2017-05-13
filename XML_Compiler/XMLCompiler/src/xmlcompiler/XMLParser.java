@@ -160,6 +160,22 @@ public class XMLParser {
         return queueElements;
     }
     
+    /*
+     * This method indicates if the FIFO is the LCD FIFO
+     */
+    public boolean getLCDFIFO(int numberOfModule)
+    {
+        NodeList nodesList = xmlDoc.getElementsByTagName("module");
+        Node node = nodesList.item(numberOfModule);
+        Element eElement = (Element) node;
+        String kpnOutput = eElement.getAttribute("KPNOutput");
+        boolean isLCDFIFO = false;
+        if(kpnOutput.equals("1")){
+            isLCDFIFO = true;
+        }
+        return isLCDFIFO;
+    }
+    
     
     
     /*

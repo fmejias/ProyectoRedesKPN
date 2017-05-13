@@ -1,4 +1,4 @@
-module clock_divider(
+module clock_divider_module(
 clk_in, 
 clk_out
 );
@@ -11,7 +11,7 @@ input clk_in;
 output clk_out;
 
 //The value of the M parameter is use to divide it with the 50 MHz frequency of the CLK
-parameter M = 5_000_000;
+parameter M = 15_000_000;
 
 /*
  * We make the clock divider operation.

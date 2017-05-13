@@ -29,6 +29,7 @@ public class CodeGenerator {
     XMLParser xmlParser; //Need it to parse the XML File
     BufferedWriter top_module; //File that represents the top module
     FixedPointParser fixedPointTranslator; //Use to parse the fixed point for the queue file
+    boolean isLCDFIFO; //Use to indicate which FIFO is the LCD FIFO
     
     //Constructor of the class with no parameters
     public CodeGenerator() throws ParserConfigurationException, SAXException, IOException 
@@ -55,6 +56,9 @@ public class CodeGenerator {
         
         //Create the FixedPointTranslator
         fixedPointTranslator = new FixedPointParser();
+        
+        //Set the FIFO value
+        isLCDFIFO = false;
     }
     
     
@@ -74,6 +78,39 @@ public class CodeGenerator {
         for(int i = 0; i < numberOfModules; i++){
             moduleType = xmlParser.getModuleType(i);
             addFileToKpnDirectory(moduleType);
+        }
+        
+        //Add the bcd file, the lcd_fifo file, the display and lcd files
+        Path kpnPath = Paths.get(directoryPath + "/KPNModules/lcd_fifo.v");
+        Path sourcePath = Paths.get(directoryPath + "/VerilogModules/lcd_fifo.v");
+        File module = new File(directoryPath + "/KPNModules/lcd_fifo.v");
+        if(!module.exists()) { 
+            //Then, copy the file from the source path to the file in the kpn path
+            Files.copy(sourcePath, kpnPath);
+        }
+        
+        kpnPath = Paths.get(directoryPath + "/KPNModules/bcd_converter.v");
+        sourcePath = Paths.get(directoryPath + "/VerilogModules/bcd_converter.v");
+        module = new File(directoryPath + "/KPNModules/bcd_converter.v");
+        if(!module.exists()) { 
+            //Then, copy the file from the source path to the file in the kpn path
+            Files.copy(sourcePath, kpnPath);
+        }
+        
+        kpnPath = Paths.get(directoryPath + "/KPNModules/lcd_module.v");
+        sourcePath = Paths.get(directoryPath + "/VerilogModules/lcd_module.v");
+        module = new File(directoryPath + "/KPNModules/lcd_module.v");
+        if(!module.exists()) { 
+            //Then, copy the file from the source path to the file in the kpn path
+            Files.copy(sourcePath, kpnPath);
+        }
+        
+        kpnPath = Paths.get(directoryPath + "/KPNModules/write_to_display.v");
+        sourcePath = Paths.get(directoryPath + "/VerilogModules/write_to_display.v");
+        module = new File(directoryPath + "/KPNModules/write_to_display.v");
+        if(!module.exists()) { 
+            //Then, copy the file from the source path to the file in the kpn path
+            Files.copy(sourcePath, kpnPath);
         }
         
         //Update the queue_modules files
@@ -225,7 +262,25 @@ public class CodeGenerator {
         top_module.newLine();
         top_module.write("clk,");
         top_module.newLine();
-        top_module.write("output_1");
+        top_module.write("rs,");
+        top_module.newLine();
+        top_module.write("rw,");
+        top_module.newLine();
+        top_module.write("on,");
+        top_module.newLine();
+        top_module.write("en,");
+        top_module.newLine();
+        top_module.write("lcd_data,");
+        top_module.newLine();
+        top_module.write("hex_4,");
+        top_module.newLine();
+        top_module.write("hex_3,");
+        top_module.newLine();
+        top_module.write("hex_2,");
+        top_module.newLine();
+        top_module.write("hex_1,");
+        top_module.newLine();
+        top_module.write("hex_0");
         top_module.newLine();
         top_module.write(");");
         top_module.newLine();
@@ -254,10 +309,29 @@ public class CodeGenerator {
         //First, we have to write the entries
         top_module.write("input clk;");
         top_module.newLine();
-        top_module.write("output [15:0] output_1;");
+        top_module.write("output rs;");
+        top_module.newLine();
+        top_module.write("output rw;");
+        top_module.newLine();
+        top_module.write("output on;");
+        top_module.newLine();
+        top_module.write("output en;");
+        top_module.newLine();
+        top_module.write("output [7:0] lcd_data;");
+        top_module.newLine();
+        top_module.write("output [6:0] hex_4;");
+        top_module.newLine();
+        top_module.write("output [6:0] hex_3;");
+        top_module.newLine();
+        top_module.write("output [6:0] hex_2;");
+        top_module.newLine();
+        top_module.write("output [6:0] hex_1;");
+        top_module.newLine();
+        top_module.write("output [6:0] hex_0;");
         top_module.newLine();
         top_module.newLine();
         top_module.newLine();
+
     }
     
     /*
@@ -274,6 +348,20 @@ public class CodeGenerator {
         String finalRdSignal;
         String finalWrSignal;
         String finalSignal;
+    
+        /* Write some signals need it to activate the LCD and Display */
+        
+        //Write the kpn_clk signal first
+        top_module.write("wire kpn_clk;");
+        top_module.newLine();
+        
+        //Write the bcd output wire 
+        top_module.write("wire [15:0] bcd_output;");
+        top_module.newLine();
+        
+        //Write some lcd signals
+        top_module.write("wire lcd_rd;");
+        top_module.newLine();
         
         //This loop writes the wr and rd signals of each module
         for(int j = 0; j < numberOfModules; j++){
@@ -327,6 +415,34 @@ public class CodeGenerator {
         String moduleId;
         int numberOfEntries = 0;
         String instantiatedString;
+        
+        
+        //First, write the clock_divider, lcd and display modules instantiated
+        
+        //Write a comment for the instantiated module
+        writeCommentsTopModule("This is an instance of the clock_divider module");
+        top_module.write("clock_divider_module clk_inst(.clk_in(clk), .clk_out(kpn_clk));");
+        top_module.newLine();
+        top_module.newLine();
+        
+        //Write a comment for the instantiated module
+        writeCommentsTopModule("This is an instance of the display module");
+        top_module.write("write_to_display display_inst(.clk(kpn_clk), "
+                + ".entry_1(bcd_output), .hex_4(hex_4), .hex_3(hex_3), "
+                + ".hex_2(hex_2), .hex_1(hex_1), .hex_0(hex_0));");
+        top_module.newLine();
+        top_module.newLine();
+        
+        //Write a comment for the instantiated module
+        writeCommentsTopModule("This is an instance of the LCD module");
+        top_module.write("lcd_module write_to_lcd_inst(.clock(kpn_clk), "
+                + ".entry_1(bcd_output), .rs(rs), .rw(rw), .on(on), "
+                + ".enable(en), .lcd_data(lcd_data) , .rd(lcd_rd));");
+        top_module.newLine();
+        top_module.newLine();
+        
+        
+        //Go over all the modules need it to instantiate
         for(int i = 0; i < numberOfModules; i++){
             moduleId = xmlParser.getModuleId(i);
             moduleType = xmlParser.getModuleType(i);
@@ -341,6 +457,7 @@ public class CodeGenerator {
             }
             else if (numberOfEntries == 1){
                 entry1 = xmlParser.getModuleEntry1(i);
+                isLCDFIFO = xmlParser.getLCDFIFO(i);
                 instantiatedString = buildInstantiatedString(moduleType, moduleId, entry1, entry1);
                 top_module.write(instantiatedString);
                 top_module.newLine();
@@ -433,27 +550,61 @@ public class CodeGenerator {
             writeCommentsTopModule("This is an instance of the delay module");
         }
         else if(type.equals("fifo")){
-            String header = "fifo_module fifo_module_inst" + id;
-            String openParenthesis = "(";
-            String closeParenthesis = ")";
-            String comma = ", ";
-            String semicolon = ";";
-            String clk = ".clk(clk)";
-            String wr = ".wr(wr_" + entry_1_information[0].replaceAll("\\s+","") + "_"
-                    + "module_" + entry_1_information[1] + ")";
-            String fifo = type + id;
-            String[] rd = searchRdModule(fifo);
-            String rdInstruction = ".rd(rd_" + rd[0] + "_module_" + rd[1] + ")";
-            String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
-                    + "_module_"  + entry_1_information[1] + "_" + 
-                    entry_1_information[2] + ")";
-            String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+            if(isLCDFIFO == false){
+                String header = "fifo_module fifo_module_inst" + id;
+                String openParenthesis = "(";
+                String closeParenthesis = ")";
+                String comma = ", ";
+                String semicolon = ";";
+                String clk = ".clk(clk)";
+                String wr = ".wr(wr_" + entry_1_information[0].replaceAll("\\s+","") + "_"
+                        + "module_" + entry_1_information[1] + ")";
+                String fifo = type + id;
+                String[] rd = searchRdModule(fifo);
+                String rdInstruction = ".rd(rd_" + rd[0] + "_module_" + rd[1] + ")";
+                String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
+                        + "_module_"  + entry_1_information[1] + "_" + 
+                        entry_1_information[2] + ")";
+                String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+
+                instantiatedString = header + openParenthesis + clk + comma + rdInstruction + comma + wr + comma +
+                        firstEntry +  comma + output + closeParenthesis + semicolon;
+
+                //Write a comment for the instantiated module
+                writeCommentsTopModule("This is an instance of the fifo module");
+            }
+            else{
+                String header = "lcd_fifo fifo_module_inst" + id;
+                String openParenthesis = "(";
+                String closeParenthesis = ")";
+                String comma = ", ";
+                String semicolon = ";";
+                String clk = ".clk(clk)";
+                String wr = ".wr(wr_" + entry_1_information[0].replaceAll("\\s+","") + "_"
+                        + "module_" + entry_1_information[1] + ")";
+                String fifo = type + id;
+                String rdInstruction = ".rd(" + "lcd_rd" + ")";
+                String firstEntry = ".entry_1(output_" + entry_1_information[0].replaceAll("\\s+","") 
+                        + "_module_"  + entry_1_information[1] + "_" + 
+                        entry_1_information[2] + ")";
+                String output = ".output_1(output_" + type + "_module_" + id + "_1)";
+
+                instantiatedString = header + openParenthesis + clk + comma + rdInstruction + comma + wr + comma +
+                        firstEntry +  comma + output + closeParenthesis + semicolon;
+                
+                //Write the bcd converter instance
+                //Write a comment for the instantiated module
+                writeCommentsTopModule("This is an instance of the bcd_converter module");
+                top_module.write("bcd_converter bcd_converter_inst(.clk(kpn_clk), "
+                        + ".binary_number(" + "output_" + type + "_module_" + id + "_1" + "), .bcd_number(bcd_output));");
+                
+                top_module.newLine();
+                top_module.newLine();
+                
+                //Write a comment for the instantiated module
+                writeCommentsTopModule("This is an instance of the fifo module");
+            }
             
-            instantiatedString = header + openParenthesis + clk + comma + rdInstruction + comma + wr + comma +
-                    firstEntry +  comma + output + closeParenthesis + semicolon;
-            
-            //Write a comment for the instantiated module
-            writeCommentsTopModule("This is an instance of the fifo module");
         }
         else if(type.equals("multiplier")){
             String header = "multiplier_module multiplier_module_inst" + id;
