@@ -35,16 +35,16 @@ output [6:0] hex_0;
 wire kpn_clk;
 wire [15:0] bcd_output;
 wire lcd_rd;
-wire [15:0] wr_queue_module_1;
+wire [15:0] rd_multiplier_module_1;
+wire [15:0] wr_multiplier_module_1;
 wire [15:0] wr_queue_module_2;
-wire [15:0] rd_adder_module_1;
-wire [15:0] wr_adder_module_1;
-wire [15:0] output_queue_module_1_1;
+wire [15:0] wr_queue_module_3;
+wire [15:0] output_fifo_module_5_1;
+wire [15:0] output_fifo_module_6_1;
+wire [15:0] output_multiplier_module_1_1;
 wire [15:0] output_queue_module_2_1;
-wire [15:0] output_fifo_module_1_1;
-wire [15:0] output_fifo_module_2_1;
-wire [15:0] output_adder_module_1_1;
-wire [15:0] output_fifo_module_3_1;
+wire [15:0] output_queue_module_3_1;
+wire [15:0] output_fifo_module_4_1;
 
 /*
  * Here, we instantiate the modules
@@ -66,38 +66,38 @@ write_to_display display_inst(.clk(kpn_clk), .entry_1(bcd_output), .hex_4(hex_4)
 lcd_module write_to_lcd_inst(.clock(kpn_clk), .entry_1(bcd_output), .rs(rs), .rw(rw), .on(on), .enable(en), .lcd_data(lcd_data) , .rd(lcd_rd));
 
 /*
- * This is an instance of the queue module
+ * This is an instance of the fifo module
  */
-queue_module1 queue_module_inst1(.clk(kpn_clk), .wr(wr_queue_module_1), .output_1(output_queue_module_1_1));
-
-/*
- * This is an instance of the queue module
- */
-queue_module2 queue_module_inst2(.clk(kpn_clk), .wr(wr_queue_module_2), .output_1(output_queue_module_2_1));
+fifo_module fifo_module_inst5(.clk(kpn_clk), .rd(rd_multiplier_module_1), .wr(wr_queue_module_2), .entry_1(output_queue_module_2_1), .output_1(output_fifo_module_5_1));
 
 /*
  * This is an instance of the fifo module
  */
-fifo_module fifo_module_inst1(.clk(kpn_clk), .rd(rd_adder_module_1), .wr(wr_queue_module_1), .entry_1(output_queue_module_1_1 ), .output_1(output_fifo_module_1_1));
+fifo_module fifo_module_inst6(.clk(kpn_clk), .rd(rd_multiplier_module_1), .wr(wr_queue_module_3), .entry_1(output_queue_module_3_1), .output_1(output_fifo_module_6_1));
 
 /*
- * This is an instance of the fifo module
+ * This is an instance of the multiplier module
  */
-fifo_module fifo_module_inst2(.clk(kpn_clk), .rd(rd_adder_module_1), .wr(wr_queue_module_2), .entry_1(output_queue_module_2_1 ), .output_1(output_fifo_module_2_1));
+multiplier_module multiplier_module_inst1(.clk(kpn_clk), .rd(rd_multiplier_module_1), .wr(wr_multiplier_module_1), .entry_1(output_fifo_module_5_1), .entry_2(output_fifo_module_6_1), .output_1(output_multiplier_module_1_1));
 
 /*
- * This is an instance of the adder module
+ * This is an instance of the queue module
  */
-adder_module adder_module_inst_1(.clk(kpn_clk), .rd(rd_adder_module_1), .wr(wr_adder_module_1), .entry_1(output_fifo_module_1_1 ), .entry_2(output_fifo_module_2_1 ), .output_1(output_adder_module_1_1));
+queue_module1 queue_module_inst2(.clk(kpn_clk), .wr(wr_queue_module_2), .output_1(output_queue_module_2_1));
+
+/*
+ * This is an instance of the queue module
+ */
+queue_module2 queue_module_inst3(.clk(kpn_clk), .wr(wr_queue_module_3), .output_1(output_queue_module_3_1));
 
 /*
  * This is an instance of the bcd_converter module
  */
-bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(output_fifo_module_3_1), .bcd_number(bcd_output));
+bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(output_fifo_module_4_1), .bcd_number(bcd_output));
 
 /*
  * This is an instance of the fifo module
  */
-lcd_fifo fifo_module_inst3(.clk(kpn_clk), .rd(lcd_rd), .wr(wr_adder_module_1), .entry_1(output_adder_module_1_1 ), .output_1(output_fifo_module_3_1));
+lcd_fifo fifo_module_inst4(.clk(kpn_clk), .rd(lcd_rd), .wr(wr_multiplier_module_1), .entry_1(output_multiplier_module_1_1), .output_1(output_fifo_module_4_1));
 
 endmodule

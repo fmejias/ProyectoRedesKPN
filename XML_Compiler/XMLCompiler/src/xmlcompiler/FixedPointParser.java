@@ -8,6 +8,7 @@ package xmlcompiler;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -36,10 +37,14 @@ public class FixedPointParser {
         
         //Creates the queue file
         FileWriter writer = new FileWriter(path, true);
+        PrintWriter pw1 = new PrintWriter(new BufferedWriter(writer));
+        pw1.close(); // Make sure the first PrintWriter object name is different from the second one.
+
         queueFile = new BufferedWriter(writer);
         
         //Extract all the elements of the queue from the string of elements
         String[] queueElements = elements.split(",");
+        
         
         //Loop to go over all of the elements
         for(int i = 0; i < queueElements.length; i++){

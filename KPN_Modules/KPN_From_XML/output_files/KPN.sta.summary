@@ -3,27 +3,35 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clock_divider_module:clk_inst|divcounter[23]'
-Slack : -7.362
-TNS   : -517.057
+Slack : -24.409
+TNS   : -719.832
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -3.754
-TNS   : -49.322
+Slack : -3.934
+TNS   : -48.799
 
-Type  : Slow 1200mV 85C Model Setup 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : -2.670
-TNS   : -615.479
+Type  : Slow 1200mV 85C Model Setup 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : -2.470
+TNS   : -556.057
 
-Type  : Slow 1200mV 85C Model Hold 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : -0.985
-TNS   : -72.421
+Type  : Slow 1200mV 85C Model Setup 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : -2.433
+TNS   : -558.578
+
+Type  : Slow 1200mV 85C Model Hold 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : -0.770
+TNS   : -29.761
+
+Type  : Slow 1200mV 85C Model Hold 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : -0.675
+TNS   : -20.722
 
 Type  : Slow 1200mV 85C Model Hold 'clock_divider_module:clk_inst|divcounter[23]'
-Slack : 0.374
+Slack : 0.332
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : 0.637
+Slack : 0.634
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
@@ -32,34 +40,46 @@ TNS   : -39.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock_divider_module:clk_inst|divcounter[23]'
 Slack : -2.693
-TNS   : -253.255
+TNS   : -243.983
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : 0.238
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : 0.199
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : 0.260
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'clock_divider_module:clk_inst|divcounter[23]'
-Slack : -6.602
-TNS   : -459.307
+Slack : -22.073
+TNS   : -644.947
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -3.312
-TNS   : -42.536
+Slack : -3.501
+TNS   : -41.893
 
-Type  : Slow 1200mV 0C Model Setup 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : -2.555
-TNS   : -620.358
+Type  : Slow 1200mV 0C Model Setup 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : -2.325
+TNS   : -538.827
 
-Type  : Slow 1200mV 0C Model Hold 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : -0.854
-TNS   : -59.488
+Type  : Slow 1200mV 0C Model Setup 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : -2.292
+TNS   : -540.783
+
+Type  : Slow 1200mV 0C Model Hold 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : -0.773
+TNS   : -33.300
+
+Type  : Slow 1200mV 0C Model Hold 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : -0.681
+TNS   : -22.215
 
 Type  : Slow 1200mV 0C Model Hold 'clock_divider_module:clk_inst|divcounter[23]'
-Slack : 0.327
+Slack : 0.329
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.580
+Slack : 0.579
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
@@ -68,46 +88,62 @@ TNS   : -39.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock_divider_module:clk_inst|divcounter[23]'
 Slack : -2.649
-TNS   : -251.715
+TNS   : -242.727
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : 0.146
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : 0.207
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : 0.244
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'clock_divider_module:clk_inst|divcounter[23]'
-Slack : -3.767
-TNS   : -190.919
-
-Type  : Fast 1200mV 0C Model Setup 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : -1.503
-TNS   : -287.350
+Slack : -11.567
+TNS   : -289.700
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -1.396
-TNS   : -14.437
+Slack : -1.474
+TNS   : -13.863
 
-Type  : Fast 1200mV 0C Model Hold 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : -0.817
-TNS   : -119.311
+Type  : Fast 1200mV 0C Model Setup 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : -1.392
+TNS   : -153.096
+
+Type  : Fast 1200mV 0C Model Setup 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : -1.375
+TNS   : -167.396
+
+Type  : Fast 1200mV 0C Model Hold 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : -0.607
+TNS   : -52.582
+
+Type  : Fast 1200mV 0C Model Hold 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : -0.578
+TNS   : -47.276
 
 Type  : Fast 1200mV 0C Model Hold 'clock_divider_module:clk_inst|divcounter[23]'
-Slack : 0.166
+Slack : 0.125
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : 0.290
+Slack : 0.289
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -27.264
+TNS   : -27.275
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock_divider_module:clk_inst|divcounter[23]'
 Slack : -1.000
-TNS   : -141.000
+TNS   : -138.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'adder_module:adder_module_inst_1|output_1[0]'
-Slack : 0.121
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lcd_fifo:fifo_module_inst4|full_reg'
+Slack : 0.292
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'lcd_fifo:fifo_module_inst4|buffer[0]'
+Slack : 0.314
 TNS   : 0.000
 
 ------------------------------------------------------------

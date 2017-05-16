@@ -40,7 +40,7 @@ public class CodeGenerator {
                 + "/ProyectoRedesKPN/XML_Compiler";  
         
         //Parse the XML File
-        xmlParser = new XMLParser(directoryPath + "/EjemploCompletoKPN1.xml");  
+        xmlParser = new XMLParser(directoryPath + "/PruebaArreglo.xml");  
         
         //Set the first string value to change in the queue module
         firstQueueStringToChange = "module queue_module\\(";
