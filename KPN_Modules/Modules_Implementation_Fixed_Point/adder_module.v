@@ -35,21 +35,15 @@ output rd;
  reg activateWr = 1'b0;
  
  /*
-  * We define registers need it to convert the entry to the correct form
+  * We define the registers need it to save the integer and the decimal values
   *
   */
- reg [15:0] thousands_entry_1; 
- reg [15:0] hundreds_entry_1; 
- reg [15:0] tens_entry_1;
- reg [15:0] ones_entry_1;
- 
- reg [15:0] thousands_entry_2;
- reg [15:0] hundreds_entry_2; 
- reg [15:0] tens_entry_2;
- reg [15:0] ones_entry_2;
- 
- reg [15:0] transformed_entry_1;
- reg [15:0] transformed_entry_2;
+ reg [11:0] integer_part_entry_1 = 12'h000;
+ reg [11:0] integer_part_entry_2 = 12'h000;
+ reg [11:0] integer_result = 12'h000;
+ reg [3:0] decimal_part_entry_1 = 4'h0;
+ reg [3:0] decimal_part_entry_2 = 4'h0;
+ reg [3:0] decimal_result = 4'h0;
 
  
 /*
@@ -59,34 +53,39 @@ output rd;
  
  always @(posedge clk)
  begin
- 
-	/*
-	 * Conversion of entry_1
-	 */
-	ones_entry_1 = entry_1[3:0];
-	tens_entry_1 = (entry_1[7:4] << 3) + (entry_1[7:4] << 1);
-	hundreds_entry_1 = (entry_1[11:8] << 6) + (entry_1[11:8] << 5) + (entry_1[11:8] << 2);
-	thousands_entry_1 = (entry_1[15:12] << 9) + (entry_1[15:12] << 8) + (entry_1[15:12] << 7)
-								+ (entry_1[15:12] << 6) + (entry_1[15:12] << 5) + (entry_1[15:12] << 3);
-								
-	transformed_entry_1 = thousands_entry_1 + hundreds_entry_1 + tens_entry_1 + ones_entry_1;
-	
-	/*
-	 * Conversion of entry_2
-	 */
-	ones_entry_2 = entry_2[3:0];
-	tens_entry_2 = (entry_2[7:4] << 3) + (entry_2[7:4] << 1);
-	hundreds_entry_2 = (entry_2[11:8] << 6) + (entry_2[11:8] << 5) + (entry_2[11:8] << 2);
-	thousands_entry_2 = (entry_2[11:8] << 6) + (entry_2[11:8] << 5) + (entry_2[11:8] << 2);
-	transformed_entry_2 = thousands_entry_2 + hundreds_entry_2 + tens_entry_2 + ones_entry_2;
-	
   
+  //Extract the integer part of the entries
+  integer_part_entry_1 = entry_1[15:4];
+  integer_part_entry_2 = entry_2[15:4];
+  
+  //Extract the decimal part of the entries
+  decimal_part_entry_1 = entry_1[3:0];
+  decimal_part_entry_2 = entry_2[3:0];
+  
+  //Add the integer part
+  integer_result = integer_part_entry_1 + integer_part_entry_2;
+  
+  //Add the decimal part
+  decimal_result = decimal_part_entry_1 + decimal_part_entry_2;
+  
+  //Checks if the decimal result is bigger or equal than 10
+  if(decimal_result >= 4'd10)
+  begin
+	decimal_result = decimal_result - 4'b1010; //Performs the subtract: decimal_result - 10
+	integer_result = integer_result + 1; //Add 1 to the Integer part
+  end
   
   //Assign the corresponding bits to the output_1
-  output_1 = transformed_entry_1 + transformed_entry_2;
+  output_1[15:4] = integer_result;
+  output_1[3:0] = decimal_result;
   
+  
+  //Shows the output on the testbench
+  $display("La entrada 1 es:", entry_1[15:4], ",", entry_1[3:0]);
+  $display("La entrada 2 es:", entry_2[15:4], ",", entry_2[3:0]);
+  $display("La salida es:", output_1[15:4], ",", output_1[3:0]);
  end
-  
+ 
  
 //In this part we activate the rd output
  always @(posedge clk)

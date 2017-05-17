@@ -101,6 +101,8 @@ reg [3:0] ones;
 
 // Internal variable for storing bits
 reg [31:0] shift;
+reg[11:0] integer_part;
+reg[3:0] decimal_part;
 integer i;
 
  
@@ -126,12 +128,6 @@ integer i;
 	hundreds_entry_2 = (entry_2[11:8] << 6) + (entry_2[11:8] << 5) + (entry_2[11:8] << 2);
 	thousands_entry_2 = (entry_2[11:8] << 6) + (entry_2[11:8] << 5) + (entry_2[11:8] << 2);
 	transformed_entry_2 = thousands_entry_2 + hundreds_entry_2 + tens_entry_2 + ones_entry_2;
-	
-	//First we have to convert the entries
-/*	if(entry_1[3:0] == 4'd0 && entry_2[3:0] == 4'd0) begin
-		transformed_entry_1 = entry_1[15:4];
-		transformed_entry_2 = entry_2[15:4];
-	end */
  
 	and_number = (transformed_entry_2[0] == 1'b1) ? 16'hffff : 16'h0000;
 	mult_1 = transformed_entry_1 & and_number;
@@ -226,11 +222,16 @@ integer i;
      ones     = shift[19:16];
 	  bcd_number = {thousands,hundreds, tens,ones};
 	  
-
-	  bcd_to_binary = (bcd_number[15:12] * 7'b1100100) + (bcd_number[11:8] * 4'b1010) + {3'b0, bcd_number[7:4]};	
-	  output_1 = bcd_to_binary;
-		
+	  //Assign the integer part
+	  integer_part = (bcd_number[15:12] * 4'b1010) + {3'b0, bcd_number[11:8]};
+	  decimal_part = {3'b0, bcd_number[7:4]};
 	
+	  //Transform BCD to binary and delete the first number
+	  bcd_to_binary = (bcd_number[15:12] * 7'b1100100) + (bcd_number[11:8] * 4'b1010) + {3'b0, bcd_number[7:4]};	
+		
+	  //Assign the correct output
+	  output_1[15:4] = integer_part;
+	  output_1[3:0] = decimal_part;
 	
  end
  

@@ -35,16 +35,26 @@ output [6:0] hex_0;
 wire kpn_clk;
 wire [15:0] bcd_output;
 wire lcd_rd;
-wire [15:0] rd_multiplier_module_3;
-wire [15:0] wr_multiplier_module_3;
+wire [15:0] rd_adder_module_3;
+wire [15:0] wr_adder_module_3;
+wire [15:0] rd_multiplier_module_5;
+wire [15:0] wr_multiplier_module_5;
 wire [15:0] wr_queue_module_1;
 wire [15:0] wr_queue_module_2;
-wire [15:0] output_fifo_module_5_1;
-wire [15:0] output_fifo_module_6_1;
-wire [15:0] output_multiplier_module_3_1;
+wire [15:0] rd_split_module_4;
+wire [15:0] wr_split_module_4;
+wire [15:0] output_fifo_module_7_1;
+wire [15:0] output_fifo_module_8_1;
+wire [15:0] output_fifo_module_9_1;
+wire [15:0] output_fifo_module_10_1;
+wire [15:0] output_fifo_module_11_1;
+wire [15:0] output_adder_module_3_1;
+wire [15:0] output_multiplier_module_5_1;
 wire [15:0] output_queue_module_1_1;
 wire [15:0] output_queue_module_2_1;
-wire [15:0] output_fifo_module_4_1;
+wire [15:0] output_fifo_module_6_1;
+wire [15:0] output_split_module_4_1;
+wire [15:0] output_split_module_4_2;
 
 /*
  * Here, we instantiate the modules
@@ -68,17 +78,37 @@ lcd_module write_to_lcd_inst(.clock(kpn_clk), .entry_1(bcd_output), .rs(rs), .rw
 /*
  * This is an instance of the fifo module
  */
-fifo_module fifo_module_inst5(.clk(kpn_clk), .rd(rd_multiplier_module_3), .wr(wr_queue_module_1), .entry_1(output_queue_module_1_1), .output_1(output_fifo_module_5_1));
+fifo_module fifo_module_inst7(.clk(kpn_clk), .rd(rd_split_module_4), .wr(wr_adder_module_3), .entry_1(output_adder_module_3_1), .output_1(output_fifo_module_7_1));
 
 /*
  * This is an instance of the fifo module
  */
-fifo_module fifo_module_inst6(.clk(kpn_clk), .rd(rd_multiplier_module_3), .wr(wr_queue_module_2), .entry_1(output_queue_module_2_1), .output_1(output_fifo_module_6_1));
+fifo_module fifo_module_inst8(.clk(kpn_clk), .rd(rd_multiplier_module_5), .wr(wr_split_module_4), .entry_1(output_split_module_4_1), .output_1(output_fifo_module_8_1));
+
+/*
+ * This is an instance of the fifo module
+ */
+fifo_module fifo_module_inst9(.clk(kpn_clk), .rd(rd_multiplier_module_5), .wr(wr_split_module_4), .entry_1(output_split_module_4_2), .output_1(output_fifo_module_9_1));
+
+/*
+ * This is an instance of the fifo module
+ */
+fifo_module fifo_module_inst10(.clk(kpn_clk), .rd(rd_adder_module_3), .wr(wr_queue_module_1), .entry_1(output_queue_module_1_1), .output_1(output_fifo_module_10_1));
+
+/*
+ * This is an instance of the fifo module
+ */
+fifo_module fifo_module_inst11(.clk(kpn_clk), .rd(rd_adder_module_3), .wr(wr_queue_module_2), .entry_1(output_queue_module_2_1), .output_1(output_fifo_module_11_1));
+
+/*
+ * This is an instance of the adder module
+ */
+adder_module adder_module_inst_3(.clk(kpn_clk), .rd(rd_adder_module_3), .wr(wr_adder_module_3), .entry_1(output_fifo_module_10_1), .entry_2(output_fifo_module_11_1), .output_1(output_adder_module_3_1));
 
 /*
  * This is an instance of the multiplier module
  */
-multiplier_module multiplier_module_inst3(.clk(kpn_clk), .rd(rd_multiplier_module_3), .wr(wr_multiplier_module_3), .entry_1(output_fifo_module_5_1), .entry_2(output_fifo_module_6_1), .output_1(output_multiplier_module_3_1));
+multiplier_module multiplier_module_inst5(.clk(kpn_clk), .rd(rd_multiplier_module_5), .wr(wr_multiplier_module_5), .entry_1(output_fifo_module_8_1), .entry_2(output_fifo_module_9_1), .output_1(output_multiplier_module_5_1));
 
 /*
  * This is an instance of the queue module
@@ -93,11 +123,16 @@ queue_module2 queue_module_inst2(.clk(kpn_clk), .wr(wr_queue_module_2), .output_
 /*
  * This is an instance of the bcd_converter module
  */
-bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(output_fifo_module_4_1), .bcd_number(bcd_output));
+bcd_converter bcd_converter_inst(.clk(kpn_clk), .binary_number(output_fifo_module_6_1), .bcd_number(bcd_output));
 
 /*
  * This is an instance of the fifo module
  */
-lcd_fifo fifo_module_inst4(.clk(kpn_clk), .rd(lcd_rd), .wr(wr_multiplier_module_3), .entry_1(output_multiplier_module_3_1), .output_1(output_fifo_module_4_1));
+lcd_fifo fifo_module_inst6(.clk(kpn_clk), .rd(lcd_rd), .wr(wr_multiplier_module_5), .entry_1(output_multiplier_module_5_1), .output_1(output_fifo_module_6_1));
+
+/*
+ * This is an instance of the split module
+ */
+split_module split_module_inst4(.clk(kpn_clk), .rd(rd_split_module_4), .wr(wr_split_module_4), .entry_1(output_fifo_module_7_1), .output_1(output_split_module_4_1), .output_2(output_split_module_4_2));
 
 endmodule

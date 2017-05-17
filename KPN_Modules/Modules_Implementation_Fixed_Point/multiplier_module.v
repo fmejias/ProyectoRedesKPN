@@ -101,6 +101,8 @@ reg [3:0] ones;
 
 // Internal variable for storing bits
 reg [31:0] shift;
+reg[11:0] integer_part;
+reg[3:0] decimal_part;
 integer i;
 
  
@@ -219,12 +221,17 @@ integer i;
      tens     = shift[23:20];
      ones     = shift[19:16];
 	  bcd_number = {thousands,hundreds, tens,ones};
+	  
+	  //Assign the integer part
+	  integer_part = (bcd_number[15:12] * 4'b1010) + {3'b0, bcd_number[11:8]};
+	  decimal_part = {3'b0, bcd_number[7:4]};
 	
 	  //Transform BCD to binary and delete the first number
 	  bcd_to_binary = (bcd_number[15:12] * 7'b1100100) + (bcd_number[11:8] * 4'b1010) + {3'b0, bcd_number[7:4]};	
 		
 	  //Assign the correct output
-	  output_1 = bcd_to_binary;
+	  output_1[15:4] = integer_part;
+	  output_1[3:0] = decimal_part;
 	
  end
  

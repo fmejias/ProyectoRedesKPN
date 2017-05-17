@@ -1,15 +1,15 @@
-Analysis & Synthesis Status : Successful - Tue May 16 12:42:13 2017
+Analysis & Synthesis Status : Successful - Tue May 16 21:25:44 2017
 Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 Revision Name : KPN
 Top-level Entity Name : top_module
 Family : Cyclone IV GX
-Total logic elements : 1,504
-    Total combinational functions : 1,499
-    Dedicated logic registers : 118
-Total registers : 118
+Total logic elements : 1,536
+    Total combinational functions : 1,515
+    Dedicated logic registers : 153
+Total registers : 153
 Total pins : 48
 Total virtual pins : 0
-Total memory bits : 896
+Total memory bits : 2,432
 Embedded Multiplier 9-bit elements : 0
 Total GXB Receiver Channel PCS : 0
 Total GXB Receiver Channel PMA : 0

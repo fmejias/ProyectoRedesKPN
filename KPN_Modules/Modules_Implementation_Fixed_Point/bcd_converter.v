@@ -30,10 +30,10 @@ integer i;
    
 always @(posedge clk)
 begin
-	 //$display("La entrada recibida es:", binary_number);
+	// $display("La entrada recibida es:", binary_number);
     // Clear previous number and store new number in shift register
     shift[31:15] = 0;
-    shift[11:0] = binary_number[15:0];
+    shift[11:0] = binary_number[15:4];
 	// prueba = prueba + 16'd10;
       
     // Loop eight times
@@ -59,8 +59,7 @@ begin
      hundreds = shift[27:24];
      tens     = shift[23:20];
      ones     = shift[19:16];
-	  bcd_number = {thousands, hundreds, tens,ones};
-	  $display("La salida es:", {thousands, hundreds, tens,ones});
+	  bcd_number = {hundreds, tens,ones,binary_number[3:0]};
 end
 
 endmodule
