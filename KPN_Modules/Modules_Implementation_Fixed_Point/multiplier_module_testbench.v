@@ -31,16 +31,20 @@ entry_1_test = 16'h0000;
 entry_2_test = 16'h0000;
 
 #100
-entry_1_test = 16'h0065; //6,5
-entry_2_test = 16'h0047; //4,7
+entry_1_test = 16'h0010; //1,0
+entry_2_test = 16'h0032; //3,2
 
 #200
-entry_1_test = 16'h00C7; //12,7
-entry_2_test = 16'h0053; //5,3
+entry_1_test = 16'h0020; //12,7
+entry_2_test = 16'h0020; //5,3
 
 #200
-entry_1_test = 16'h0C84; //200,4
-entry_2_test = 16'h0965; //150,5
+entry_1_test = 16'h0030; //200,4
+entry_2_test = 16'h0030; //150,5
+
+#200
+entry_1_test = 16'h0030; //200,4
+entry_2_test = 16'h0030; //150,5
 
 $stop;
 

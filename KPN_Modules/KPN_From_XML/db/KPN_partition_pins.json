@@ -48,10 +48,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "hex_3[1]",
-					"strict" : false
-				},
-				{
 					"name" : "hex_3[2]",
 					"strict" : false
 				},

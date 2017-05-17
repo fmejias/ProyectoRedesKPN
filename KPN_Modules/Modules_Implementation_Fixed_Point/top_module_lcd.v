@@ -52,11 +52,14 @@ output [6:0] hex_0;
  wire fifo_3_rd;
  wire adder_1_rd;
  wire adder_1_wr;
+ wire multiplier_1_rd;
+ wire multiplier_1_wr;
  wire adder_2_rd;
  wire adder_2_wr;
  wire split_1_rd;
  wire split_1_wr;
  wire [15:0] adder_1_output;
+ wire [15:0] multiplier_1_output;
  wire [15:0] adder_2_output;
  wire [15:0] split_1_output_1;
  wire [15:0] split_1_output_2;
@@ -88,12 +91,12 @@ output [6:0] hex_0;
  .wr(queue_2_wr), .entry_1(queue_2_output), .output_1(fifo_2_output));
  
  //This is the fifo3
- fifo_module fifo_3_inst(.clk(kpn_clk), .rd(adder_2_rd),
- .wr(adder_1_wr), .entry_1(adder_1_output), .output_1(fifo_3_output));
+ //fifo_module fifo_3_inst(.clk(kpn_clk), .rd(adder_2_rd),
+ //.wr(adder_1_wr), .entry_1(adder_1_output), .output_1(fifo_3_output));
  
  //This is the fifo4
  lcd_fifo fifo_4_inst(.clk(kpn_clk), .rd(lcd_rd),
- .wr(adder_2_wr), .entry_1(adder_2_output), .output_1(fifo_4_output));
+ .wr(adder_1_wr), .entry_1(adder_1_output), .output_1(fifo_4_output));
  
  //This is the adder 1
  adder_module adder_1_inst(.clk(kpn_clk), .rd(adder_1_rd), 
@@ -101,9 +104,14 @@ output [6:0] hex_0;
  .output_1(adder_1_output));
  
  //This is the adder 2
- adder_module adder_2_inst(.clk(kpn_clk), .rd(adder_2_rd), 
- .wr(adder_2_wr), .entry_1(fifo_3_output), .entry_2(fifo_3_output), 
- .output_1(adder_2_output));
+ //adder_module adder_2_inst(.clk(kpn_clk), .rd(adder_2_rd), 
+ //.wr(adder_2_wr), .entry_1(fifo_3_output), .entry_2(fifo_3_output), 
+ //.output_1(adder_2_output));
+ 
+  //This is the multiplier
+// multiplier_module multiplier_1_inst(.clk(kpn_clk), .rd(multiplier_1_rd), 
+// .wr(multiplier_1_wr), .entry_1(fifo_1_output), .entry_2(fifo_2_output), 
+// .output_1(multiplier_1_output));
 
  
  //This is the first instance of the bcd_converter

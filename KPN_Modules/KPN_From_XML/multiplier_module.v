@@ -84,12 +84,28 @@ output rd;
  
  //This reg is use to do the and operation of number1 and number2[i]
  reg [15:0] and_number = 16'h0000; 
+ 
+ reg [15:0] bcd_to_binary = 16'h0000;
+ 
+/*
+ * Here, we declare some signals need to convert to BCD
+ *
+ *
+ */
+
+reg [15:0] bcd_number; 
+reg [3:0] thousands;
+reg [3:0] hundreds;
+reg [3:0] tens;
+reg [3:0] ones;
+
+// Internal variable for storing bits
+reg [31:0] shift;
+integer i;
 
  
  always @(posedge clk)
  begin
- 
-	//First we have to convert the entries
 	
 	/*
 	 * Conversion of entry_1
@@ -110,6 +126,12 @@ output rd;
 	hundreds_entry_2 = (entry_2[11:8] << 6) + (entry_2[11:8] << 5) + (entry_2[11:8] << 2);
 	thousands_entry_2 = (entry_2[11:8] << 6) + (entry_2[11:8] << 5) + (entry_2[11:8] << 2);
 	transformed_entry_2 = thousands_entry_2 + hundreds_entry_2 + tens_entry_2 + ones_entry_2;
+	
+	//First we have to convert the entries
+/*	if(entry_1[3:0] == 4'd0 && entry_2[3:0] == 4'd0) begin
+		transformed_entry_1 = entry_1[15:4];
+		transformed_entry_2 = entry_2[15:4];
+	end */
  
 	and_number = (transformed_entry_2[0] == 1'b1) ? 16'hffff : 16'h0000;
 	mult_1 = transformed_entry_1 & and_number;
@@ -175,15 +197,41 @@ output rd;
 	output_1 = output_1 + mult_15;
 	output_1 = output_1 + mult_16;
 	
+	//Convert to bcd
+	shift[31:15] = 0;
+   shift[15:0] = output_1;
+      
+    // Loop eight times
+    for (i=0; i<16; i=i+1) begin
+		 if (shift[19:16] >= 5)
+          shift[19:16] = shift[19:16] + 3;
+			 
+       if (shift[23:20] >= 5)
+          shift[23:20] = shift[23:20] + 3;
+            
+       if (shift[27:24] >= 5)
+          shift[27:24] = shift[27:24] + 3;
+            
+       if (shift[31:28] >= 5)
+          shift[31:28] = shift[31:28] + 3;
+         
+        // Shift entire register left once
+        shift = shift << 1;
+     end
+      
+     // Push decimal numbers to output
+	  thousands = shift[31:28];
+     hundreds = shift[27:24];
+     tens     = shift[23:20];
+     ones     = shift[19:16];
+	  bcd_number = {thousands,hundreds, tens,ones};
+	  
 
-	 //Assign the corresponding bits to the output_1
-    integer_result = output_1[15:4];
-    decimal_result = output_1[3:0];
-
-	 $display("La parte entera es:", integer_result);
-    $display("La parte decimal es:", decimal_result);
-    $display("La salida es:", integer_result, "," , decimal_result);
-
+	  bcd_to_binary = (bcd_number[15:12] * 7'b1100100) + (bcd_number[11:8] * 4'b1010) + {3'b0, bcd_number[7:4]};	
+	  output_1 = bcd_to_binary;
+		
+	
+	
  end
  
  //In this part we activate the rd output
