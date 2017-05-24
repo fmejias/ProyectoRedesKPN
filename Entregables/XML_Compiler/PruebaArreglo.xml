@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+<module id="5" type="fifo" outputs="1" entries="1" elements="" KPNOutput="0">
+<entry_2> </entry_2>
+<entry_1>adder_3_1</entry_1>
+</module>
+<module id="6" type="fifo" outputs="1" entries="1" elements="" KPNOutput="0">
+<entry_2> </entry_2>
+<entry_1>queue_1_1</entry_1>
+</module>
+<module id="7" type="fifo" outputs="1" entries="1" elements="" KPNOutput="0">
+<entry_2> </entry_2>
+<entry_1>queue_2_1</entry_1>
+</module>
+<module id="3" type="adder" outputs="1" entries="2" elements="">
+<entry_1>fifo_6_1</entry_1>
+<entry_2>fifo_7_1</entry_2>
+</module>
+<module id="1" type="queue" outputs="1" entries="0" elements="1.0,2.0,3.0,4.0" delay="0" constantGeneration="true">
+<entry_1> </entry_1>
+<entry_2> </entry_2>
+</module>
+<module id="2" type="queue" outputs="1" entries="0" elements="1.0,2.0,3.0,4.0" delay="0" constantGeneration="true">
+<entry_1> </entry_1>
+<entry_2> </entry_2>
+</module>
+<module id="4" type="fifo" outputs="1" entries="1" elements="" KPNOutput="1">
+<entry_1>fifo_5_1</entry_1>
+<entry_2> </entry_2>
+</module>
+</modules>

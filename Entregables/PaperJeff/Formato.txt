@@ -1,0 +1,4 @@
+1-) Diagrama con la forma en la que verdaderamente se implementó el generador de código.
+2-) Diagrama de una red KPN en software y screenshot del modulo top. Ademas de screenshot de los archivos generados (queue_precharge_data y los módulos que jala).
+3-) Imagen del RTL de la red en hardware.
+4-) Imagen de la LCD mostrando la salida de la red.

@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<modules>
+	<module id = "1" type = "adder" entries = "2" outputs = "1" elements = "">
+		<entry_1> fifo_1_1 </entry_1>
+		<entry_2> fifo_2_1 </entry_2>
+	</module>
+	
+</modules>

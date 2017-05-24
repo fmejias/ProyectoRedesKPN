@@ -11,7 +11,7 @@ output_1
  * We define the parameters
  */
 
-parameter DELAY_NUMBER = 0; 
+parameter DELAY_NUMBER = 4; 
 
 /*
  * We define the type of entries and outputs
@@ -43,7 +43,7 @@ output rd;
  
  always @(posedge clk)
  begin
-	if(delay_register[DELAY_NUMBER-1:0] == 0 && already_delay == 0) begin
+	if(delay_register[DELAY_NUMBER-1:0] == 0 && already_delay == 1'b0) begin
 		output_1 = entry_1;
 		already_delay = 1'b1;
 	end

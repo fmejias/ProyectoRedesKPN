@@ -1,18 +1,18 @@
-Analysis & Synthesis Status : Successful - Tue May 16 18:26:32 2017
+Analysis & Elaboration Status : Successful - Wed May 24 12:29:56 2017
 Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 Revision Name : KPN_Fixed_Point
 Top-level Entity Name : top_module_lcd
 Family : Cyclone IV GX
-Total logic elements : 1,172
-    Total combinational functions : 1,171
-    Dedicated logic registers : 124
-Total registers : 124
-Total pins : 48
-Total virtual pins : 0
-Total memory bits : 896
-Embedded Multiplier 9-bit elements : 0
-Total GXB Receiver Channel PCS : 0
-Total GXB Receiver Channel PMA : 0
-Total GXB Transmitter Channel PCS : 0
-Total GXB Transmitter Channel PMA : 0
-Total PLLs : 0
+Total logic elements : N/A until Partition Merge
+    Total combinational functions : N/A until Partition Merge
+    Dedicated logic registers : N/A until Partition Merge
+Total registers : N/A until Partition Merge
+Total pins : N/A until Partition Merge
+Total virtual pins : N/A until Partition Merge
+Total memory bits : N/A until Partition Merge
+Embedded Multiplier 9-bit elements : N/A until Partition Merge
+Total GXB Receiver Channel PCS : N/A until Partition Merge
+Total GXB Receiver Channel PMA : N/A until Partition Merge
+Total GXB Transmitter Channel PCS : N/A until Partition Merge
+Total GXB Transmitter Channel PMA : N/A until Partition Merge
+Total PLLs : N/A until Partition Merge

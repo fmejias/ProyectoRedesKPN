@@ -1,0 +1,19 @@
+<?xml version = "1.0"?>
+<modules>
+	<module id = "" type = "" entries = "" outputs = "" elements = "">
+		<entry_1> moduleName_moduleId_numberOfOutput </entry_1>
+		<entry_2> moduleName_moduleId_numberOfOutput </entry_2>
+	</module>
+	<module id = "" type = "" entries = "" outputs = "" elements = "">
+		<entry_1> moduleName_moduleId_numberOfOutput </entry_1>
+		<entry_2> moduleName_moduleId_numberOfOutput </entry_2>
+	</module>
+	.
+	.
+	.
+	.
+	<module id = "" type = "" entries = "" outputs = "" elements = "">
+		<entry_1> moduleName_moduleId_numberOfOutput </entry_1>
+		<entry_2> moduleName_moduleId_numberOfOutput </entry_2>
+	</module>
+</modules>

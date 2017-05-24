@@ -99,14 +99,14 @@ output [6:0] hex_0;
  .wr(adder_1_wr), .entry_1(adder_1_output), .output_1(fifo_4_output));
  
  //This is the adder 1
+// delay_module delay_1_inst(.clk(kpn_clk), .rd(adder_1_rd), 
+// .wr(adder_1_wr), .entry_1(fifo_1_output),  
+// .output_1(adder_1_output));
+ 
+ //This is the adder 2
  adder_module adder_1_inst(.clk(kpn_clk), .rd(adder_1_rd), 
  .wr(adder_1_wr), .entry_1(fifo_1_output), .entry_2(fifo_2_output), 
  .output_1(adder_1_output));
- 
- //This is the adder 2
- //adder_module adder_2_inst(.clk(kpn_clk), .rd(adder_2_rd), 
- //.wr(adder_2_wr), .entry_1(fifo_3_output), .entry_2(fifo_3_output), 
- //.output_1(adder_2_output));
  
   //This is the multiplier
 // multiplier_module multiplier_1_inst(.clk(kpn_clk), .rd(multiplier_1_rd), 
